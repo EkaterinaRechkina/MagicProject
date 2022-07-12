@@ -8,21 +8,23 @@ const saltRounds = 5;
 router
     .route("/")
     .post(async (req, res) => {
-        const { name, password } = req.body;
+        const { name, email, password } = req.body;
+
         try {
             const hashedPassword = await bcrypt.hash(password, saltRounds)
 
             const newUser = await User.create({
-                name, password: hashedPassword,
+                name: name,
+                email: email,
+                password: hashedPassword,
             })
 
             req.session.userId = newUser.id;
             req.session.userName = newUser.name;
 
             const id = newUser.id;
-            const name = newUser.name;
-
-            res.json({ id, name })
+            const userName = newUser.name;
+            res.json({ id, userName })
 
         } catch (error) {
             console.log(error);

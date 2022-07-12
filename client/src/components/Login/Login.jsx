@@ -3,10 +3,14 @@ import './Login.module.css';
 import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {checkAuth} from "../../hooks/checkAuth";
+import {useDispatch} from "react-redux";
 
 export default function Login() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
 
     function logHandler(event) {
@@ -14,7 +18,8 @@ export default function Login() {
         axios.post('http://localhost:3001/login', { name, password }, { withCredentials: true })
             .then(response => {
                 localStorage.setItem('id', response.data.id);
-                localStorage.setItem('name', response.data.name);
+                localStorage.setItem('name', response.data.userName);
+                checkAuth(dispatch);
             })
         setName('')
         setPassword('');
