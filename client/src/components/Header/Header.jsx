@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "../../hooks/checkAuth";
 import { useEffect } from "react";
 
@@ -23,27 +23,27 @@ import { Divider } from "@mui/material";
 import { Link } from "@mui/material";
 
 const Header = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     checkAuth(dispatch);
   }, []);
 
-  const isAuth = useSelector(store => store.auth);
-  console.log('isAuth =>', isAuth);
+  const isAuth = useSelector((store) => store.auth);
+  console.log("isAuth =>", isAuth);
 
   const navigate = useNavigate();
   // const [isAuth, setIsAuth] = useState(true);
 
   function logoutHandler() {
-    axios.post('http://localhost:3001/logout',{},{ withCredentials: true })
-        .then(response => {
-          localStorage.clear();
-          checkAuth(dispatch);
-        })
+    axios
+      .post("http://localhost:3001/logout", {}, { withCredentials: true })
+      .then((response) => {
+        localStorage.clear();
+        checkAuth(dispatch);
+      });
 
-    navigate('/');
+    navigate("/");
   }
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -64,14 +64,18 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
-
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "#1d1c4d" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
-          <Typography variant="h6" noWrap component="a" href="/" sx={{
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
@@ -79,7 +83,8 @@ const Header = () => {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
-            }}>
+            }}
+          >
             <Link to="/"> HOME </Link>
           </Typography>
 
@@ -138,7 +143,12 @@ const Header = () => {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography variant="h5" noWrap component="a" href="" sx={{
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
@@ -147,43 +157,55 @@ const Header = () => {
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
-            }}>
+            }}
+          >
             LOGO
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button key={1}
+            <Button
+              key={1}
               onClick={() => {
-                navigate('/shop');
-                handleCloseNavMenu()
+                navigate("/shop");
+                handleCloseNavMenu();
               }}
               sx={{ my: 2, color: "white", display: "block" }}
-            > Shop </Button>
-
-            <Button key={2}
-              onClick={() => {
-                navigate('/stories');
-                handleCloseNavMenu()
-              }}
-              sx={{ my: 2, color: "white", display: "block" }}
-            > Stories </Button>
+            >
+              Shop
             </Button>
 
-            <Button key={3}
+            <Button
+              key={2}
               onClick={() => {
-                navigate('/ourplaces');
-                handleCloseNavMenu()
+                navigate("/stories");
+                handleCloseNavMenu();
               }}
               sx={{ my: 2, color: "white", display: "block" }}
-            > Our places </Button>
+            >
+              Stories
+            </Button>
 
-            <Button key={4}
-                    onClick={() => {
-                      navigate('/events');
-                      handleCloseNavMenu()
-                    }}
-                    sx={{ my: 2, color: "white", display: "block" }}
-            > Our events </Button>
+            <Button
+              key={3}
+              onClick={() => {
+                navigate("/map");
+                handleCloseNavMenu();
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Our places
+            </Button>
+
+            <Button
+              key={4}
+              onClick={() => {
+                navigate("/events");
+                handleCloseNavMenu();
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Our events
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -193,26 +215,32 @@ const Header = () => {
               </IconButton>
             </Tooltip>
 
-            <Menu sx={{ mt: "45px" }} id="menu-appbar" anchorEl={anchorElUser} anchorOrigin={{vertical: "top", horizontal: "right"}}
-              keepMounted transformOrigin={{vertical: "top", horizontal: "right"}}
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              keepMounted
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
-
+              onClose={handleCloseUserMenu}
+            >
               <MenuItem key={5} onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
                   <Link to="profile">Profile</Link>
                 </Typography>
-
               </MenuItem>
               <Divider />
-              {isAuth ? <MenuItem key={6} onClick={logoutHandler}>
-                <Typography textAlign="center">
-                  <div>
-                    <p>Выйти</p>
-                  </div>
-                </Typography>
-              </MenuItem> :
-                  <>
+              {isAuth ? (
+                <MenuItem key={6} onClick={logoutHandler}>
+                  <Typography textAlign="center">
+                    <div>
+                      <p>Выйти</p>
+                    </div>
+                  </Typography>
+                </MenuItem>
+              ) : (
+                <>
                   <MenuItem key={7} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">
                       <Link to="login">Войти</Link>
@@ -223,14 +251,14 @@ const Header = () => {
                       <Link to="registration">Зарегистрироваться</Link>
                     </Typography>
                   </MenuItem>
-                  </>
-              }
+                </>
+              )}
             </Menu>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-    );
+  );
 };
 
 export default Header;

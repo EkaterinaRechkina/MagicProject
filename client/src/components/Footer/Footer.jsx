@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import "./footer.css";
 
 const Footer = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -25,18 +26,26 @@ const Footer = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#1d1c4d",
+        display: "flex",
+        justifyContent: "flex-start",
+        padding: " 10px 30px",
+      }}
+    >
       <Box sx={{ display: { xs: "flex" } }}>
         <MenuItem key={1} onClick={handleCloseNavMenu}>
-          <Typography textAlign="center">
-            <Link to="team">Team </Link>
-          </Typography>
+          <Link to="team" className="link">
+            Team
+          </Link>
         </MenuItem>
 
         <MenuItem key={2} onClick={handleCloseNavMenu}>
-          <Typography textAlign="center">
-            <Link to="contacts">Contacts </Link>
-          </Typography>
+          <Link to="contacts" className="link">
+            Contacts
+          </Link>
         </MenuItem>
       </Box>
     </AppBar>
