@@ -7,6 +7,7 @@ router
     .route("/")
     .post(async (req, res) => {
         const { name, password } = req.body;
+
         try {
             const user = await User.findOne({
                 where:
@@ -29,9 +30,9 @@ router
             req.session.userName = user.name;
 
             const id = user.id;
-            const name = user.name;
+            const userName = user.name;
 
-            res.json({ id, name });
+            res.json({ id, userName });
 
         } catch (error) {
             console.log(error);
