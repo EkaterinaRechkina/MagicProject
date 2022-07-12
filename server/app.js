@@ -1,11 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
-const sequelize = require("./db/models");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
+const sequelize = require('./db/models')
 
-// const indexRouter = require("./routes/index.routes");
-// const postsRouter = require("./routes/posts.routes");
+const app = express();
+const registerRouter = require("./routes/register.router");
+const loginRouter = require("./routes/login.router");
+const logoutRouter = require("./routes/logout.router");
 
 app.use(
   cors({
@@ -13,14 +16,15 @@ app.use(
     credentials: true,
   })
 );
-const app = express();
+
 const PORT = process.env.PORT || 3002;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use("/", indexRouter);
-// app.use("/posts", postsRouter);
+app.use("/registration", registerRouter);
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 app.listen(PORT, async () => {
   try {
