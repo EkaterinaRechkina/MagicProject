@@ -1,18 +1,25 @@
-import React from 'react'
-import axios from 'axios'
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Button } from "@mui/material";
 
 function FutureApi() {
-    const []
-    function getFuture(){
-        axios.get(`${process.env.REACT_APP_API_URL}/api/future`, {withCredentials: true})
-        .then(response => {
-            console.log(response.data);
-        })
-    }
-    getFuture()
-    return (
-        <div>FutureApi</div>
+  const [answer, setAnswer] = useState("");
+
+  function getFortune() {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/future`)
+      .then((response) => {
+        setAnswer(response.data);
+      });
+  }
+
+  return (
+         <>
+         <div>{answer}</div>
+         <Button onClick={() => getFortune()} variant="contained"/>
+         </>
   )
 }
 
-export default FutureApi
+export default FutureApi;
