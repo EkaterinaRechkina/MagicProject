@@ -1,7 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
-
+main{
+  flex-grow: 1;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
