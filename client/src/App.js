@@ -2,8 +2,11 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
+import { useEffect } from "react";
+import FutureApi from "./components/Apis/FutureApi";
 
 function App() {
+
   return (
     <div className="App">
       <header>
@@ -18,6 +21,7 @@ function App() {
         
         </Routes> */}
         text
+        <FutureApi />
       </main>
       <footer>
         <Footer />
