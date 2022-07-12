@@ -5,11 +5,15 @@ const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 const { sequelize } = require('./db/models')
 
+
 const app = express();
 const registerRouter = require("./routes/register.router");
 const loginRouter = require("./routes/login.router");
 const logoutRouter = require("./routes/logout.router");
+const getAPI = require("./routes/ApisRouter")
+
 const checkSession = require('./routes/checkSession.router');
+
 
 app.use(
   cors({
@@ -48,7 +52,9 @@ app.use((req, res, next) => {
 app.use("/registration", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
+app.use("/api", getAPI)
 app.use('/checksession', checkSession);
+
 
 app.listen(PORT, async () => {
   try {

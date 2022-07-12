@@ -2,6 +2,8 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
+import { useEffect } from "react";
+import FutureApi from "./components/Apis/FutureApi";
 import Login from "./components/Login/Login";
 import Registration from "./components/Registration/Registration";
 import Logout from "./components/Logout/Logout";
@@ -11,13 +13,24 @@ import Event from "./components/Event/Event";
 import Story from "./components/Story/Story";
 import Product from "./components/Product/Product";
 
+
 function App() {
+
   return (
     <div className="App">
       <header>
         <Header />
       </header>
       <main>
+
+        {/* <Routes>
+          <Route
+            path="/"
+            element={}
+          />        
+        </Routes> */}
+        text
+        <FutureApi />
         <Routes>
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
