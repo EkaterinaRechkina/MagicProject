@@ -12,6 +12,8 @@ import Map from "./components/Map/Map";
 import Event from "./components/Event/Event";
 import Story from "./components/Story/Story";
 import Product from "./components/Product/Product";
+import Tarot from "./components/Apis/Tarot";
+import YesNo from "./components/Apis/YesNo";
 
 
 function App() {
@@ -23,14 +25,11 @@ function App() {
       </header>
       <main>
 
-        {/* <Routes>
-          <Route
-            path="/"
-            element={}
-          />        
-        </Routes> */}
-        text
-        <FutureApi />
+        <Routes>
+          <Route path="/" element={<><FutureApi /> <Tarot /> <YesNo /> </>} />        
+        </Routes>
+      
+        
         <Routes>
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
