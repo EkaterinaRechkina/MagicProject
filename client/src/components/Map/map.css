@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    flex-direction: row; 
+    margin-top: 10%;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.map{
+    height: 400px;
+    width: 50%;
+}
+.text{
+    width: 30%;
+}
+.marker{
+    background-image: url('https://img.icons8.com/material-outlined/344/place-marker--v1.png');
+    background-size: cover;
+    width: 22px;
+    height: 22px;
+    background-color: yellow;
+    border-radius: 11px;
+    border: solid 3px darkblue;
+}
+
+.marker-delivery{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
