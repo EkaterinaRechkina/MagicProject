@@ -102,7 +102,7 @@ const Header = () => {
 
               <MenuItem key={3} onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <Link to="places">Our places</Link>
+                  <Link to="map">Our places</Link>
                 </Typography>
               </MenuItem>
 
@@ -155,7 +155,7 @@ const Header = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "white", display: "block" }}
             >
-              <Link to="places">Our places</Link>
+              <Link to="map">Our places</Link>
             </Button>
 
             <Button
