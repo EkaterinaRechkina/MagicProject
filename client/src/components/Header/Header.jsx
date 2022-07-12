@@ -126,7 +126,7 @@ const Header = () => {
 
               <MenuItem key={3} onClick={handleCloseNavMenu}>
                 <Typography textAlign="center">
-                  <Link to="places">Our places</Link>
+                  <Link to="map">Our places</Link>
                 </Typography>
               </MenuItem>
 
@@ -167,6 +167,7 @@ const Header = () => {
               }}
               sx={{ my: 2, color: "white", display: "block" }}
             > Stories </Button>
+            </Button>
 
             <Button key={3}
               onClick={() => {
