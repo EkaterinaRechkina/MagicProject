@@ -24,6 +24,7 @@ export default function Story() {
         <Typography gutterBottom variant="h5" component="div">
           Story name
         </Typography>
+        {/* Show when card is clicked */}
         <Typography variant="body1" color="text.secondary">
           Story description
         </Typography>

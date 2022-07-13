@@ -3,19 +3,24 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
-const { sequelize } = require('./db/models')
-
+const { sequelize } = require("./db/models");
 
 const app = express();
 const registerRouter = require("./routes/register.router");
 const loginRouter = require("./routes/login.router");
 const logoutRouter = require("./routes/logout.router");
+<<<<<<< HEAD
+const storiesRouter = require("./routes/story.router");
+const getAPI = require("./routes/ApisRouter");
+=======
 const getAPI = require("./routes/ApisRouter")
 const checkSession = require('./routes/checkSession.router');
 const userInfoRouter = require('./routes/userInfo.router');
 
 app.use('/static', express.static(__dirname + '/public'));
+>>>>>>> 99f3b5d67dbb42572dd52f760de9128152d26f55
 
+const checkSession = require("./routes/checkSession.router");
 
 app.use(
   cors({
@@ -27,13 +32,13 @@ app.use(
 const PORT = process.env.PORT || 3002;
 
 const sessionConfig = {
-    store: new FileStore(),
-    key: process.env.COOKIE_NAME,
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    httpOnly: true,
-    cookie: { expires: 24 * 60 * 60e3 },
+  store: new FileStore(),
+  key: process.env.COOKIE_NAME,
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  httpOnly: true,
+  cookie: { expires: 24 * 60 * 60e3 },
 };
 
 app.use(session(sessionConfig));
@@ -41,19 +46,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
-    if (req.session.userId) {
-        res.locals.userId = req.session.userId;
-        res.locals.userName = req.session.userName;
-    }
+  if (req.session.userId) {
+    res.locals.userId = req.session.userId;
+    res.locals.userName = req.session.userName;
+  }
 
-    next();
+  next();
 });
 
 app.use("/registration", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
-app.use("/api", getAPI)
-app.use('/checksession', checkSession);
+app.use("/api", getAPI);
+app.use("/checksession", checkSession);
+app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
 
 app.listen(PORT, async () => {

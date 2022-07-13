@@ -7,13 +7,12 @@ import FutureApi from "./components/Apis/FutureApi";
 import Login from "./components/Login/Login";
 import Registration from "./components/Registration/Registration";
 import Logout from "./components/Logout/Logout";
-
 import Map from "./components/Map/Map";
 import Event from "./components/Event/Event";
-import Story from "./components/Story/Story";
 import Product from "./components/Product/Product";
 import Tarot from "./components/Apis/Tarot";
 import YesNo from "./components/Apis/YesNo";
+import AllStories from "./components/AllStories/AllStories";
 import Profile from "./components/Profile/Profile";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
             path="/"
             element={
               <>
-                <FutureApi /> <Tarot /> <YesNo />{" "}
+                <FutureApi /> <Tarot /> <YesNo />
               </>
             }
           />
@@ -38,7 +37,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/events" element={<Event />} />
           <Route path="/shop" element={<Product />} />
-          <Route path="/stories" element={<Story />} />
+          <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
