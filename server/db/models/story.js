@@ -9,15 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      // define association here
-    }
+     static associate(models) {
+      this.belongsTo(models.User, {
+         foreignKey: 'user_id',
+      });
+      }
   }
   Story.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     user_id: DataTypes.INTEGER,
-    img: DataTypes.STRING
+    img: DataTypes.STRING,
+    author:DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Story',

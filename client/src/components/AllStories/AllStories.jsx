@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { display } from "@mui/system";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 
 export default function AllStories() {
@@ -20,6 +20,7 @@ export default function AllStories() {
   const closeForm = () => setOpen(false);
 
   const dispatch = useDispatch();
+  const story = useSelector((store) => store.story);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -110,12 +111,8 @@ export default function AllStories() {
       )}
 
       <div className="stories">
-        {/* <Story />
-        <Story />
-        <Story />
-        <Story />
-        <Story />
-        <Story /> */}
+        {story &&
+          story.map((element) => <Story key={element.id} {...element} />)}
       </div>
     </>
   );

@@ -16,35 +16,40 @@ export const setStories = () => async (dispatch) => {
   }
 };
 
-export const addStory = (title, description, img) => async (dispatch) => {
-  try {
-    const result = await axios.post(
-      `${process.env.REACT_APP_API_URL}/stories`,
-      {
-        title,
-        description,
-        img,
-      },
-      { withCredentials: true }
-    );
-    console.log("result", result.data);
-    dispatch({
-      type: ADD_STORY,
-      payload: result.data,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
+export const addStory =
+  (title, description, img, author) => async (dispatch) => {
+    try {
+      const result = await axios.post(
+        `${process.env.REACT_APP_API_URL}/stories`,
+        {
+          title,
+          description,
+          img,
+          author,
+        },
+        { withCredentials: true }
+      );
+      console.log("result", result.data);
+      dispatch({
+        type: ADD_STORY,
+        payload: result.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 export const editStory = (id, title, description, img) => async (dispatch) => {
   try {
-    const result = await axios.put(`${process.env.REACT_APP_API_URL}/${id}`, {
-      id,
-      title,
-      description,
-      img,
-    });
+    const result = await axios.put(
+      `${process.env.REACT_APP_API_URL}/stories/${id}`,
+      {
+        id,
+        title,
+        description,
+        img,
+      }
+    );
     console.log("result", result.data);
     dispatch({
       type: EDIT_STORY,
@@ -58,11 +63,12 @@ export const editStory = (id, title, description, img) => async (dispatch) => {
 export const deleteStory = (id) => async (dispatch) => {
   try {
     const result = await axios.delete(
-      `${process.env.REACT_APP_API_URL}/${id}`,
+      `${process.env.REACT_APP_API_URL}/stories/${id}`,
       {
         id,
       }
     );
+    console.log(result);
 
     dispatch({
       type: DEL_STORY,
