@@ -13,6 +13,7 @@ import Product from "./components/Product/Product";
 import Tarot from "./components/Apis/Tarot";
 import YesNo from "./components/Apis/YesNo";
 import AllStories from "./components/AllStories/AllStories";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/events" element={<Event />} />
           <Route path="/shop" element={<Product />} />
           <Route path="/stories" element={<AllStories />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
       <footer>

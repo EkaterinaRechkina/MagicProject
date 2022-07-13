@@ -165,7 +165,7 @@ const Header = () => {
                     <Link to="profile"> Profile</Link>
                   </MenuItem>
                   <MenuItem key={10} onClick={logoutHandler}>
-                    <Link to="logout"> Выйти</Link>
+                    <Link to="/"> Выйти</Link>
                   </MenuItem>
                 </div>
               ) : (
