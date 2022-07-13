@@ -17,7 +17,7 @@ function FutureApi() {
   return (
          <>
          <div>{answer}</div>
-         <Button onClick={() => getFortune()} variant="contained"/>
+         <Button onClick={() => getFortune()} variant="contained">Get wisdom</Button>
          </>
   )
 }
