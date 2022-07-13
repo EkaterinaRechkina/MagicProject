@@ -1,0 +1,43 @@
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.image_profile {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.image_profile img {
+    width: 100%;
+    height: 100%;
+}
+
+.info_profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading_profile {
+    font-size: 36px;
+}
+
+.text_profile {
+    font-size: 24px;
+}
+
+.button_sell {
+    width: 100px;
+    height: 40px;
+    margin: 20px 0;
+}
+
+h1, p {
+    margin: 5px 0;
+}
+
