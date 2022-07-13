@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+   background-color: aquamarine;
+}
+.faceimg {
+    padding: 5%;
+    width: 400px;
+    height: 600px;
+}
+.faceimg img {
+    width: 100%
+}
+.api {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+}
+.block {
+    background-color: brown;
+    height: 200px;
+    width: 400px;
+}

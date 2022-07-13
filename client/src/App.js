@@ -14,6 +14,7 @@ import Tarot from "./components/Apis/Tarot";
 import YesNo from "./components/Apis/YesNo";
 import AllStories from "./components/AllStories/AllStories";
 import Profile from "./components/Profile/Profile";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
@@ -23,14 +24,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <FutureApi /> <Tarot /> <YesNo />
-              </>
-            }
-          />
+          <Route path="/" element={<Main /> } />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
