@@ -15,22 +15,22 @@ import Product from "./components/Product/Product";
 import Tarot from "./components/Apis/Tarot";
 import YesNo from "./components/Apis/YesNo";
 
-
 function App() {
-
   return (
     <div className="App">
       <header>
         <Header />
       </header>
       <main>
-
         <Routes>
-          <Route path="/" element={<><FutureApi /> <Tarot /> <YesNo /> </>} />        
-        </Routes>
-      
-        
-        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <FutureApi /> <Tarot /> <YesNo />{" "}
+              </>
+            }
+          />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />

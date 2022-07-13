@@ -38,7 +38,6 @@ const Header = () => {
         localStorage.clear();
         checkAuth(dispatch);
       });
-    navigate("/");
   }
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -59,146 +58,132 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
-    return (
-        <AppBar position="static" sx={{ backgroundColor: "#1d1c4d" }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+  return (
+    <AppBar position="static" sx={{ backgroundColor: "#1d1c4d" }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
 
-                    <Typography variant="h6" noWrap component="a" href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}>
-                        <Link to="/"> HOME </Link>
-                    </Typography>
+          <Link to="/"> HOME </Link>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-                        <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true"
-                            onClick={handleOpenNavMenu} color="inherit">
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu id="menu-appbar" anchorEl={anchorElNav} anchorOrigin={{vertical: "bottom", horizontal: "left",}}
-                            keepMounted transformOrigin={{vertical: "top", horizontal: "left",}}
-                            open={Boolean(anchorElNav)} onClose={handleCloseNavMenu}
-                            sx={{display: { xs: "block", md: "none" },}}>
-                            <MenuItem key={1} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="shop">Shop </Link>
-                                </Typography>
-                            </MenuItem>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              keepMounted
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: "block", md: "none" } }}
+            >
+              <MenuItem key={1} onClick={handleCloseNavMenu}>
+                <Link to="shop">Shop </Link>
+              </MenuItem>
 
-                            <MenuItem key={2} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="stories">Stories </Link>
-                                </Typography>
-                            </MenuItem>
+              <MenuItem key={2} onClick={handleCloseNavMenu}>
+                <Link to="stories">Stories </Link>
+              </MenuItem>
 
-                            <MenuItem key={3} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="map">Our places</Link>
-                                </Typography>
-                            </MenuItem>
+              <MenuItem key={3} onClick={handleCloseNavMenu}>
+                <Link to="map">Our places</Link>
+              </MenuItem>
 
-                            <MenuItem key={4} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="events">Our events </Link>
-                                </Typography>
-                            </MenuItem>
-                        </Menu>
-                    </Box>
-                    <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-                    <Typography variant="h5" noWrap component="a" href="" sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}>
-                        LOGO
-                    </Typography>
+              <MenuItem key={4} onClick={handleCloseNavMenu}>
+                <Link to="events">Our events </Link>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              flexGrow: 1,
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                        <Link to='shop' key={5} sx={{ my: 2, color: "white", display: "block" }}>
-                            Shop
-                        </Link>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Link to="shop" key={5}>
+              Shop
+            </Link>
 
-                        <Link to='stories' key={6} sx={{ my: 2, color: "white", display: "block" }}>
-                            Stories
-                        </Link>
+            <Link to="stories" key={6}>
+              Stories
+            </Link>
 
-                        <Link to='map' key={7} sx={{ my: 2, color: "white", display: "block" }}>
-                            Our places
-                        </Link>
+            <Link to="map" key={7}>
+              Our places
+            </Link>
 
-                        <Link to='events' key={8} sx={{ my: 2, color: "white", display: "block" }}>
-                            Our events
-                        </Link>
-                    </Box>
+            <Link to="events" key={8}>
+              Our events
+            </Link>
+          </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src={ImgProfile} />
-                            </IconButton>
-                        </Tooltip>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src={ImgProfile} />
+              </IconButton>
+            </Tooltip>
 
-                        <Menu
-                            sx={{ mt: "45px" }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                            keepMounted
-                            transformOrigin={{ vertical: "top", horizontal: "right" }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {isAuth ? (
-                                <>
-                                    <MenuItem key={9} onClick={handleCloseUserMenu}>
-                                        <Button onClick={() => navigate('/profile')}>
-                                            Profile
-                                        </Button>
-                                    </MenuItem>
-                                    <MenuItem key={10} onClick={logoutHandler}>
-                                        <Typography textAlign="center">
-                                            <Button>Выйти</Button>
-                                        </Typography>
-                                    </MenuItem>
-                                </>
-                            ) : (
-                                <>
-                                    <MenuItem key={11} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">
-                                            <Button onClick={() => navigate('/login')}>
-                                                Войти
-                                            </Button>
-                                        </Typography>
-                                    </MenuItem>
-                                    <MenuItem key={12} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">
-                                            <Button onClick={() => navigate('/registration')}>
-                                                Зарегистрироваться
-                                            </Button>
-                                        </Typography>
-                                    </MenuItem>
-                                </>
-                            )}
-                        </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
-    );
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{ vertical: "top", horizontal: "right" }}
+              keepMounted
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {isAuth ? (
+                <div>
+                  <MenuItem key={9} onClick={handleCloseUserMenu}>
+                    <Link to="profile"> Profile</Link>
+                  </MenuItem>
+                  <MenuItem key={10} onClick={logoutHandler}>
+                    <Link to="logout"> Выйти</Link>
+                  </MenuItem>
+                </div>
+              ) : (
+                <div>
+                  <MenuItem key={11} onClick={handleCloseUserMenu}>
+                    <Link to="login"> Войти</Link>
+                  </MenuItem>
+                  <MenuItem key={12} onClick={handleCloseUserMenu}>
+                    <Link to="registration"> Зарегистрироваться</Link>
+                  </MenuItem>
+                </div>
+              )}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 };
 
 export default Header;
-
