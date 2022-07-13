@@ -1,3 +1,4 @@
+const checkIsAutor= require('../middleware/checkAuthor')
 const { Story, User } = require("../db/models");
 
 const router = require("express").Router();
@@ -43,13 +44,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.get("/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const oneStory = await Story.findOne({ where: { id } });
-//   res.json(oneStory);
-// });
-
-router.put("/:id", async (req, res) => {
+router.put("/:id",checkIsAutor, async (req, res) => {
   const { id, title, description,img } = req.body;
   // console.log(id, title, description);
 
@@ -62,7 +57,7 @@ router.put("/:id", async (req, res) => {
   res.json(currentStory);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",checkIsAutor, async (req, res) => {
   const { id } = req.params;
 
   const deleteStory = await Story.destroy({ where: { id } });
@@ -70,3 +65,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+

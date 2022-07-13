@@ -51,6 +51,7 @@ export default function Story({ id, title, description, img, author }) {
     handleClose();
   }
 
+  // нужен state  === author  показывай редак/удаление
   return (
     <>
       <PopupState variant="popover" popupId="demo-popup-popover">
@@ -134,6 +135,7 @@ export default function Story({ id, title, description, img, author }) {
             label="Image"
             value={newImg}
             onChange={(event) => setNewImg(event.target.value)}
+            required
           />
           <TextField
             onChange={(event) => setNewTitle(event.target.value)}
@@ -141,6 +143,7 @@ export default function Story({ id, title, description, img, author }) {
             id="standard-basic"
             label="Title"
             variant="standard"
+            required
           />
           <TextField
             onChange={(event) => setNewDescription(event.target.value)}
@@ -148,6 +151,7 @@ export default function Story({ id, title, description, img, author }) {
             id="standard-basic"
             label="Description"
             variant="standard"
+            required
           />
           <Button
             id={id}
