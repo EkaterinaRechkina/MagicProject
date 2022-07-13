@@ -9,16 +9,31 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.TEXT
       },
       user_id: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+              tableName: 'Users',
+          },
+      key: 'id',
+      },
       },
       img: {
+        allowNull: false,
         type: Sequelize.STRING
+      },
+      author:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        
       },
       createdAt: {
         allowNull: false,
