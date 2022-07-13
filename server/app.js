@@ -14,6 +14,9 @@ const getAPI = require("./routes/ApisRouter")
 const checkSession = require('./routes/checkSession.router');
 const userInfoRouter = require('./routes/userInfo.router');
 
+app.use('/static', express.static(__dirname + '/public'));
+
+
 app.use(
   cors({
     origin: "http://localhost:3000",
