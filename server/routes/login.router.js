@@ -17,22 +17,22 @@ router
             })
 
             if (!user) {
-                res.json('--- no user found ----');
+                const message = 'Пользователь не найден!'
+                res.json({ message });
             }
 
             const isValidPass = await bcrypt.compare(password, user.password)
 
             if (!isValidPass) {
-                res.json('wrong password');
+                const message = 'Wrong password!';
+                res.json({ message });
             }
 
             req.session.userId = user.id;
             req.session.userName = user.name;
 
-            const id = user.id;
-            const userName = user.name;
-
-            res.json({ id, userName });
+            const userInfo = [user.id, user.name, user.email.toLowerCase()];
+            res.json({ userInfo })
 
         } catch (error) {
             console.log(error);

@@ -11,9 +11,11 @@ const registerRouter = require("./routes/register.router");
 const loginRouter = require("./routes/login.router");
 const logoutRouter = require("./routes/logout.router");
 const getAPI = require("./routes/ApisRouter")
-
 const checkSession = require('./routes/checkSession.router');
+const userInfoRouter = require('./routes/userInfo.router');
+
 app.use('/static', express.static(__dirname + '/public'));
+
 
 app.use(
   cors({
@@ -47,14 +49,12 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 app.use("/registration", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/api", getAPI)
 app.use('/checksession', checkSession);
-
+app.use('/userinfo', userInfoRouter);
 
 app.listen(PORT, async () => {
   try {
