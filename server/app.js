@@ -9,10 +9,13 @@ const app = express();
 const registerRouter = require("./routes/register.router");
 const loginRouter = require("./routes/login.router");
 const logoutRouter = require("./routes/logout.router");
+
 const storiesRouter = require("./routes/story.router");
 const getAPI = require("./routes/ApisRouter");
 const checkSession = require('./routes/checkSession.router');
+
 const userInfoRouter = require('./routes/userInfo.router');
+const productRouter = require('./routes/product.router');
 
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -56,6 +59,7 @@ app.use("/api", getAPI);
 app.use("/checksession", checkSession);
 app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
+app.use('/products', productRouter);
 
 app.listen(PORT, async () => {
   try {

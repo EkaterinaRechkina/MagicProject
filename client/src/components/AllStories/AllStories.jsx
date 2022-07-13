@@ -20,7 +20,6 @@ export default function AllStories() {
   const closeForm = () => setOpen(false);
 
   const dispatch = useDispatch();
-
   const story = useSelector((store) => store.story);
 
   function submitHandler(event) {
