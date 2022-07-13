@@ -9,11 +9,11 @@ import Registration from "./components/Registration/Registration";
 import Logout from "./components/Logout/Logout";
 import Map from "./components/Map/Map";
 import Event from "./components/Event/Event";
-import Product from "./components/Product/Product";
 import Tarot from "./components/Apis/Tarot";
 import YesNo from "./components/Apis/YesNo";
 import AllStories from "./components/AllStories/AllStories";
 import Profile from "./components/Profile/Profile";
+import Shop from "./components/Shop/Shop";
 
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/map" element={<Map />} />
           <Route path="/events" element={<Event />} />
-          <Route path="/shop" element={<Product />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

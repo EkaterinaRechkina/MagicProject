@@ -20,9 +20,6 @@ export default function AllStories() {
   const closeForm = () => setOpen(false);
 
   const dispatch = useDispatch();
-  console.log(title);
-  console.log(description);
-  console.log(img);
 
   function submitHandler(event) {
     event.preventDefault();
