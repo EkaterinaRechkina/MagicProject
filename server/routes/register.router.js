@@ -13,19 +13,38 @@ router
         try {
             const hashedPassword = await bcrypt.hash(password, saltRounds)
 
-            const newUser = await User.create({
-                name: name,
-                email: email,
-                password: hashedPassword,
-            })
+            const checkUserEmail = await User.findOne({
+                where: {
+                    email: email.toLowerCase()
+                }
+            });
 
-            req.session.userId = newUser.id;
-            req.session.userName = newUser.name;
+            const checkUserName = await User.findOne({
+                where: {
+                    name: name
+                }
+            });
 
-            const id = newUser.id;
-            const userName = newUser.name;
-            res.json({ id, userName })
+            if (checkUserEmail) {
+                const message = 'Пользователь с данным почтовым адресом уже существует. Войдите или зарегистрируйтесь, используя другую почту.'
+                res.json({ message })
+            } else if (checkUserName) {
+                const message = 'Пользователь с данным логином уже существует. Войдите или зарегистрируйтесь, используя другой логин.'
+                res.json({ message })
+            } else {
+                const newUser = await User.create({
+                    name: name,
+                    email: email.toLowerCase(),
+                    password: hashedPassword,
+                    isAdmin: false,
+                })
 
+                req.session.userId = newUser.id;
+                req.session.userName = newUser.name;
+
+                const userInfo = [newUser.id, newUser.name, newUser.email];
+                res.json({ userInfo })
+            }
         } catch (error) {
             console.log(error);
         }
