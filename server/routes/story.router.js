@@ -18,12 +18,12 @@ router.post("/", async (req, res) => {
   console.log(req.body);
   try {
     const userId = req.session.userId;
-    console.log("userId", userId);
-    console.log(req.session);
+    
     const user = await User.findOne({
       where: { id: userId },
     });
     const user_id = user.id;
+    const author =user.name;
     // console.log("userid", user_id);
     const { id, title, description, img } = req.body;
 
@@ -33,6 +33,7 @@ router.post("/", async (req, res) => {
       description,
       img,
       user_id,
+      author
     });
 
     return res.status(201).json(newElement);
@@ -49,11 +50,11 @@ router.post("/", async (req, res) => {
 // });
 
 router.put("/:id", async (req, res) => {
-  const { id, title, description, simg } = req.body;
+  const { id, title, description,img } = req.body;
   // console.log(id, title, description);
 
-  const story = await Task.update(
-    { title, description, img },
+  const story = await Story.update(
+    { title, description,img },
     { where: { id } }
   );
   const currentStory = await Story.findOne({ where: { id } });
@@ -63,8 +64,9 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
+
   const deleteStory = await Story.destroy({ where: { id } });
-  res.json(deleteStory);
+  res.sendStatus(200);
 });
 
 module.exports = router;
