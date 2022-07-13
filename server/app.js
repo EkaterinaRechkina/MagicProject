@@ -13,7 +13,7 @@ const logoutRouter = require("./routes/logout.router");
 const getAPI = require("./routes/ApisRouter")
 
 const checkSession = require('./routes/checkSession.router');
-
+app.use('/static', express.static(__dirname + '/public'));
 
 app.use(
   cors({

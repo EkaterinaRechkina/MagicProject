@@ -14,7 +14,7 @@ router.route("/future").get(async (req, res) => {
 router.route("/tarot").get(async (req, res) => {
   try {
     const response = await axios.get(process.env.API_TAROT_URL);
-    res.json(response.data.fortune);
+    res.json(response.data);
   } catch (error) {
     console.log(error);
   }

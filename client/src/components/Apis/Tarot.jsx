@@ -8,7 +8,7 @@ function Tarot() {
     function getTarot(){
         axios.get(process.env.REACT_APP_API_CARDS_URL,)
         .then(response => {
-            console.log(response.data.cards[0].meaning_up);
+            console.log(response.data);
             setCard(response.data.cards[0].meaning_up)
         })
     }
@@ -16,9 +16,14 @@ function Tarot() {
   return (
     <>
      <Button onClick={() => getTarot()} variant="contained"/>
-    <div>{card}</div>
+    <div>{card}
+    <img src='http://localhost:3001/static/img/cards/Ace%20of%20Cups.jpg' alt="" />
+    </div>
+    
     </>
   )
 }
 
 export default Tarot
+
+  // /home/a7heis7/CODE/MagicProject/server/static/img/cards
