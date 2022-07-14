@@ -199,7 +199,11 @@ const Header = () => {
                         My goods
                       </Link>
                     </MenuItem>
-                    <MenuItem key={10} onClick={logoutHandler}>
+
+            
+
+                    <MenuItem key={11} onClick={logoutHandler}>
+
                       <Link to="/" className="link-sidebar">
                         Logout
                       </Link>
@@ -207,12 +211,12 @@ const Header = () => {
                   </div>
                 ) : (
                   <div>
-                    <MenuItem key={11} onClick={handleCloseUserMenu}>
+                    <MenuItem key={12} onClick={handleCloseUserMenu}>
                       <Link to="login" className="link-sidebar">
                         Sign in
                       </Link>
                     </MenuItem>
-                    <MenuItem key={12} onClick={handleCloseUserMenu}>
+                    <MenuItem key={13} onClick={handleCloseUserMenu}>
                       <Link to="registration" className="link-sidebar">
                         Sign up
                       </Link>
