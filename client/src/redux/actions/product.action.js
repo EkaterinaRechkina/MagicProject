@@ -47,9 +47,8 @@ export const editProduct = (id, title, description, img, price) => async (dispat
 
 export const deleteProduct = (id) => async (dispatch) => {
     try {
-        const result = await axios.delete(
+        await axios.delete(
             `${process.env.REACT_APP_API_URL}/products/${id}`,
-            {},
             { withCredentials: true }
         );
         dispatch({
