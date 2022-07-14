@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const addProduct = (author, title, description, img, user_id) => async (dispatch) => {
+export const addProduct = (author, title, description, img, user_id, price) => async (dispatch) => {
         try {
             const result = await axios.post(
                 `${process.env.REACT_APP_API_URL}/products`,
@@ -9,7 +9,8 @@ export const addProduct = (author, title, description, img, user_id) => async (d
                     title,
                     description,
                     img,
-                    user_id
+                    user_id,
+                    price
                 },
                 { withCredentials: true }
             );

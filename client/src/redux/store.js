@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { storyReducer } from "./reducers/story.reducer";
 import { authReducer } from "./reducers/auth.reducer";
 import { userReducer } from "./reducers/user.reducer";
-import {productReducer} from "./reducers/product.reducer";
+import { productReducer } from "./reducers/product.reducer";
+import { adminReducer } from "./reducers/admin.reducer";
 
 const initState = {
   story: {
@@ -24,6 +25,11 @@ const initState = {
     sLoading: false,
     value: [],
     error: null,
+  },
+  admin: {
+    sLoading: false,
+    value: [],
+    error: null,
   }
 };
 
@@ -33,6 +39,7 @@ const store = configureStore({
     auth: authReducer,
     user: userReducer,
     product: productReducer,
+    admin: adminReducer,
   },
 });
 

@@ -5,7 +5,7 @@ const { Product } = require("../db/models");
 router
     .route("/")
     .post(async (req, res) => {
-        const { author, title, description, img, user_id } = req.body;
+        const { author, title, description, img, user_id, price } = req.body;
 
         try {
             const newProduct = await Product.create({
@@ -14,6 +14,7 @@ router
                 description:  description,
                 img: img,
                 user_id: user_id,
+                price: price,
             })
 
             res.json({ newProduct })

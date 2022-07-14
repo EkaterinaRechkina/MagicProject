@@ -13,6 +13,7 @@ const logoutRouter = require("./routes/logout.router");
 const storiesRouter = require("./routes/story.router");
 const getAPI = require("./routes/ApisRouter");
 const checkSession = require('./routes/checkSession.router');
+const adminRouter = require('./routes/admin.router');
 
 const userInfoRouter = require('./routes/userInfo.router');
 const productRouter = require('./routes/product.router');
@@ -48,7 +49,6 @@ app.use((req, res, next) => {
     res.locals.userId = req.session.userId;
     res.locals.userName = req.session.userName;
   }
-
   next();
 });
 
@@ -60,6 +60,7 @@ app.use("/checksession", checkSession);
 app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
 app.use('/products', productRouter);
+app.use('/admin', adminRouter);
 
 app.listen(PORT, async () => {
   try {
