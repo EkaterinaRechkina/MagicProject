@@ -1,0 +1,19 @@
+.events {
+    display: grid;
+    grid-template-columns:repeat(3, auto);
+    justify-content: center;
+    gap: 2%;
+    margin: 5% 0 10%;
+}
+
+@media only screen and (max-width: 1050px) {
+    .events {  
+        grid-template-columns:repeat(2, auto);
+    }
+  }
+  @media only screen and (max-width: 680px) {
+    .events {  
+        grid-template-columns:repeat(1, auto);
+        gap: 1%;
+    }
+  }

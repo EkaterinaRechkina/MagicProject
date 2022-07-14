@@ -16,18 +16,18 @@ export const setEvents = () => async (dispatch) => {
 };
 
 export const addEvent =
-  (title, description, img, price, place, date, people) => async (dispatch) => {
+  (title, description, date, img, price, people, place) => async (dispatch) => {
     try {
       const result = await axios.post(
         `${process.env.REACT_APP_API_URL}/events`,
         {
           title,
           description,
-          place,
+          date,
           img,
           price,
-          date,
           people,
+          place,
         },
         { withCredentials: true }
       );
@@ -39,3 +39,53 @@ export const addEvent =
       console.log(err);
     }
   };
+export const editEvent =
+  (
+    id,
+    newTitle,
+    newDescription,
+    newDate,
+    newImg,
+    newPrice,
+    newPeople,
+    newPlace
+  ) =>
+  async (dispatch) => {
+    try {
+      const result = await axios.patch(
+        `${process.env.REACT_APP_API_URL}/events/${id}`,
+        {
+          id,
+          newTitle,
+          newDescription,
+          newDate,
+          newImg,
+          newPrice,
+          newPeople,
+          newPlace,
+        }
+      );
+      dispatch({
+        type: "EDIT_EVENT",
+        payload: result.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+export const delEvent = (id) => async (dispatch) => {
+  try {
+    const result = await axios.delete(
+      `${process.env.REACT_APP_API_URL}/events/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+    dispatch({
+      type: "DEL_EVENT",
+      payload: id,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
