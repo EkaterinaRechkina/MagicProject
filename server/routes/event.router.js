@@ -38,7 +38,6 @@ router.post("/", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
 const {id} = req.body
-  console.log(req.body);
 
   const editedEvent = await Event.update({
     title: req.body.newTitle,
@@ -52,7 +51,6 @@ const {id} = req.body
     { where: { id } }
   );
   const currentEvent = await Event.findOne({ where: { id } });
-  console.log(currentEvent);
   res.json(currentEvent);
 });
 
