@@ -1,44 +1,45 @@
-import React from "react";
-import Story from "../Story/Story";
+import React, { useEffect, useState } from "react";
+import style from "../Profile/Profile.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
-import style from "./allStories.module.css";
-import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import { display } from "@mui/system";
-import { useDispatch, useSelector } from "react-redux";
-import { addStory, setStories } from "../../redux/actions/story.action";
+import { addEvent } from "../../redux/actions/event.action";
 
-export default function AllStories() {
-  const [title, setTitle] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [img, setImg] = useState(null);
-  // const [loading, setLoading] = useState(false);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostsPerPage] = useState(10);
+function AddEventForm() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [img, setImg] = useState("");
+  const [price, setPrice] = useState("");
+  const [people, setPeople] = useState("");
+  const [place, setPlace] = useState("");
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
   const closeForm = () => setOpen(false);
-
-  const dispatch = useDispatch();
-  const story = useSelector((store) => store.story);
-
+  const dispatch =useDispatch();
+  
   function submitHandler(event) {
     event.preventDefault();
-    console.log("add story");
-    dispatch(addStory(title, description, img));
+    dispatch(addEvent(
+        title,
+        description,
+        place,
+        img,
+        price,
+        date,
+        people));
     closeForm();
     setTitle("");
     setDescription("");
     setImg("");
+    setPrice("");
+    setDate("");
+    setPeople("");
+    setPlace("");
   }
-
-  useEffect(() => {
-    dispatch(setStories());
-  }, []);
 
   return (
     <>
@@ -51,18 +52,13 @@ export default function AllStories() {
           justifyContent: "flex-start",
         }}
       >
-        Add your story
+        ADD EVENT
       </Button>
       {open && (
         <Box
           onSubmit={submitHandler}
           component="form"
-          sx={{
-            "& .MuiTextField-root": {
-              m: 1,
-              width: "45ch",
-            },
-          }}
+          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
           noValidate
           autoComplete="off"
         >
@@ -87,23 +83,49 @@ export default function AllStories() {
               value={img}
               onChange={(event) => setImg(event.target.value)}
             />
-            <TextareaAutosize
+            <TextField
               required
-              value={description}
-              aria-label="description"
-              placeholder="Your story"
-              style={{ width: 400, height: 300, resize: "none" }}
-              onChange={(event) => setDescription(event.target.value)}
+              id="outlined-required"
+              label="Price"
+              value={price}
+              onChange={(event) => setPrice(event.target.value)}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Date"
+              value={date}
+              onChange={(event) => setDate(event.target.value)}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="People"
+              value={people}
+              onChange={(event) => setPeople(event.target.value)}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Place"
+              value={place}
+              onChange={(event) => setPlace(event.target.value)}
             />
 
+            <TextareaAutosize
+              value={description}
+              aria-label="description"
+              placeholder="Event description"
+              style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+              onChange={(event) => setDescription(event.target.value)}
+            />
             <Button
               variant="outlined"
               type="submit"
               sx={{ width: 200, marginTop: 2 }}
             >
-              Add story
+              Add Event
             </Button>
-
             <Button
               variant="outlined"
               sx={{ width: 200, marginTop: 2 }}
@@ -114,11 +136,8 @@ export default function AllStories() {
           </div>
         </Box>
       )}
-
-      <div className={style.stories}>
-        {story &&
-          story.map((element) => <Story key={element.id} {...element} />)}
-      </div>
     </>
   );
 }
+
+export default AddEventForm;

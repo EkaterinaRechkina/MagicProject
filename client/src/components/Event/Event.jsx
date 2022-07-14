@@ -8,42 +8,55 @@ import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
+import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
+import { Popover } from "@mui/material";
+import { useState } from "react";
 
-export default function Event() {
+export default function Event({
+  id,
+  title,
+  description,
+  place,
+  img,
+  price,
+  date,
+  people,
+}) {
+  // delEventHandler();
+
   return (
-    <Card sx={{ maxWidth: 305, position: "relative" }}>
-      <CardMedia
-        component="img"
-        height="250"
-        image="https://images.unsplash.com/photo-1633612833438-eef0fe314c9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        alt=""
-      />
-      <CardContent sx={{ height: 150 }}>
-        <DeleteIcon sx={{ position: "absolute", top: 5, right: 5 }} />
-        <EditIcon sx={{ position: "absolute", top: 5, right: 35 }} />
-        <Typography gutterBottom variant="h5" component="div">
-          Event name
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          Event description
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Place
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Date
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Price
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Attend
-          <AddIcon />
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small"></Button>
-      </CardActions>
-    </Card>
+    <>
+
+      <Card sx={{ maxWidth: 305, position: "relative" }}>
+        <CardMedia component="img" height="250" image={img} alt="" />
+        <CardContent sx={{ height: 150 }}>
+          <DeleteIcon sx={{ position: "absolute", top: 5, right: 5 }} />
+          <EditIcon sx={{ position: "absolute", top: 5, right: 35 }} />
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            {description}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Place: {place}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            When: {date}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Ticket: $ {price}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Participants: {people}
+            <br />
+            <AddIcon />
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small"></Button>
+        </CardActions>
+      </Card>
+    </>
   );
 }

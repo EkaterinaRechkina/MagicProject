@@ -17,6 +17,7 @@ const adminRouter = require('./routes/admin.router');
 
 const userInfoRouter = require('./routes/userInfo.router');
 const productRouter = require('./routes/product.router');
+const eventRouter = require('./routes/event.router')
 
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -62,6 +63,7 @@ app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
 app.use('/products', productRouter);
 app.use('/admin', adminRouter);
+app.use('/events', eventRouter)
 
 app.listen(PORT, async () => {
   try {

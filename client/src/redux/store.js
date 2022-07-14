@@ -4,6 +4,7 @@ import { authReducer } from "./reducers/auth.reducer";
 import { userReducer } from "./reducers/user.reducer";
 import { productReducer } from "./reducers/product.reducer";
 import { adminReducer } from "./reducers/admin.reducer";
+import { eventReducer } from "./reducers/event.reducer";
 
 const initState = {
   story: {
@@ -40,6 +41,7 @@ const store = configureStore({
     user: userReducer,
     product: productReducer,
     admin: adminReducer,
+    events: eventReducer,
   },
 });
 

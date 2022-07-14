@@ -37,13 +37,11 @@ router
         }
     });
 
-module.exports = router;
-
 router
-    .route("/:id")
+    .route("/myproducts")
     .post(async (req, res) => {
 
-        const { id } = req.params;
+        const id = res.locals.userId;
 
         try {
             const allUserProduct = await Product.findAll({
@@ -60,3 +58,23 @@ router
     });
 
 module.exports = router;
+
+router
+    .route('/:id')
+    .put(async (req, res) => {
+
+        const { id, title, description, img, price } = req.body;
+
+        await Product.update(
+            { title, description, img, price },
+            { where: { id } }
+        );
+
+        const currentProduct = Product.findOne({ where: { id } });
+        res.json(currentProduct);
+    })
+    .delete(async (req, res) => {
+        const { id } = req.params;
+        await Product.destroy({ where: { id } });
+        res.sendStatus(200);
+    })
