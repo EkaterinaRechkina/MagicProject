@@ -28,7 +28,7 @@ export default function Shop() {
             <ul className={style.ulProducts}>
                 {allProducts &&
                     allProducts.map((item, index) => (
-                        <Product key={item.id} author={item.author} title={item.title} description={item.description} img={item.img}/>
+                        <Product key={item.id} author={item.author} title={item.title} description={item.description} img={item.img} price={item.price}/>
                     ))}
             </ul>
         </div>

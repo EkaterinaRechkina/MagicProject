@@ -14,6 +14,7 @@ function Profile() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
+    const [price, setPrice] = useState("");
 
     const [open, setOpen] = useState(false);
     const openForm = () => setOpen(true);
@@ -43,11 +44,12 @@ function Profile() {
         event.preventDefault();
         const user_id = user[0];
         const author = user[1];
-        dispatch(addProduct(author, title, description, img, user_id));
+        dispatch(addProduct(author, title, description, img, user_id, price));
         closeForm();
         setTitle("");
         setDescription("");
         setImg("");
+        setPrice("");
     }
 
 
@@ -68,23 +70,24 @@ function Profile() {
                         Sell something
                     </Button>
                 </div>
-                        {open && (
-                            <Box onSubmit={submitHandler} component="form" sx={{"& .MuiTextField-root": {m: 1, width: "45ch",},}} noValidate autoComplete="off">
-                                <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
-                                    <TextField required id="outlined-required" label="Title" value={title} onChange={(event) => setTitle(event.target.value)}/>
-                                    <TextField required id="outlined-required" label="Image" value={img} onChange={(event) => setImg(event.target.value)}/>
-                                    <TextareaAutosize value={description} aria-label="description" placeholder="Product description" style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
-                                        onChange={(event) => setDescription(event.target.value)}/>
-                                    <Button variant="outlined" type="submit" sx={{ width: 200, marginTop: 2 }}>
-                                        Add product
-                                    </Button>
-                                    <Button variant="outlined" sx={{ width: 200, marginTop: 2 }} onClick={closeForm}>
-                                        Close
-                                    </Button>
-                                </div>
-                            </Box>
-                        )}
             </div>
+            {open && (
+                <Box onSubmit={submitHandler} component="form" sx={{"& .MuiTextField-root": {m: 1, width: "45ch",},}} noValidate autoComplete="off">
+                    <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
+                        <TextField required id="outlined-required" label="Title" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                        <TextField required id="outlined-required" label="Image" value={img} onChange={(event) => setImg(event.target.value)}/>
+                        <TextField required id="outlined-required" label="Price" value={price} onChange={(event) => setPrice(event.target.value)}/>
+                        <TextareaAutosize value={description} aria-label="description" placeholder="Product description" style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+                                          onChange={(event) => setDescription(event.target.value)}/>
+                        <Button variant="outlined" type="submit" sx={{ width: 200, marginTop: 2 }}>
+                            Add product
+                        </Button>
+                        <Button variant="outlined" sx={{ width: 200, marginTop: 2 }} onClick={closeForm}>
+                            Close
+                        </Button>
+                    </div>
+                </Box>
+            )}
 
             <div className={style.ulProductUser}>
 

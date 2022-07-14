@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 
-function Product({ author, title, description, img }) {
+function Product({ author, title, description, img, price }) {
     return (
         <Card sx={{ maxWidth: 205, position: "relative", margin: 5}}>
             <CardMedia component="img" height="200" image={img} alt=""/>
@@ -25,10 +25,10 @@ function Product({ author, title, description, img }) {
                     {description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Price
+                    Price: {price}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {author}
+                    Author: {author}
                 </Typography>
             </CardContent>
 
