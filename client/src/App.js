@@ -10,7 +10,9 @@ import AllStories from "./components/AllStories/AllStories";
 import Profile from "./components/Profile/Profile";
 import Shop from "./components/Shop/Shop";
 import Main from "./components/Main/Main";
+import UserProducts from "./components/UserProducts/UserProducts";
 import AllEvents from "./components/AllEvents/AllEvents";
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/yourproducts" element={<UserProducts />} />
         </Routes>
       </main>
       <footer>
