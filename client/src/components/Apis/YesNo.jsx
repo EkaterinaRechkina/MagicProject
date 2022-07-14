@@ -23,7 +23,7 @@ function YesNo() {
         variant="contained"
         sx={{ backgroundColor: "#2ca1c7", width: "200px" }}
       >
-        Get lucky
+        Will it come true
       </Button>
       <div className="text-tarot ">{answer}</div>
     </>
