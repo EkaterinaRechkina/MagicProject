@@ -10,7 +10,6 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import axios from "axios";
 
 function Profile() {
-    const [allUserProducts, setAllUserProducts] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [img, setImg] = useState("");
@@ -27,18 +26,6 @@ function Profile() {
     }, [dispatch])
 
     const user = useSelector(store => store.user);
-
-    // useEffect(() => {
-    //     axios.post(`http://localhost:3001/products/${id}`, {}, { withCredentials: true })
-    //         .then(response => {
-    //             console.log(response.data.allUserProduct);
-    //             dispatch({
-    //                 type: "GET_PRODUCT",
-    //                 payload: response.data.allUserProduct,
-    //             })
-    //             setAllUserProducts(response.data.allUserProduct);
-    //         })
-    // }, [dispatch]);
 
     function submitHandler(event) {
         event.preventDefault();

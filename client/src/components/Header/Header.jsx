@@ -162,19 +162,22 @@ const Header = () => {
               {isAuth ? (
                 <div>
                   <MenuItem key={9} onClick={handleCloseUserMenu}>
-                    <Link to="profile"> Profile</Link>
+                    <Link to="profile"> Profile </Link>
                   </MenuItem>
-                  <MenuItem key={10} onClick={logoutHandler}>
-                    <Link to="/"> Выйти</Link>
+                  <MenuItem key={10} onClick={handleCloseUserMenu}>
+                    <Link to="/yourproducts"> Your products </Link>
+                  </MenuItem>
+                  <MenuItem key={11} onClick={logoutHandler}>
+                    <Link to="/"> Выйти </Link>
                   </MenuItem>
                 </div>
               ) : (
                 <div>
-                  <MenuItem key={11} onClick={handleCloseUserMenu}>
-                    <Link to="login"> Войти</Link>
-                  </MenuItem>
                   <MenuItem key={12} onClick={handleCloseUserMenu}>
-                    <Link to="registration"> Зарегистрироваться</Link>
+                    <Link to="login"> Войти </Link>
+                  </MenuItem>
+                  <MenuItem key={13} onClick={handleCloseUserMenu}>
+                    <Link to="registration"> Зарегистрироваться </Link>
                   </MenuItem>
                 </div>
               )}
