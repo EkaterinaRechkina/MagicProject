@@ -19,18 +19,11 @@ function AddEventForm() {
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
   const closeForm = () => setOpen(false);
-  const dispatch =useDispatch();
-  
+  const dispatch = useDispatch();
+
   function submitHandler(event) {
     event.preventDefault();
-    dispatch(addEvent(
-        title,
-        description,
-        place,
-        img,
-        price,
-        date,
-        people));
+    dispatch(addEvent(title, description, place, img, price, date, people));
     closeForm();
     setTitle("");
     setDescription("");

@@ -1,7 +1,6 @@
 import React from "react";
 import Story from "../Story/Story";
 import { Button } from "@mui/material";
-import style from "./allStories.module.css";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -9,6 +8,7 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { display } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
+import "./allStories.css";
 
 export default function AllStories() {
   const [title, setTitle] = useState(null);
@@ -67,11 +67,11 @@ export default function AllStories() {
           autoComplete="off"
         >
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+          // style={{
+          //   display: "flex",
+          //   flexDirection: "column",
+          //   alignItems: "center",
+          // }}
           >
             <TextField
               required
@@ -92,7 +92,7 @@ export default function AllStories() {
               value={description}
               aria-label="description"
               placeholder="Your story"
-              style={{ width: 400, height: 300, resize: "none" }}
+              sx={{ width: 400, height: 300, resize: "none" }}
               onChange={(event) => setDescription(event.target.value)}
             />
 
@@ -115,7 +115,7 @@ export default function AllStories() {
         </Box>
       )}
 
-      <div className={style.stories}>
+      <div className="stories">
         {story &&
           story.map((element) => <Story key={element.id} {...element} />)}
       </div>
