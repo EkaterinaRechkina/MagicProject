@@ -1,8 +1,23 @@
 import axios from "axios";
 
+export const getProduct = () => async (dispatch) => {
+    try {
+        axios.post(`http://localhost:3001/products/myproducts`,{}, { withCredentials: true })
+            .then(response => {
+                dispatch({
+                    type: "GET_PRODUCT",
+                    payload: response.data.allUserProduct,
+                })
+            })
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
 export const addProduct = (author, title, description, img, user_id, price) => async (dispatch) => {
         try {
-            const result = await axios.post(
+            const response = await axios.post(
                 `${process.env.REACT_APP_API_URL}/products`,
                 {
                     author,
@@ -16,7 +31,7 @@ export const addProduct = (author, title, description, img, user_id, price) => a
             );
             dispatch({
                 type: "ADD_PRODUCT",
-                payload: result.data,
+                payload: response.data,
             });
         } catch (err) {
             console.log(err);
@@ -25,7 +40,7 @@ export const addProduct = (author, title, description, img, user_id, price) => a
 
 export const editProduct = (id, title, description, img, price) => async (dispatch) => {
     try {
-        const result = axios.put(
+        const response = await axios.put(
             `${process.env.REACT_APP_API_URL}/products/${id}`,
             {
                 id,
@@ -38,8 +53,8 @@ export const editProduct = (id, title, description, img, price) => async (dispat
         );
         dispatch({
             type: "EDIT_PRODUCT",
-            payload: result.data,
-        })
+            payload: response.data,
+        });
     } catch (err) {
         console.log(err);
     }
