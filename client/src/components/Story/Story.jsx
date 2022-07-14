@@ -8,12 +8,13 @@ import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import { deleteStory, editStory } from "../../redux/actions/story.action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Box, TextField } from "@mui/material";
+import { getUserInfo } from "../../redux/actions/userActions";
 
 const style = {
   position: "absolute",
@@ -46,10 +47,14 @@ export default function Story({ id, title, description, img, author }) {
   }
 
   function editHandler(id, title, description, img) {
-    console.log("edit");
     dispatch(editStory(id, title, description, img));
     handleClose();
   }
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
+
+  const user = useSelector((store) => store.user);
 
   // нужен state  === author  показывай редак/удаление
   return (
@@ -66,16 +71,23 @@ export default function Story({ id, title, description, img, author }) {
                 {...bindTrigger(popupState)}
               />
               <CardContent>
-                <Button id={id} sx={{ position: "absolute", top: 5, right: 0 }}>
-                  <DeleteIcon onClick={() => deleteStoryHandler(id)} />
-                </Button>
+                {user[1] == author && (
+                  <>
+                    <Button
+                      id={id}
+                      sx={{ position: "absolute", top: 5, right: 0 }}
+                    >
+                      <DeleteIcon onClick={() => deleteStoryHandler(id)} />
+                    </Button>
 
-                <Button
-                  id={id}
-                  sx={{ position: "absolute", top: 5, right: 35 }}
-                >
-                  <EditIcon onClick={handleOpen} />
-                </Button>
+                    <Button
+                      id={id}
+                      sx={{ position: "absolute", top: 5, right: 35 }}
+                    >
+                      <EditIcon onClick={handleOpen} />
+                    </Button>
+                  </>
+                )}
 
                 <Typography gutterBottom variant="h5" component="div">
                   {title}
@@ -135,7 +147,6 @@ export default function Story({ id, title, description, img, author }) {
             label="Image"
             value={newImg}
             onChange={(event) => setNewImg(event.target.value)}
-            required
           />
           <TextField
             onChange={(event) => setNewTitle(event.target.value)}

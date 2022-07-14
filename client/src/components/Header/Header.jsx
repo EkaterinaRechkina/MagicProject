@@ -19,6 +19,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ImgProfile from "../../witch.jpg";
+import logo from "../../images/logo.svg";
+import "./header.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -59,124 +61,105 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#1d1c4d" }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-
-          <Link to="/"> HOME </Link>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              keepMounted
-              transformOrigin={{ vertical: "top", horizontal: "left" }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
-            >
-              <MenuItem key={1} onClick={handleCloseNavMenu}>
-                <Link to="shop">Shop </Link>
-              </MenuItem>
-
-              <MenuItem key={2} onClick={handleCloseNavMenu}>
-                <Link to="stories">Stories </Link>
-              </MenuItem>
-
-              <MenuItem key={3} onClick={handleCloseNavMenu}>
-                <Link to="map">Our places</Link>
-              </MenuItem>
-
-              <MenuItem key={4} onClick={handleCloseNavMenu}>
-                <Link to="events">Our events </Link>
-              </MenuItem>
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link to="shop" key={5}>
-              Shop
-            </Link>
-
-            <Link to="stories" key={6}>
-              Stories
-            </Link>
-
-            <Link to="map" key={7}>
-              Our places
-            </Link>
-
-            <Link to="events" key={8}>
-              Our events
-            </Link>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={ImgProfile} />
+    <div className="header">
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#684ea4",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+                <img
+                  src={logo}
+                  style={{
+                    width: "45px",
+                    height: "45px",
+                    alignContent: "center",
+                  }}
+                />
               </IconButton>
-            </Tooltip>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                keepMounted
+                transformOrigin={{ vertical: "top", horizontal: "left" }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{ display: { xs: "block", md: "none" } }}
+              >
+                <MenuItem key={1} onClick={handleCloseNavMenu}>
+                  <Link to="/" className="link-sidebar">
+                    Home
+                  </Link>
+                </MenuItem>
+                <MenuItem key={2} onClick={handleCloseNavMenu}>
+                  <Link to="shop" className="link-sidebar">
+                    Shop
+                  </Link>
+                </MenuItem>
 
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: "top", horizontal: "right" }}
-              keepMounted
-              transformOrigin={{ vertical: "top", horizontal: "right" }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+                <MenuItem key={3} onClick={handleCloseNavMenu}>
+                  <Link to="stories" className="link-sidebar">
+                    Stories
+                  </Link>
+                </MenuItem>
+
+                <MenuItem key={4} onClick={handleCloseNavMenu}>
+                  <Link to="map" className="link-sidebar">
+                    Our places
+                  </Link>
+                </MenuItem>
+
+                <MenuItem key={5} onClick={handleCloseNavMenu}>
+                  <Link to="events" className="link-sidebar">
+                    Our events
+                  </Link>
+                </MenuItem>
+              </Menu>
+            </Box>
+
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "none",
+                  md: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                },
+              }}
             >
+
               {isAuth ? (
                 <div>
-                  <MenuItem key={9} onClick={handleCloseUserMenu}>
+                  <MenuItem key={6} onClick={handleCloseUserMenu}>
                     <Link to="profile"> Profile </Link>
                   </MenuItem>
-                  <MenuItem key={10} onClick={handleCloseUserMenu}>
+                  <MenuItem key={7} onClick={handleCloseUserMenu}>
                     <Link to="/yourproducts"> Your products </Link>
                   </MenuItem>
-                  <MenuItem key={11} onClick={logoutHandler}>
+                  <MenuItem key={8} onClick={logoutHandler}>
                     <Link to="/"> Выйти </Link>
                   </MenuItem>
                 </div>
               ) : (
                 <div>
-                  <MenuItem key={12} onClick={handleCloseUserMenu}>
+                  <MenuItem key={9} onClick={handleCloseUserMenu}>
                     <Link to="login"> Войти </Link>
                   </MenuItem>
-                  <MenuItem key={13} onClick={handleCloseUserMenu}>
+                  <MenuItem key={10} onClick={handleCloseUserMenu}>
                     <Link to="registration"> Зарегистрироваться </Link>
                   </MenuItem>
                 </div>
@@ -186,6 +169,86 @@ const Header = () => {
         </Toolbar>
       </Container>
     </AppBar>
+
+              <img
+                src={logo}
+                style={{
+                  width: "55px",
+                  height: "55px",
+                  alignContent: "center",
+                }}
+              />
+              <Link to="/" key={11} className="link">
+                Home
+              </Link>
+
+              <Link to="shop" key={12} className="link">
+                Shop
+              </Link>
+
+              <Link to="stories" key={13} className="link">
+                Stories
+              </Link>
+
+              <Link to="map" key={14} className="link">
+                Our places
+              </Link>
+
+              <Link to="events" key={15} className="link">
+                Our events
+              </Link>
+            </Box>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open profile">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src={ImgProfile} />
+                </IconButton>
+              </Tooltip>
+
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                keepMounted
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {isAuth ? (
+                  <div>
+                    <MenuItem key={16} onClick={handleCloseUserMenu}>
+                      <Link to="profile" className="link-sidebar">
+                        Profile
+                      </Link>
+                    </MenuItem>
+                    <MenuItem key={17} onClick={logoutHandler}>
+                      <Link to="/" className="link-sidebar">
+                        Logout
+                      </Link>
+                    </MenuItem>
+                  </div>
+                ) : (
+                  <div>
+                    <MenuItem key={18} onClick={handleCloseUserMenu}>
+                      <Link to="login" className="link-sidebar">
+                        Sign in
+                      </Link>
+                    </MenuItem>
+                    <MenuItem key={19} onClick={handleCloseUserMenu}>
+                      <Link to="registration" className="link-sidebar">
+                        Sign up
+                      </Link>
+                    </MenuItem>
+                  </div>
+                )}
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </div>
   );
 };
 

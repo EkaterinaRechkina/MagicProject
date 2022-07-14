@@ -7,7 +7,8 @@ import {Button} from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import axios from "axios";
+import AddEventForm from '../AddEventForm/AddEventForm'
+import { checkAdmin } from '../../hooks/checkAdmin';
 
 function Profile() {
     const [title, setTitle] = useState("");
@@ -56,6 +57,7 @@ function Profile() {
                     <Button onClick={openForm} variant="outlined" sx={{margin: "20px 30px", display: "flex", justifyContent: "flex-start",}}>
                         Sell something
                     </Button>
+                   {checkAdmin ? <AddEventForm /> : null}
                 </div>
             </div>
             {open && (
@@ -74,6 +76,7 @@ function Profile() {
                         </Button>
                     </div>
                 </Box>
+                
             )}
 
             <div className={style.ulProductUser}>

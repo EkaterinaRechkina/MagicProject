@@ -1,25 +1,42 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
+import "./api.css";
 
 function Tarot() {
   const [cardDesc, setcardDesc] = useState("");
   const [cardName, setcardName] = useState("");
 
-  
   async function getTarot() {
     const response = await axios.get(process.env.REACT_APP_API_CARDS_URL);
     setcardDesc(response.data.cards[0].meaning_up);
-    setcardName(response.data.cards[0].name.split(' ').join('%20'))
+    setcardName(response.data.cards[0].name.split(" ").join("%20"));
   }
 
   return (
     <>
-      <Button onClick={() => getTarot()} variant="contained" >Get Tarot</Button>
+      <Button
+        onClick={() => getTarot()}
+        variant="contained"
+        sx={{
+          backgroundColor: "#2ca1c7",
+          width: "200px",
+          margin: "0 auto",
+        }}
+      >
+        Get Tarot
+      </Button>
       <div>
-        {cardDesc}
-        <img 
-          src={cardName && `http://localhost:3001/static/img/cards/${cardName}.jpg`}
+        <div className="text-tarot">{cardDesc}</div>
+
+        <br />
+        <br />
+        <br />
+        <img
+          className="img-tarot"
+          src={
+            cardName && `http://localhost:3001/static/img/cards/${cardName}.jpg`
+          }
           alt=""
         />
       </div>

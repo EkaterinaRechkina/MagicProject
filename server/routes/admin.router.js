@@ -5,8 +5,9 @@ const { User } = require("../db/models");
 router
     .route("/")
     .post(async (req, res) => {
+        const user = await User.findOne({where: {id: req.session.userId}})
         try {
-            // res.locals.userId
+            res.json((user.isAdmin))
 
         } catch (error) {
             console.log(error);
