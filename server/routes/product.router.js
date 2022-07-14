@@ -70,12 +70,10 @@ router
             { where: { id } }
         );
 
-        const currentProduct = Product.findOne({
-            where:
-                {
-                    id
-                }
+        const currentProduct = await Product.findOne({
+            where: { id }
         });
+
         res.json(currentProduct);
     })
     .delete(async (req, res) => {
