@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
 
-.link{
-    color: white;
-    text-decoration: none;
+.header{
     font-family: 'Calligraffitti', cursive;
     font-weight: bold;
     font-size: 18px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+.link-sidebar {
+    color: black;
+    text-decoration: none;
+    font-family: 'Calligraffitti', cursive;
+    font-weight: bold;
 }

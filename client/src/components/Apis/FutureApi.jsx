@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
+import "./api.css";
 
 function FutureApi() {
   const [answer, setAnswer] = useState("");
@@ -15,11 +16,17 @@ function FutureApi() {
   }
 
   return (
-         <>
-         <div>{answer}</div>
-         <Button onClick={() => getFortune()} variant="contained">Get wisdom</Button>
-         </>
-  )
+    <>
+      <Button
+        onClick={() => getFortune()}
+        variant="contained"
+        sx={{ backgroundColor: "#2ca1c7", width: "200px" }}
+      >
+        Get wisdom
+      </Button>
+      <div className="text-tarot ">{answer}</div>
+    </>
+  );
 }
 
 export default FutureApi;
