@@ -65,7 +65,7 @@ const Header = () => {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#684ea4",
+          backgroundColor: "#711d6f",
         }}
       >
         <Container maxWidth="xl">
@@ -99,30 +99,30 @@ const Header = () => {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: "block", md: "none" } }}
               >
-                <MenuItem key={1} onClick={handleCloseNavMenu}>
+                <MenuItem key={15} onClick={handleCloseNavMenu}>
                   <Link to="/" className="link-sidebar">
                     Home
                   </Link>
                 </MenuItem>
-                <MenuItem key={2} onClick={handleCloseNavMenu}>
+                <MenuItem key={1} onClick={handleCloseNavMenu}>
                   <Link to="shop" className="link-sidebar">
                     Shop
                   </Link>
                 </MenuItem>
 
-                <MenuItem key={3} onClick={handleCloseNavMenu}>
+                <MenuItem key={2} onClick={handleCloseNavMenu}>
                   <Link to="stories" className="link-sidebar">
                     Stories
                   </Link>
                 </MenuItem>
 
-                <MenuItem key={4} onClick={handleCloseNavMenu}>
+                <MenuItem key={3} onClick={handleCloseNavMenu}>
                   <Link to="map" className="link-sidebar">
                     Our places
                   </Link>
                 </MenuItem>
 
-                <MenuItem key={5} onClick={handleCloseNavMenu}>
+                <MenuItem key={4} onClick={handleCloseNavMenu}>
                   <Link to="events" className="link-sidebar">
                     Our events
                   </Link>
@@ -141,35 +141,6 @@ const Header = () => {
                 },
               }}
             >
-
-              {isAuth ? (
-                <div>
-                  <MenuItem key={6} onClick={handleCloseUserMenu}>
-                    <Link to="profile"> Profile </Link>
-                  </MenuItem>
-                  <MenuItem key={7} onClick={handleCloseUserMenu}>
-                    <Link to="/yourproducts"> Your products </Link>
-                  </MenuItem>
-                  <MenuItem key={8} onClick={logoutHandler}>
-                    <Link to="/"> Выйти </Link>
-                  </MenuItem>
-                </div>
-              ) : (
-                <div>
-                  <MenuItem key={9} onClick={handleCloseUserMenu}>
-                    <Link to="login"> Войти </Link>
-                  </MenuItem>
-                  <MenuItem key={10} onClick={handleCloseUserMenu}>
-                    <Link to="registration"> Зарегистрироваться </Link>
-                  </MenuItem>
-                </div>
-              )}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-
               <img
                 src={logo}
                 style={{
@@ -178,23 +149,23 @@ const Header = () => {
                   alignContent: "center",
                 }}
               />
-              <Link to="/" key={11} className="link">
+              <Link to="/" key={16} className="link">
                 Home
               </Link>
 
-              <Link to="shop" key={12} className="link">
+              <Link to="shop" key={5} className="link">
                 Shop
               </Link>
 
-              <Link to="stories" key={13} className="link">
+              <Link to="stories" key={6} className="link">
                 Stories
               </Link>
 
-              <Link to="map" key={14} className="link">
+              <Link to="map" key={7} className="link">
                 Our places
               </Link>
 
-              <Link to="events" key={15} className="link">
+              <Link to="events" key={8} className="link">
                 Our events
               </Link>
             </Box>
@@ -218,12 +189,12 @@ const Header = () => {
               >
                 {isAuth ? (
                   <div>
-                    <MenuItem key={16} onClick={handleCloseUserMenu}>
+                    <MenuItem key={9} onClick={handleCloseUserMenu}>
                       <Link to="profile" className="link-sidebar">
                         Profile
                       </Link>
                     </MenuItem>
-                    <MenuItem key={17} onClick={logoutHandler}>
+                    <MenuItem key={10} onClick={logoutHandler}>
                       <Link to="/" className="link-sidebar">
                         Logout
                       </Link>
@@ -231,12 +202,12 @@ const Header = () => {
                   </div>
                 ) : (
                   <div>
-                    <MenuItem key={18} onClick={handleCloseUserMenu}>
+                    <MenuItem key={11} onClick={handleCloseUserMenu}>
                       <Link to="login" className="link-sidebar">
                         Sign in
                       </Link>
                     </MenuItem>
-                    <MenuItem key={19} onClick={handleCloseUserMenu}>
+                    <MenuItem key={12} onClick={handleCloseUserMenu}>
                       <Link to="registration" className="link-sidebar">
                         Sign up
                       </Link>

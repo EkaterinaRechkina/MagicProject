@@ -30,7 +30,7 @@ const Footer = () => {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#684ea4",
+          backgroundColor: "#711d6f",
           display: "flex",
           justifyContent: "flex-start",
           padding: " 10px 30px",
