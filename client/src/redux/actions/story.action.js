@@ -48,7 +48,8 @@ export const editStory = (id, title, description, img) => async (dispatch) => {
         title,
         description,
         img,
-      }
+      },
+      { withCredentials: true }
     );
     console.log("result", result.data);
     dispatch({
@@ -64,9 +65,10 @@ export const deleteStory = (id) => async (dispatch) => {
   try {
     const result = await axios.delete(
       `${process.env.REACT_APP_API_URL}/stories/${id}`,
-      {
-        id,
-      }
+      // {
+      //   id,
+      // },
+      { withCredentials: true }
     );
     console.log(result);
 
