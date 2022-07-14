@@ -16,8 +16,6 @@ function Product({ author, title, description, img, price }) {
             <CardMedia component="img" height="200" image={img} alt=""/>
 
             <CardContent sx={{ height: 90 }}>
-                <DeleteIcon sx={{ position: "absolute", top: 5, right: 5 }} />
-                <EditIcon sx={{ position: "absolute", top: 5, right: 35 }} />
                 <Typography gutterBottom variant="h5" component="div">
                     {title}
                 </Typography>
