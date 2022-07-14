@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
 
+.footer {
+    position: fixed; 
+    left: 0; bottom: 0;
+    width: 100%;
+}
+
 .link{
     color: white;
     text-decoration: none;

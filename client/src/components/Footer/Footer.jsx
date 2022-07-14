@@ -26,29 +26,31 @@ const Footer = () => {
   };
 
   return (
-    <AppBar
-      position="static"
-      sx={{
-        backgroundColor: "#684ea4",
-        display: "flex",
-        justifyContent: "flex-start",
-        padding: " 10px 30px",
-      }}
-    >
-      <Box sx={{ display: { xs: "flex" } }}>
-        <MenuItem key={1}>
-          <Link to="team" className="link">
-            Our Team
-          </Link>
-        </MenuItem>
+    <div className="footer">
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#711d6f",
+          display: "flex",
+          justifyContent: "flex-start",
+          padding: " 10px 30px",
+        }}
+      >
+        <Box sx={{ display: { xs: "flex" } }}>
+          <MenuItem key={1}>
+            <Link to="team" className="link">
+              Our Team
+            </Link>
+          </MenuItem>
 
-        <MenuItem key={2}>
-          <Link to="project" className="link">
-            About our project
-          </Link>
-        </MenuItem>
-      </Box>
-    </AppBar>
+          <MenuItem key={2}>
+            <Link to="project" className="link">
+              About our project
+            </Link>
+          </MenuItem>
+        </Box>
+      </AppBar>
+    </div>
   );
 };
 export default Footer;
