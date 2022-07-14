@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEvents } from "../../redux/actions/event.action";
 import Event from "../Event/Event";
 import "./AllEvents.css";
-
 function AllEvents() {
   const dispatch = useDispatch();
   const events = useSelector((store) => store.events);

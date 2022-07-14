@@ -1,32 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useEffect } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./UserProducts.module.css";
 import OneUserProduct from "../OneUserProduct/OneUserProduct";
+import { getProduct } from "../../redux/actions/product.action";
 
 function UserProducts() {
-    const [allUserProducts, setAllUserProducts] = useState([]);
+    const allGoods = useSelector(store => store.product);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.post(`http://localhost:3001/products/myproducts`,{}, { withCredentials: true })
-            .then(response => {
-                dispatch({
-                    type: "GET_PRODUCT",
-                    payload: response.data.allUserProduct,
-                })
-                setAllUserProducts(response.data.allUserProduct);
-            })
-    }, [dispatch])
+        dispatch(getProduct());
+    }, [dispatch]);
 
     return (
         <div className={style.body}>
             <ul className={style.ulProducts}>
-                {allUserProducts &&
-                    allUserProducts.map(item => (
-                        <OneUserProduct key={item.id} id={item.id} author={item.author} title={item.title} description={item.description} img={item.img} price={item.price}/>
+                {allGoods &&
+                    allGoods.map(item => (
+                        <OneUserProduct key={item.id} id={item.id} author={item.author} title={item.title} description={item.description} img={item.img} price={item.price} />
                     ))}
             </ul>
         </div>

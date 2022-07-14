@@ -15,6 +15,7 @@ import { deleteStory, editStory } from "../../redux/actions/story.action";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Box, TextField } from "@mui/material";
 import { getUserInfo } from "../../redux/actions/userActions";
+import "./story.css";
 
 const style = {
   position: "absolute",
@@ -56,9 +57,8 @@ export default function Story({ id, title, description, img, author }) {
 
   const user = useSelector((store) => store.user);
 
-  // нужен state  === author  показывай редак/удаление
   return (
-    <>
+    <div className="story">
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
@@ -75,26 +75,31 @@ export default function Story({ id, title, description, img, author }) {
                   <>
                     <Button
                       id={id}
-                      sx={{ position: "absolute", top: 5, right: 0 }}
+                      sx={{
+                        position: "absolute",
+                        top: 5,
+                        right: 0,
+                        color: "#2ca1c7",
+                      }}
                     >
                       <DeleteIcon onClick={() => deleteStoryHandler(id)} />
                     </Button>
 
                     <Button
                       id={id}
-                      sx={{ position: "absolute", top: 5, right: 35 }}
+                      sx={{
+                        position: "absolute",
+                        top: 5,
+                        right: 35,
+                        color: "#2ca1c7",
+                      }}
                     >
                       <EditIcon onClick={handleOpen} />
                     </Button>
                   </>
                 )}
-
-                <Typography gutterBottom variant="h5" component="div">
-                  {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Author {author}
-                </Typography>
+                <div className="title">{title}</div>
+                <div> Author {author}</div>
               </CardContent>
               <CardActions>
                 <Button size="small"></Button>
@@ -112,23 +117,16 @@ export default function Story({ id, title, description, img, author }) {
                 horizontal: "center",
               }}
             >
-              <Typography
-                sx={{ width: "650px", height: "600px", padding: "40px" }}
-              >
+              <div className="popup">
                 <CardMedia
                   component="img"
                   height="350"
                   image={img}
                   alt={title}
                 />
-                <br />
-                <br />
-                {title}
-                <br />
-                <br />
-                <br />
-                {description}
-              </Typography>
+                <div className="title-popup"> {title}</div>
+                <div className="description-popup">{description}</div>
+              </div>
             </Popover>
           </div>
         )}
@@ -165,17 +163,26 @@ export default function Story({ id, title, description, img, author }) {
             required
           />
           <Button
+            sx={{
+              color: "#2b256f",
+            }}
             id={id}
             size="small"
             onClick={() => editHandler(id, newTitle, newDescription, newImg)}
           >
             Submit
           </Button>
-          <Button size="small" onClick={handleClose}>
+          <Button
+            sx={{
+              color: "#2b256f",
+            }}
+            size="small"
+            onClick={handleClose}
+          >
             Close
           </Button>
         </Box>
       </Modal>
-    </>
+    </div>
   );
 }

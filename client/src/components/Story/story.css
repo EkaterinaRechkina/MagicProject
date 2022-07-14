@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+
+.story {
+    font-family: 'Cormorant SC', serif;
+}
+.title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 2%;
+}
+.popup{
+    padding: 30px;
+    max-width: 600px;
+}
+.title-popup {
+    font-family: 'Cormorant SC', serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 3% 0;
+}
+.description-popup {
+    font-family: 'Cormorant SC', serif;
+    line-height: 1.5;
+    text-indent: 1.5em;
+}

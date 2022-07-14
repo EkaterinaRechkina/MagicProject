@@ -33,7 +33,7 @@ const Footer = () => {
           backgroundColor: "#711d6f",
           display: "flex",
           justifyContent: "flex-start",
-          padding: " 10px 30px",
+          padding: " 10px 250px",
         }}
       >
         <Box sx={{ display: { xs: "flex" } }}>

@@ -5,14 +5,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
-import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { editProduct, deleteProduct } from "../../redux/actions/product.action";
 import Popover from "@mui/material/Popover";
-import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
+import PopupState, { bindPopover } from "material-ui-popup-state";
 import {Box, Modal, TextField} from "@mui/material";
 
 const style = {
@@ -80,15 +77,6 @@ function OneUserProduct({ id, author, title, description, img, price }) {
                                     Author: {author}
                                 </Typography>
                             </CardContent>
-
-                            <CardActions>
-                                <Button size="small">
-                                    <LocalGroceryStoreIcon />
-                                </Button>
-                                <Button size="small">
-                                    <StarBorderIcon />
-                                </Button>
-                            </CardActions>
                         </Card>
 
                         <Popover
@@ -102,9 +90,7 @@ function OneUserProduct({ id, author, title, description, img, price }) {
                                 horizontal: "center",
                             }}
                         >
-                            <Typography
-                                sx={{ width: "650px", height: "600px", padding: "40px" }}
-                            >
+                            <Typography sx={{ width: "650px", height: "600px", padding: "40px" }}>
                                 <CardMedia
                                     component="img"
                                     height="350"
@@ -156,7 +142,7 @@ function OneUserProduct({ id, author, title, description, img, price }) {
                         required
                     />
                     <TextField
-                        onChange={(event) => setNewDescription(event.target.value)}
+                        onChange={(event) => setNewPrice(event.target.value)}
                         value={newPrice}
                         id="standard-basic"
                         label="Price"

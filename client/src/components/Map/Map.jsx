@@ -34,7 +34,7 @@ export default function Map() {
         trafficFlow: true,
       },
       center: [longitude, latitude],
-      zoom: 14,
+      zoom: 10,
     });
 
     setMap(map);
@@ -86,7 +86,11 @@ export default function Map() {
       .setLngLat([-1.826215, 51.178882])
       .addTo(map);
 
-    createPopup("Stonehenge, UK", markerStonehenge);
+    createPopup(
+      "Stonehenge, UK",
+
+      markerStonehenge
+    );
 
     const markerCatemaco = new tt.Marker()
       .setLngLat([-95.11398, 18.42131])
@@ -130,8 +134,8 @@ export default function Map() {
   return (
     <div className="container">
       <div className="text">
-        <h2>Magic places around the world</h2>
-        <p>
+        <h2 className="title">Magic places around the world</h2>
+        <p className="description">
           The fascination that the occult and the dark arts hold for many of us
           is undeniable. Some people dismiss anything connected with witchcraft
           as mere superstition, but on Halloween, even the most skeptical won’t

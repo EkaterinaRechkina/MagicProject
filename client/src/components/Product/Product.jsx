@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Card from "@mui/material/Card";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -9,40 +9,46 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
+import "../Story/Story";
+import "./product.css";
 
 function Product({ author, title, description, img, price }) {
-    return (
-        <Card sx={{ maxWidth: 205, position: "relative", margin: 5}}>
-            <CardMedia component="img" height="200" image={img} alt=""/>
+  return (
+    <Card sx={{ maxWidth: 205, position: "relative", margin: 5 }}>
+      <CardMedia component="img" height="200" image={img} alt="" />
 
-            <CardContent sx={{ height: 90 }}>
-                <DeleteIcon sx={{ position: "absolute", top: 5, right: 5 }} />
-                <EditIcon sx={{ position: "absolute", top: 5, right: 35 }} />
-                <Typography gutterBottom variant="h5" component="div">
-                    {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {description}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Price: {price}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Author: {author}
-                </Typography>
-            </CardContent>
-
-            <CardActions>
-                <Button size="small">
-                    <LocalGroceryStoreIcon />
-                </Button>
-                <Button size="small">
-                    <StarBorderIcon />
-                </Button>
-            </CardActions>
-        </Card>
-    );
+      <div className="story product">
+        <div className="title">{title}</div>
+        <div className="description-popup ">{description}</div>
+        <div className="description-popup ">Price: {price}</div>
+        <div className="description-popup ">Author: {author}</div>
+        <CardActions>
+          <Button
+            size="small"
+            sx={{
+              color: "#2ca1c7",
+              position: "absolute",
+              bottom: 5,
+              right: 40,
+            }}
+          >
+            <LocalGroceryStoreIcon />
+          </Button>
+          <Button
+            size="small"
+            sx={{
+              color: "#2ca1c7",
+              position: "absolute",
+              bottom: 5,
+              right: 0,
+            }}
+          >
+            <StarBorderIcon />
+          </Button>
+        </CardActions>
+      </div>
+    </Card>
+  );
 }
 
 export default Product;
-
