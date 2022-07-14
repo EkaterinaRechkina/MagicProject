@@ -41,7 +41,7 @@ router
 
                 req.session.userId = newUser.id;
                 req.session.userName = newUser.name;
-
+                
                 const userInfo = [newUser.id, newUser.name, newUser.email];
                 res.json({ userInfo })
             }

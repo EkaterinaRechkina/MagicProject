@@ -135,7 +135,6 @@ export default function Story({ id, title, description, img, author }) {
             label="Image"
             value={newImg}
             onChange={(event) => setNewImg(event.target.value)}
-            required
           />
           <TextField
             onChange={(event) => setNewTitle(event.target.value)}
