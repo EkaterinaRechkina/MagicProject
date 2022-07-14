@@ -1,4 +1,3 @@
-const checkIsAutor= require('../middleware/checkAuthor')
 const { Event, User } = require("../db/models");
 
 const router = require("express").Router();
@@ -18,22 +17,16 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log(req.body);
   try {
-    const {title,
-        description,
-        place,
-        img,
-        price,
-        date,
-        people} = req.body;
+    const { title, description, place, img, price, date, people } = req.body;
 
     const newElement = await Event.create({
-        title,
-        description,
-        place,
-        img,
-        price,
-        date,
-        people
+      title: title,
+      description: description,
+      date: date,
+      img: img,
+      price: price,
+      people: people,
+      place: place,
     });
 
     return res.status(201).json(newElement);
@@ -43,24 +36,31 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.put("/:id",checkIsAutor, async (req, res) => {
-//   const { id, title, description,img } = req.body;
-//   // console.log(id, title, description);
+router.patch("/:id", async (req, res) => {
+const {id} = req.body
+  console.log(req.body);
 
-//   const story = await Story.update(
-//     { title, description,img },
-//     { where: { id } }
-//   );
-//   const currentStory = await Story.findOne({ where: { id } });
-//   console.log(currentStory);
-//   res.json(currentStory);
-// });
+  const editedEvent = await Event.update({
+    title: req.body.newTitle,
+    description: req.body.newDescription,
+    date: req.body.newDate,
+    img: req.body.newImg,
+    price: req.body.newPrice,
+    people: req.body.newPeople,
+    place: req.body.newPlace
+    },
+    { where: { id } }
+  );
+  const currentEvent = await Event.findOne({ where: { id } });
+  console.log(currentEvent);
+  res.json(currentEvent);
+});
 
-// router.delete("/:id",checkIsAutor, async (req, res) => {
-//   const { id } = req.params;
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
 
-//   const deleteStory = await Story.destroy({ where: { id } });
-//   res.sendStatus(200);
-// });
+  const deleteEvent = await Event.destroy({ where: { id } });
+  res.sendStatus(200);
+});
 
 module.exports = router;

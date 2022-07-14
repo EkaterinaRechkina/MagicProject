@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "../Profile/Profile.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -23,7 +23,7 @@ function AddEventForm() {
 
   function submitHandler(event) {
     event.preventDefault();
-    dispatch(addEvent(title, description, place, img, price, date, people));
+    dispatch(addEvent(title, description, date, img, price, people, place));
     closeForm();
     setTitle("");
     setDescription("");

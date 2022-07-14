@@ -12,22 +12,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       date: {
-        type: Sequelize.STRING
+        type: Sequelize.DATE
       },
       img: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       price: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       people: {
         type: Sequelize.INTEGER
       },
       place: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
