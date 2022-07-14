@@ -194,6 +194,11 @@ const Header = () => {
                         Profile
                       </Link>
                     </MenuItem>
+                    <MenuItem key={10} onClick={handleCloseUserMenu}>
+                      <Link to="yourproducts" className="link-sidebar">
+                        My goods
+                      </Link>
+                    </MenuItem>
                     <MenuItem key={10} onClick={logoutHandler}>
                       <Link to="/" className="link-sidebar">
                         Logout
