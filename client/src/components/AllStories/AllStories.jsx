@@ -49,6 +49,9 @@ export default function AllStories() {
           margin: "20px 30px",
           display: "flex",
           justifyContent: "flex-start",
+
+          border: "1px solid #2b256f",
+          color: "#2b256f",
         }}
       >
         Add your story
@@ -67,11 +70,11 @@ export default function AllStories() {
           autoComplete="off"
         >
           <div
-          // style={{
-          //   display: "flex",
-          //   flexDirection: "column",
-          //   alignItems: "center",
-          // }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <TextField
               required
@@ -92,21 +95,35 @@ export default function AllStories() {
               value={description}
               aria-label="description"
               placeholder="Your story"
-              sx={{ width: 400, height: 300, resize: "none" }}
+              style={{
+                width: 400,
+                height: 300,
+                resize: "none",
+              }}
               onChange={(event) => setDescription(event.target.value)}
             />
 
             <Button
               variant="outlined"
               type="submit"
-              sx={{ width: 200, marginTop: 2 }}
+              sx={{
+                border: "1px solid #2b256f",
+                width: "200px",
+                marginTop: 2,
+                color: "#2b256f",
+              }}
             >
               Add story
             </Button>
 
             <Button
               variant="outlined"
-              sx={{ width: 200, marginTop: 2 }}
+              sx={{
+                border: "1px solid #2b256f",
+                width: "200px",
+                marginTop: 2,
+                color: "#2b256f",
+              }}
               onClick={closeForm}
             >
               Close
