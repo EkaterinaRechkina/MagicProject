@@ -67,11 +67,11 @@ export default function AllStories() {
           autoComplete="off"
         >
           <div
-          // style={{
-          //   display: "flex",
-          //   flexDirection: "column",
-          //   alignItems: "center",
-          // }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
             <TextField
               required
@@ -92,7 +92,7 @@ export default function AllStories() {
               value={description}
               aria-label="description"
               placeholder="Your story"
-              sx={{ width: 400, height: 300, resize: "none" }}
+              style={{ width: 400, height: 300, resize: "none" }}
               onChange={(event) => setDescription(event.target.value)}
             />
 
