@@ -4,11 +4,14 @@ const { Story, User } = require("../db/models");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
+
   try {
     const allStories = await Story.findAll({
       order: [["createdAt", "DESC"]],
+   
     });
-    res.json(allStories);
+
+    res.json(allStories );
   } catch (err) {
     console.log(err);
     res.status(400).end();

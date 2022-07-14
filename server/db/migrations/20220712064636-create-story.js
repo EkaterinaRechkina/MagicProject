@@ -4,20 +4,24 @@ module.exports = {
     await queryInterface.createTable('Stories', {
       id: {
         allowNull: false,
+        notEmpty: true, 
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
       title: {
         allowNull: false,
+        notEmpty: true, 
         type: Sequelize.STRING
       },
       description: {
         allowNull: false,
+        notEmpty: true, 
         type: Sequelize.TEXT
       },
       user_id: {
         allowNull: false,
+     
         type: Sequelize.INTEGER,
         references: {
           model: {

@@ -11,9 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 
 export default function AllStories() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [img, setImg] = useState("");
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [img, setImg] = useState(null);
+  // const [loading, setLoading] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostsPerPage] = useState(10);
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -84,6 +88,7 @@ export default function AllStories() {
               onChange={(event) => setImg(event.target.value)}
             />
             <TextareaAutosize
+              required
               value={description}
               aria-label="description"
               placeholder="Your story"

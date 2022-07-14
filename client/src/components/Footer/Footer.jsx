@@ -29,22 +29,22 @@ const Footer = () => {
     <AppBar
       position="static"
       sx={{
-        backgroundColor: "#1d1c4d",
+        backgroundColor: "#684ea4",
         display: "flex",
         justifyContent: "flex-start",
         padding: " 10px 30px",
       }}
     >
       <Box sx={{ display: { xs: "flex" } }}>
-        <MenuItem key={1} onClick={handleCloseNavMenu}>
+        <MenuItem key={1}>
           <Link to="team" className="link">
-            Team
+            Our Team
           </Link>
         </MenuItem>
 
-        <MenuItem key={2} onClick={handleCloseNavMenu}>
-          <Link to="contacts" className="link">
-            Contacts
+        <MenuItem key={2}>
+          <Link to="project" className="link">
+            About our project
           </Link>
         </MenuItem>
       </Box>
