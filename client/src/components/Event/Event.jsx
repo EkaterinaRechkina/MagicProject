@@ -14,7 +14,20 @@ import { useDispatch } from "react-redux";
 import { delEvent, editEvent } from "../../redux/actions/event.action";
 import { Box } from "@mui/system";
 
-
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "white",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+ };
 
 export default function Event({
   id,
@@ -34,20 +47,7 @@ export default function Event({
   const [newPeople, setNewPeople] = useState(people);
   const [newPlace, setNewPlace] = useState(place);
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-   };
+
 
   const dispatch = useDispatch();
 
@@ -209,7 +209,7 @@ export default function Event({
             value={newDescription}
             aria-label="description"
             placeholder="Event description"
-            style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+            style={{ resize: "none", fontSize: 16 }}
             onChange={(event) => setNewDescription(event.target.value)}
           />
           <Button

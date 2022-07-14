@@ -67,7 +67,7 @@ export const editEvent =
       );
       dispatch({
         type: "EDIT_EVENT",
-        payload: result.data,
+        payload: id,
       });
     } catch (err) {
       console.log(err);
