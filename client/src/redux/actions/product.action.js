@@ -14,7 +14,6 @@ export const getProduct = () => async (dispatch) => {
     }
 }
 
-
 export const addProduct = (author, title, description, img, user_id, price) => async (dispatch) => {
         try {
             const response = await axios.post(
