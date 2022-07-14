@@ -42,7 +42,9 @@ function AddEventForm() {
         sx={{
           margin: "20px 30px",
           display: "flex",
-          justifyContent: "flex-start",
+          color: "#2b256f",
+          width: "200px",
+          textAlign: "center",
         }}
       >
         ADD EVENT
@@ -115,13 +117,13 @@ function AddEventForm() {
             <Button
               variant="outlined"
               type="submit"
-              sx={{ width: 200, marginTop: 2 }}
+              sx={{ width: 200, marginTop: 2, color: "#2b256f" }}
             >
               Add Event
             </Button>
             <Button
               variant="outlined"
-              sx={{ width: 200, marginTop: 2 }}
+              sx={{ width: 200, marginTop: 2, color: "#2b256f" }}
               onClick={closeForm}
             >
               Close
