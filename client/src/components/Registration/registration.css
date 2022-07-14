@@ -1,7 +1,8 @@
-form {
+.form-registration {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 30px;
+    margin: 10%;
+    gap: 20px;
 }
