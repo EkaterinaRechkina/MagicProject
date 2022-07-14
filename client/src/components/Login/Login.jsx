@@ -4,6 +4,7 @@ import { TextField, Button } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { checkAuth } from "../../hooks/checkAuth";
+import { checkAdmin } from "../../hooks/checkAdmin";
 import { useDispatch } from "react-redux";
 
 export default function Login() {
@@ -21,6 +22,7 @@ export default function Login() {
                     alert(response.data.message);
                 } else {
                     checkAuth(dispatch);
+                    checkAdmin(dispatch);
                     navigate('/')
                 }
             })
