@@ -4,6 +4,25 @@ const { Product } = require("../db/models");
 
 router
     .route("/")
+    .get(async (req, res) => {
+        try {
+            let allProduct = await Product.findAll();
+
+            const { q } = req.query;
+            const keys = ["author", "title", "description"];
+
+            const search = (data) => {
+                return data.filter(item =>
+                    keys.some(key => item[key].toLowerCase().includes(q))
+                );
+            }
+
+            res.json(search(allProduct));
+
+        } catch (error) {
+            console.log(error);
+        }
+    })
     .post(async (req, res) => {
         const { author, title, description, img, user_id, price } = req.body;
 
@@ -18,19 +37,6 @@ router
             })
 
             res.json({ newProduct })
-
-        } catch (error) {
-            console.log(error);
-        }
-    });
-
-router
-    .route("/all")
-    .post(async (req, res) => {
-        try {
-            const allProduct = await Product.findAll();
-
-            res.json({ allProduct })
 
         } catch (error) {
             console.log(error);

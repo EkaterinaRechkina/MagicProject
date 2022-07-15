@@ -1,5 +1,19 @@
-.body {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .ulProducts {
@@ -7,4 +21,51 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    border-left: 1px solid black;
+}
+
+.filter {
+    align-self: flex-start;
+    min-width: 400px;
+}
+
+.inputs {
+    margin: 20px 0 0 0;
+    font-size: 20px;
+}
+
+.search {
+    margin: 10px 0;
+    text-transform: lowercase;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+}
+
+.slider {
+
+}
+
+.filters_inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+}
+
+.filter_price {
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 133px;
+    height: 40px;
+}
+
+.filter_price_label {
+    display: flex;
+}
+
+.filter_price_text {
+
 }

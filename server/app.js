@@ -16,7 +16,7 @@ const checkSession = require('./routes/checkSession.router');
 const adminRouter = require('./routes/admin.router');
 
 const userInfoRouter = require('./routes/userInfo.router');
-const productRouter = require('./routes/product.router');
+const shopRouter = require('./routes/shop.router');
 const eventRouter = require('./routes/event.router')
 
 app.use('/static', express.static(__dirname + '/public'));
@@ -61,7 +61,7 @@ app.use("/api", getAPI);
 app.use("/checksession", checkSession);
 app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
-app.use('/products', productRouter);
+app.use('/shop', shopRouter);
 app.use('/admin', adminRouter);
 app.use('/events', eventRouter)
 
