@@ -8,6 +8,7 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { display } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
+import { getUserInfo } from "../../redux/actions/userActions";
 import "./allStories.css";
 
 export default function AllStories() {
@@ -26,9 +27,14 @@ export default function AllStories() {
   const dispatch = useDispatch();
   const story = useSelector((store) => store.story);
 
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
+
+  const user = useSelector((store) => store.user);
+
   function submitHandler(event) {
     event.preventDefault();
-    console.log("add story");
     dispatch(addStory(title, description, img));
     closeForm();
     setTitle("");
@@ -40,22 +46,29 @@ export default function AllStories() {
     dispatch(setStories());
   }, []);
 
+  console.log("user", user);
+
   return (
     <>
-      <Button
-        onClick={openForm}
-        variant="outlined"
-        sx={{
-          margin: "20px 30px",
-          display: "flex",
-          justifyContent: "flex-start",
+      {user.length == 0 ? (
+        ""
+      ) : (
+        <Button
+          onClick={openForm}
+          variant="outlined"
+          sx={{
+            margin: "20px 30px",
+            display: "flex",
+            justifyContent: "flex-start",
 
-          border: "1px solid #2b256f",
-          color: "#2b256f",
-        }}
-      >
-        Add your story
-      </Button>
+            border: "1px solid #2b256f",
+            color: "#2b256f",
+          }}
+        >
+          Add your story
+        </Button>
+      )}
+
       {open && (
         <Box
           onSubmit={submitHandler}
