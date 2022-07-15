@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { delEvent, editEvent } from "../../redux/actions/event.action";
 import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -27,7 +28,7 @@ const style = {
   display: "flex",
   flexDirection: "column",
   gap: "20px",
- };
+};
 
 export default function Event({
   id,
@@ -39,15 +40,9 @@ export default function Event({
   people,
   place,
 }) {
-  const [newTitle, setNewTitle] = useState(title);
-  const [newDescription, setNewDescription] = useState(description);
-  const [newDate, setNewDate] = useState(date);
-  const [newImg, setNewImg] = useState(img);
-  const [newPrice, setNewPrice] = useState(price);
-  const [newPeople, setNewPeople] = useState(people);
-  const [newPlace, setNewPlace] = useState(place);
+  const [inputs, setInputs] = useState({})
 
-
+  const isAdmin = useSelector((store) => store.admin);
 
   const dispatch = useDispatch();
 
@@ -55,23 +50,13 @@ export default function Event({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function editHandler(id, newTitle, newDescription,
-    newDate,
-    newImg,
-    newPrice,
-    newPeople,
-    newPlace
-  ) {
+  function inputsHandler(e) {
+    setInputs((prev)=> ({...prev, [e.target.name]: e.target.value }))
+  }
+
+  function editHandler() {
     dispatch(
-      editEvent(id,
-        newTitle,
-        newDescription,
-        newDate,
-        newImg,
-        newPrice,
-        newPeople,
-        newPlace,
-      )
+      editEvent(id, inputs)
     );
     handleClose();
   }
@@ -89,16 +74,23 @@ export default function Event({
                 {...bindTrigger(popupState)}
               />
               <CardContent>
-                <Button id={id} sx={{ position: "absolute", top: 5, right: 0 }}>
-                  <DeleteIcon onClick={() => dispatch(delEvent(id))} />
-                </Button>
+                {isAdmin ? (
+                  <Button
+                    id={id}
+                    sx={{ position: "absolute", top: 5, right: 0 }}
+                  >
+                    {<DeleteIcon onClick={() => dispatch(delEvent(id))} />}
+                  </Button>
+                ) : null}
 
-                <Button
-                  id={id}
-                  sx={{ position: "absolute", top: 5, right: 35 }}
-                >
-                  <EditIcon onClick={handleOpen} />
-                </Button>
+                {isAdmin ? (
+                  <Button
+                    id={id}
+                    sx={{ position: "absolute", top: 5, right: 35 }}
+                  >
+                    <EditIcon onClick={handleOpen} />
+                  </Button>
+                ) : null}
 
                 <Typography gutterBottom variant="h5" component="div">
                   {title}
@@ -163,65 +155,75 @@ export default function Event({
       >
         <Box sx={style}>
           <TextField
+             name="title"
             required
             id="outlined-required"
             label="Title"
-            value={newTitle}
-            onChange={(event) => setNewTitle(event.target.value)}
+            value={inputs.title}
+            onChange={inputsHandler}
           />
           <TextField
+          name="image"
             required
             id="outlined-required"
             label="Image"
-            value={newImg}
-            onChange={(event) => setNewImg(event.target.value)}
+            value={inputs.image}
+            onChange={inputsHandler}
           />
           <TextField
+          name="price"
             required
             id="outlined-required"
             label="Price"
-            value={newPrice}
-            onChange={(event) => setNewPrice(event.target.value)}
+            value={inputs.price}
+            onChange={inputsHandler}
           />
           <TextField
+          name="date"
             required
             id="outlined-required"
             label="Date"
-            value={newDate}
-            onChange={(event) => setNewDate(event.target.value)}
+            value={inputs.date}
+            onChange={inputsHandler}
           />
           <TextField
+          name="people"
             required
             id="outlined-required"
             label="People"
-            value={newPeople}
-            onChange={(event) => setNewPeople(event.target.value)}
+            value={inputs.people}
+            onChange={inputsHandler}
           />
           <TextField
+          name="place"
             required
             id="outlined-required"
             label="Place"
-            value={newPlace}
-            onChange={(event) => setNewPlace(event.target.value)}
+            value={inputs.place}
+            onChange={inputsHandler}
           />
 
           <TextareaAutosize
-            value={newDescription}
+          name="description"
+            value={inputs.description}
             aria-label="description"
             placeholder="Event description"
             style={{ resize: "none", fontSize: 16 }}
-            onChange={(event) => setNewDescription(event.target.value)}
+            onChange={inputsHandler}
           />
           <Button
-             id={id}
-            onClick={() => editHandler(id, newTitle, newDescription, newDate, newImg, newPrice, newPeople, newPlace)}
+            id={id}
+            onClick={() => {
+              console.log(inputs);
+               editHandler(inputs)}
+            }
             variant="outlined"
             type="submit"
             sx={{ width: 200, marginTop: 2 }}
           >
-            Add Event
+            Edit Event
           </Button>
-          <Button 
+          <Button
             variant="outlined"
             sx={{ width: 200, marginTop: 2 }}
             onClick={handleClose}

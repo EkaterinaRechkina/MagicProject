@@ -39,35 +39,16 @@ export const addEvent =
       console.log(err);
     }
   };
-export const editEvent =
-  (
-    id,
-    newTitle,
-    newDescription,
-    newDate,
-    newImg,
-    newPrice,
-    newPeople,
-    newPlace
-  ) =>
+export const editEvent = (id, inputs) =>
   async (dispatch) => {
+console.log(inputs);
     try {
-      const result = await axios.patch(
-        `${process.env.REACT_APP_API_URL}/events/${id}`,
-        {
-          id,
-          newTitle,
-          newDescription,
-          newDate,
-          newImg,
-          newPrice,
-          newPeople,
-          newPlace,
-        }
-      );
+      const result = await axios.put(
+        `${process.env.REACT_APP_API_URL}/events/${id}`, inputs);
+        console.log('result', result.data);
       dispatch({
         type: "EDIT_EVENT",
-        payload: id,
+        payload: result.data,
       });
     } catch (err) {
       console.log(err);

@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       img: {
         type: Sequelize.TEXT

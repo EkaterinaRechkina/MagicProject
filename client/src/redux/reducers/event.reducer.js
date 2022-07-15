@@ -7,9 +7,7 @@ export function eventReducer(state = [], action) {
             return [action.payload, ...state];
         }
         case "EDIT_EVENT": {
-            return state.map((el) =>
-              el.id === action.payload.id ? action.payload : el
-            );
+            return state.map((el) => el.id === action.payload.id ? action.payload : el);
           }
           case "DEL_EVENT": {
             const result = state.filter((el) => el.id !== action.payload);

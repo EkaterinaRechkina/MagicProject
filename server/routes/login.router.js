@@ -30,8 +30,7 @@ router
 
             req.session.userId = user.id;
             req.session.userName = user.name;
-
-            const userInfo = [user.id, user.name, user.email.toLowerCase()];
+            const userInfo = [user.id, user.name, user.email.toLowerCase(), user.isAdmin];
             res.json({ userInfo })
 
         } catch (error) {
