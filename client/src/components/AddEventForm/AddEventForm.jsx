@@ -45,6 +45,7 @@ function AddEventForm() {
           color: "#2b256f",
           width: "200px",
           textAlign: "center",
+          border: "1px solid #2b256f",
         }}
       >
         ADD EVENT
