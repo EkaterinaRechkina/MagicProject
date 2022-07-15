@@ -26,8 +26,8 @@ export default function Login() {
         if (response.data.message) {
           alert(response.data.message);
         } else {
-          checkAuth(dispatch);
-          checkAdmin(dispatch);
+          dispatch(checkAuth())
+          dispatch(checkAdmin())
           navigate("/");
         }
       });

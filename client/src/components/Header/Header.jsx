@@ -26,7 +26,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    checkAuth(dispatch);
+    dispatch(checkAuth());
   }, [dispatch]);
 
   const isAuth = useSelector((store) => store.auth);

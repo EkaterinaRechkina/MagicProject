@@ -9,6 +9,8 @@ import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import AddEventForm from "../AddEventForm/AddEventForm";
 import { checkAdmin } from "../../hooks/checkAdmin";
+import { checkAuth } from "../../hooks/checkAuth";
+
 
 function Profile() {
   const [title, setTitle] = useState("");
@@ -23,10 +25,14 @@ function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(checkAuth())
+    dispatch(checkAdmin());
     dispatch(getUserInfo());
   }, [dispatch]);
 
   const user = useSelector((store) => store.user);
+  const isAdmin = useSelector((store) => store.admin);
+
 
   function submitHandler(event) {
     event.preventDefault();
@@ -65,7 +71,7 @@ function Profile() {
           >
             Sell something
           </Button>
-          {checkAdmin ? <AddEventForm /> : null}
+          {isAdmin ? <AddEventForm /> : null}
         </div>
       </div>
       {open && (

@@ -3,11 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEvents } from "../../redux/actions/event.action";
 import Event from "../Event/Event";
 import "./AllEvents.css";
+import { checkAdmin } from "../../hooks/checkAdmin";
+import { checkAuth } from "../../hooks/checkAuth"
+
 function AllEvents() {
   const dispatch = useDispatch();
   const events = useSelector((store) => store.events);
 
   useEffect(() => {
+    // if(checkAuth()){
+    //   dispatch(checkAdmin());
+    // }
+    
     dispatch(setEvents());
   }, [dispatch]);
 

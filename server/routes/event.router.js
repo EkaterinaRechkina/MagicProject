@@ -15,10 +15,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const { title, description, place, img, price, date, people } = req.body;
-
     const newElement = await Event.create({
       title: title,
       description: description,
@@ -36,17 +34,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id", async (req, res) => {
-const {id} = req.body
-
+router.put("/:id", async (req, res) => {
+const {id} = req.params
+const { title, description, place, image, price, date, people } = req.body;
   const editedEvent = await Event.update({
-    title: req.body.newTitle,
-    description: req.body.newDescription,
-    date: req.body.newDate,
-    img: req.body.newImg,
-    price: req.body.newPrice,
-    people: req.body.newPeople,
-    place: req.body.newPlace
+    title,
+    description,
+    date,
+    img: image,
+    price,
+    people,
+    place
     },
     { where: { id } }
   );
