@@ -5,7 +5,7 @@ import style from "./UserProducts.module.css";
 import OneUserProduct from "../OneUserProduct/OneUserProduct";
 import { getProduct } from "../../redux/actions/product.action";
 
-function UserProducts() {
+export default function UserProducts() {
     const allGoods = useSelector(store => store.product);
 
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function UserProducts() {
     return (
         <div className={style.body}>
             <ul className={style.ulProducts}>
-                {allGoods &&
+                {!allGoods.length ? <h1>Вы еще не добавили ни одного товара!</h1> : allGoods &&
                     allGoods.map(item => (
                         <OneUserProduct key={item.id} id={item.id} author={item.author} title={item.title} description={item.description} img={item.img} price={item.price} />
                     ))}
@@ -25,5 +25,3 @@ function UserProducts() {
         </div>
     );
 }
-
-export default UserProducts;

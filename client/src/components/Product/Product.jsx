@@ -1,9 +1,5 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import Typography from "@mui/material/Typography";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
@@ -12,16 +8,17 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "../Story/Story";
 import "./product.css";
 
-function Product({ author, title, description, img, price }) {
+function Product({item}) {
+
   return (
-    <Card sx={{ maxWidth: 205, position: "relative", margin: 5 }}>
-      <CardMedia component="img" height="200" image={img} alt="" />
+    <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
+      <CardMedia component="img" height="200" image={item.img} alt="" />
 
       <div className="story product">
-        <div className="title">{title}</div>
-        <div className="description-popup ">{description}</div>
-        <div className="description-popup ">Price: {price}</div>
-        <div className="description-popup ">Author: {author}</div>
+        <div className="title">{item.title}</div>
+        <div className="description-popup ">{item.description}</div>
+        <div className="description-popup ">Price: {item.price}</div>
+        <div className="description-popup ">Author: {item.author}</div>
         <CardActions>
           <Button
             size="small"

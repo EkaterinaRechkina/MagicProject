@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getProduct = () => async (dispatch) => {
     try {
-        axios.post(`http://localhost:3001/products/myproducts`,{}, { withCredentials: true })
+        axios.post(`http://localhost:3001/shop/myproducts`,{}, { withCredentials: true })
             .then(response => {
                 dispatch({
                     type: "GET_PRODUCT",
