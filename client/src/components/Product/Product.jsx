@@ -9,7 +9,6 @@ import "../Story/Story";
 import "./product.css";
 
 function Product({item}) {
-
   return (
     <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
       <CardMedia component="img" height="200" image={item.img} alt="" />
