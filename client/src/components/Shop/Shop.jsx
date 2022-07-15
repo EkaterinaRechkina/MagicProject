@@ -15,7 +15,6 @@ export default function Shop() {
         const fetchProducts = async () => {
             await axios.get(`http://localhost:3001/shop?q=${query}`,{ withCredentials: true })
                 .then(response => {
-                    console.log(response.data)
                     dispatch({
                         type: "GET_PRODUCT",
                         payload: response.data,

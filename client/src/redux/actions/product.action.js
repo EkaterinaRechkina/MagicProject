@@ -17,7 +17,7 @@ export const getProduct = () => async (dispatch) => {
 export const addProduct = (author, title, description, img, user_id, price) => async (dispatch) => {
         try {
             const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/products`,
+                `${process.env.REACT_APP_API_URL}/shop`,
                 {
                     author,
                     title,
@@ -32,6 +32,7 @@ export const addProduct = (author, title, description, img, user_id, price) => a
                 type: "ADD_PRODUCT",
                 payload: response.data,
             });
+            console.log(author, title, description, img, user_id, price);
         } catch (err) {
             console.log(err);
         }
@@ -40,7 +41,7 @@ export const addProduct = (author, title, description, img, user_id, price) => a
 export const editProduct = (id, title, description, img, price) => async (dispatch) => {
     try {
         const response = await axios.put(
-            `${process.env.REACT_APP_API_URL}/products/${id}`,
+            `${process.env.REACT_APP_API_URL}/shop/${id}`,
             {
                 id,
                 title,
@@ -62,7 +63,7 @@ export const editProduct = (id, title, description, img, price) => async (dispat
 export const deleteProduct = (id) => async (dispatch) => {
     try {
         await axios.delete(
-            `${process.env.REACT_APP_API_URL}/products/${id}`,
+            `${process.env.REACT_APP_API_URL}/shop/${id}`,
             { withCredentials: true }
         );
         dispatch({
