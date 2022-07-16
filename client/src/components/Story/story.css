@@ -13,6 +13,8 @@
     max-width: 600px;
 }
 .title-popup {
+    text-align: center;
+    width: 100%;
     font-family: 'Cormorant SC', serif;
     font-size: 30px;
     font-weight: 600;
@@ -22,4 +24,14 @@
     font-family: 'Cormorant SC', serif;
     line-height: 1.5;
     text-indent: 1.5em;
+   
+}
+.text {
+    width: 100% !important;
+    margin: 2% 0;
+}
+.event {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch
 }

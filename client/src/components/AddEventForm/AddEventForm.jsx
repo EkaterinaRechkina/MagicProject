@@ -6,6 +6,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { addEvent } from "../../redux/actions/event.action";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function AddEventForm() {
   const [title, setTitle] = useState("");
@@ -86,13 +89,25 @@ function AddEventForm() {
               value={price}
               onChange={(event) => setPrice(event.target.value)}
             />
-            <TextField
+            {/* <TextField
               required
               id="outlined-required"
               label="Date"
               value={date}
               onChange={(event) => setDate(event.target.value)}
-            />
+            /> */}
+
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label="Date"
+                value={date}
+                onChange={(newValue) => {
+                  setDate(newValue.toDateString());
+                }}
+                renderInput={(params) => <TextField {...params} />}
+              />
+            </LocalizationProvider>
+
             <TextField
               required
               id="outlined-required"
@@ -118,13 +133,23 @@ function AddEventForm() {
             <Button
               variant="outlined"
               type="submit"
-              sx={{ width: 200, marginTop: 2, color: "#2b256f" }}
+              sx={{
+                width: 200,
+                marginTop: 2,
+                color: "#2b256f",
+                border: "1px solid #2b256f",
+              }}
             >
               Add Event
             </Button>
             <Button
               variant="outlined"
-              sx={{ width: 200, marginTop: 2, color: "#2b256f" }}
+              sx={{
+                width: 200,
+                marginTop: 2,
+                color: "#2b256f",
+                border: "1px solid #2b256f",
+              }}
               onClick={closeForm}
             >
               Close

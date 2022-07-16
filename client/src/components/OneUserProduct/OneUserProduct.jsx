@@ -18,15 +18,15 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
+  bgcolor: "rgba(255,255,255, 0.9)",
+
+  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
   flexDirection: "column",
   gap: "20px",
 };
-
 function OneUserProduct({ id, author, title, description, img, price }) {
   const dispatch = useDispatch();
 

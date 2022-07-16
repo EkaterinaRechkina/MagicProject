@@ -1,11 +1,21 @@
 .events {
     display: grid;
-    grid-template-columns:repeat(3, auto);
-    justify-content: center;
-    gap: 2%;
+    grid-template-columns:repeat(2, auto);
+    justify-content: flex-start;
+    gap: 6%;
     margin: 5% 0 10%;
+
 }
 
+.events-list {
+    display: grid;
+    grid-template-columns:repeat(4, auto);
+    gap: 3%;
+}
+
+.event {
+    margin-left: 3%;
+}
 @media only screen and (max-width: 1050px) {
     .events {  
         grid-template-columns:repeat(2, auto);

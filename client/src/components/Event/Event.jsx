@@ -14,6 +14,11 @@ import { useDispatch } from "react-redux";
 import { delEvent, editEvent } from "../../redux/actions/event.action";
 import { Box } from "@mui/system";
 import { useSelector } from "react-redux";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
+import "../Story/story.css";
 
 const style = {
   position: "absolute",
@@ -21,8 +26,9 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "white",
-  border: "2px solid #000",
+  bgcolor: "rgba(255,255,255, 0.9)",
+
+  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -40,8 +46,8 @@ export default function Event({
   people,
   place,
 }) {
-  const [inputs, setInputs] = useState({})
-
+  const [inputs, setInputs] = useState({});
+  const [newDate, setNewDate] = useState("");
   const isAdmin = useSelector((store) => store.admin);
 
   const dispatch = useDispatch();
@@ -51,17 +57,15 @@ export default function Event({
   const handleClose = () => setOpen(false);
 
   function inputsHandler(e) {
-    setInputs((prev)=> ({...prev, [e.target.name]: e.target.value }))
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   function editHandler() {
-    dispatch(
-      editEvent(id, inputs)
-    );
+    dispatch(editEvent(id, inputs));
     handleClose();
   }
   return (
-    <>
+    <div className="story event">
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
@@ -92,12 +96,10 @@ export default function Event({
                   </Button>
                 ) : null}
 
-                <Typography gutterBottom variant="h5" component="div">
-                  {title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {place}
-                </Typography>
+                <div className="title">{title}</div>
+                <div className="description-popup">Place: {place}</div>
+
+                <div className="description-popup">Date: {date}</div>
               </CardContent>
               <CardActions>
                 <Button size="small"></Button>
@@ -115,33 +117,24 @@ export default function Event({
                 horizontal: "center",
               }}
             >
-              <Typography
-                sx={{ width: "650px", height: "600px", padding: "40px" }}
-              >
+              <div className="popup">
                 <CardMedia
                   component="img"
                   height="350"
                   image={img}
                   alt={title}
                 />
-                <br />
-                <strong>{title}</strong>
-                <br />
-                <br />
-                Place: {place}
-                <br />
-                <br />
-                {description}
-                <br />
-                <br />
-                <br />
-                <br />
-                Ticket: ${price}
-                <br />
-                {people} - person(s) will come
-                <br />
-                When: {date}
-              </Typography>
+                <div className="title-popup">{title}</div>
+                <div className="description-popup text"> Place: {place}</div>
+                <div className="description-popup"> {description}</div>
+                <div className="description-popup text"> Ticket: ${price}</div>
+                <div className="description-popup text">
+                  {people} - person(s) will come
+                  <div className="description-popup text">
+                    Date of event: {date}
+                  </div>
+                </div>
+              </div>
             </Popover>
           </div>
         )}
@@ -155,7 +148,7 @@ export default function Event({
       >
         <Box sx={style}>
           <TextField
-             name="title"
+            name="title"
             required
             id="outlined-required"
             label="Title"
@@ -163,7 +156,7 @@ export default function Event({
             onChange={inputsHandler}
           />
           <TextField
-          name="image"
+            name="image"
             required
             id="outlined-required"
             label="Image"
@@ -171,23 +164,33 @@ export default function Event({
             onChange={inputsHandler}
           />
           <TextField
-          name="price"
+            name="price"
             required
             id="outlined-required"
             label="Price"
             value={inputs.price}
             onChange={inputsHandler}
           />
-          <TextField
-          name="date"
+          {/* <TextField
+            name="date"
             required
             id="outlined-required"
             label="Date"
             value={inputs.date}
             onChange={inputsHandler}
-          />
+          /> */}
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker
+              label="Date"
+              value={newDate}
+              onChange={(newValue) => {
+                setNewDate(newValue.toDateString());
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
           <TextField
-          name="people"
+            name="people"
             required
             id="outlined-required"
             label="People"
@@ -195,7 +198,7 @@ export default function Event({
             onChange={inputsHandler}
           />
           <TextField
-          name="place"
+            name="place"
             required
             id="outlined-required"
             label="Place"
@@ -204,34 +207,49 @@ export default function Event({
           />
 
           <TextareaAutosize
-          name="description"
+            name="description"
             value={inputs.description}
             aria-label="description"
             placeholder="Event description"
-            style={{ resize: "none", fontSize: 16 }}
+            style={{
+              resize: "none",
+              fontSize: 16,
+              height: "150px",
+              backgroundColor: "rgba(255,255,255, 0.1)",
+            }}
             onChange={inputsHandler}
           />
           <Button
             id={id}
             onClick={() => {
               console.log(inputs);
-               editHandler(inputs)}
-            }
-            variant="outlined"
+              editHandler(inputs);
+            }}
+            variant="text"
             type="submit"
-            sx={{ width: 200, marginTop: 2 }}
+            size="small"
+            sx={{
+              width: "200px",
+              margin: "1% auto",
+              color: "#2b256f",
+            }}
           >
             Edit Event
           </Button>
           <Button
-            variant="outlined"
-            sx={{ width: 200, marginTop: 2 }}
+            variant="text"
+            size="small"
+            sx={{
+              width: "200px",
+              margin: "1% auto",
+              color: "#2b256f",
+            }}
             onClick={handleClose}
           >
             Close
           </Button>
         </Box>
       </Modal>
-    </>
+    </div>
   );
 }
