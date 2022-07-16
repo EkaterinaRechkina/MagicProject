@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Event.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    date: DataTypes.INTEGER,
+    date: DataTypes.TEXT,
     img: DataTypes.TEXT,
     price: DataTypes.INTEGER,
     people: DataTypes.INTEGER,

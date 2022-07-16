@@ -4,7 +4,8 @@ import { setEvents } from "../../redux/actions/event.action";
 import Event from "../Event/Event";
 import "./AllEvents.css";
 import { checkAdmin } from "../../hooks/checkAdmin";
-import { checkAuth } from "../../hooks/checkAuth"
+import { checkAuth } from "../../hooks/checkAuth";
+import MyCalendar from "../Calendar/Calendar";
 
 function AllEvents() {
   const dispatch = useDispatch();
@@ -14,15 +15,20 @@ function AllEvents() {
     // if(checkAuth()){
     //   dispatch(checkAdmin());
     // }
-    
+
     dispatch(setEvents());
   }, [dispatch]);
 
   return (
-    <div className='events'>
-      {events.map((event) => (
-        <Event {...event} key={event.id} />
-      ))}
+    <div className="events">
+      <div className="calendar-event">
+        <MyCalendar />
+      </div>
+      <div className="events-list">
+        {events.map((event) => (
+          <Event {...event} key={event.id} className="event" />
+        ))}
+      </div>
     </div>
   );
 }

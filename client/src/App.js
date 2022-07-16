@@ -27,14 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/map" element={<Map />} />
-          <Route
-            path="/events"
-            element={
-              <>
-                <AllEvents /> <Calendar />{" "}
-              </>
-            }
-          />
+          <Route path="/events" element={<AllEvents />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />

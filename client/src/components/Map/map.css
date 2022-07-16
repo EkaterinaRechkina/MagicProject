@@ -3,17 +3,18 @@
     font-family: 'Cormorant SC', serif;
     display: flex;
     flex-direction: row; 
-    margin-top: 10%;
-    align-items: center;
-    justify-content: space-evenly
+    margin: 10% 5% !important;
+    align-items: center !important;
+    /* justify-content: space-around !important; */
 }
 
 .map{
     height: 400px;
-    width: 50%;
+    width: 70%;
 }
 .text{
-    width: 30%;
+    width: 30% !important;
+    margin-right: 5% !important;
 }
 .marker{
     background-image: url('https://img.icons8.com/material-outlined/344/place-marker--v1.png');
