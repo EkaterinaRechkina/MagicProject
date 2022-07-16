@@ -7,7 +7,6 @@ router
     .get(async (req, res) => {
         try {
             let allProduct = await Product.findAll();
-
             const { q } = req.query;
             const keys = ["author", "title", "description"];
 
@@ -33,7 +32,7 @@ router
                 description:  description,
                 img: img,
                 user_id: user_id,
-                price: price,
+                price: price+'$',
             })
 
             res.json({ newProduct })
@@ -63,8 +62,6 @@ router
         }
     });
 
-module.exports = router;
-
 router
     .route('/:id')
     .put(async (req, res) => {
@@ -87,3 +84,5 @@ router
         await Product.destroy({ where: { id } });
         res.sendStatus(200);
     })
+
+module.exports = router;

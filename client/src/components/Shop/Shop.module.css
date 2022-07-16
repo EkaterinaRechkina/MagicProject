@@ -43,29 +43,32 @@ input[type=number] {
     text-align: center;
 }
 
-.slider {
-
-}
-
 .filters_inputs {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    max-width: 300px;
+    color: gray;
 }
 
 .filter_price {
     border: none;
     display: flex;
     align-items: center;
-    width: 133px;
-    height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
 }
 
 .filter_price_label {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 133px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 0 10px;
 }
 
 .filter_price_text {
-
+    font-size: 16px;
 }

@@ -33,12 +33,12 @@ function Profile() {
   const user = useSelector((store) => store.user);
   const isAdmin = useSelector((store) => store.admin);
 
-
   function submitHandler(event) {
     event.preventDefault();
     const user_id = user[0];
     const author = user[1];
     dispatch(addProduct(author, title, description, img, user_id, price));
+    console.log(author, title, description, img, user_id, price);
     closeForm();
     setTitle("");
     setDescription("");

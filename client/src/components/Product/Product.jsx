@@ -10,7 +10,6 @@ import "./product.css";
 import { addToCart } from "../../hooks/cartActions";
 
 function Product({item}) {
-  
   return (
     <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
       <CardMedia component="img" height="200" image={item.img} alt="" />
