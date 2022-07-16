@@ -38,7 +38,7 @@ const Header = () => {
       .post("http://localhost:3001/logout", {}, { withCredentials: true })
       .then((response) => {
         localStorage.clear();
-        checkAuth(dispatch);
+        dispatch(checkAuth());
       });
   }
 
@@ -199,7 +199,11 @@ const Header = () => {
                         My goods
                       </Link>
                     </MenuItem>
-
+                    <MenuItem key={14} onClick={handleCloseUserMenu}>
+                      <Link to="cart" className="link-sidebar">
+                        My cart
+                      </Link>
+                    </MenuItem>
             
 
                     <MenuItem key={11} onClick={logoutHandler}>

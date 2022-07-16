@@ -7,6 +7,7 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "../Story/Story";
 import "./product.css";
+import { addToCart } from "../../hooks/cartActions";
 
 function Product({item}) {
   return (
@@ -20,6 +21,7 @@ function Product({item}) {
         <div className="description-popup ">Author: {item.author}</div>
         <CardActions>
           <Button
+            onClick={() => addToCart(item)}
             size="small"
             sx={{
               color: "#2ca1c7",
