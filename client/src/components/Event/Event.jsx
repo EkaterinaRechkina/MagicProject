@@ -123,7 +123,7 @@ export default function Event({
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ maxWidth: 305, position: "relative" }}>
+            <Card sx={{ width: 305, position: "relative" }}>
               <CardMedia
                 component="img"
                 height="350"
