@@ -66,16 +66,26 @@ export default function Event({
   }
 
   function editHandler() {
-    dispatch(editEvent(id, inputs));
+    dispatch(editEvent(id, inputs, newDate, newPlace));
     handleClose();
   }
 
   function onPlaceSelect(newPlace) {
-    console.log(newPlace);
+    console.log(
+      "select",
+      newPlace.properties.address_line1 +
+        " ," +
+        newPlace.properties.address_line2
+    );
+    setNewPlace(
+      newPlace.properties.address_line1 +
+        ", " +
+        newPlace.properties.address_line2
+    );
   }
 
   function onSuggectionChange(newPlace) {
-    console.log(newPlace);
+    console.log("change", newPlace);
   }
 
   function preprocessHook(newPlace) {
@@ -103,7 +113,10 @@ export default function Event({
 
     return filtered;
   }
-  console.log("newPlace", newPlace);
+
+  function test(e) {
+    console.log(e.target.value);
+  }
 
   return (
     <div className="story event">
@@ -251,8 +264,7 @@ export default function Event({
             <GeoapifyGeocoderAutocomplete
               placeSelect={onPlaceSelect}
               suggestionsChange={onSuggectionChange}
-              value={newPlace}
-              onChange={(event) => setNewPlace(event.target.value)}
+              // value={newPlace}
             />
           </GeoapifyContext>
           <TextareaAutosize

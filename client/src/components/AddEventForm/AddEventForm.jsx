@@ -43,8 +43,15 @@ function AddEventForm() {
     setPlace("");
   }
   const [value, setValue] = useState({});
-  function onPlaceSelect(value) {
-    console.log(value);
+
+  function onPlaceSelect(place) {
+    console.log(
+      "select",
+      place.properties.address_line1 + " ," + place.properties.address_line2
+    );
+    setPlace(
+      place.properties.address_line1 + ", " + place.properties.address_line2
+    );
   }
 
   function onSuggectionChange(value) {
@@ -164,8 +171,8 @@ function AddEventForm() {
               <GeoapifyGeocoderAutocomplete
                 placeSelect={onPlaceSelect}
                 suggestionsChange={onSuggectionChange}
-                onChange={(event) => setPlace(event.target.value)}
-                value={place}
+                // onChange={(event) => setPlace(event.target.value)}
+                // value={place}
               />
             </GeoapifyContext>
 

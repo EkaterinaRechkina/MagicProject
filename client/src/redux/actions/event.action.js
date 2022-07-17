@@ -39,22 +39,23 @@ export const addEvent =
       console.log(err);
     }
   };
-export const editEvent = (id, inputs) => async (dispatch) => {
-  console.log(inputs);
-  try {
-    const result = await axios.put(
-      `${process.env.REACT_APP_API_URL}/events/${id}`,
-      inputs
-    );
-    console.log("result", result.data);
-    dispatch({
-      type: "EDIT_EVENT",
-      payload: result.data,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
+export const editEvent =
+  (id, inputs, newDate, newPlace) => async (dispatch) => {
+    console.log(inputs);
+    try {
+      const result = await axios.put(
+        `${process.env.REACT_APP_API_URL}/events/${id}`,
+        { inputs, newDate, newPlace }
+      );
+      console.log("result", result.data);
+      dispatch({
+        type: "EDIT_EVENT",
+        payload: result.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 export const delEvent = (id) => async (dispatch) => {
   try {
     const result = await axios.delete(

@@ -46,17 +46,20 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
+  console.log(req.body);
   const { id } = req.params;
-  const { title, description, place, image, price, date, people } = req.body;
+  const { title, description, newPlace, image, price, newDate, people } =
+    req.body;
+
   const editedEvent = await Event.update(
     {
       title,
       description,
-      date,
+      date: newDate,
       img: image,
       price,
       people,
-      place,
+      place: newPlace,
     },
     { where: { id } }
   );
