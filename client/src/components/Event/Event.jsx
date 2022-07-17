@@ -17,7 +17,11 @@ import { useSelector } from "react-redux";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import {
+  GeoapifyGeocoderAutocomplete,
+  GeoapifyContext,
+} from "@geoapify/react-geocoder-autocomplete";
+import "@geoapify/geocoder-autocomplete/styles/minimal.css";
 import "../Story/story.css";
 
 const style = {
@@ -48,6 +52,7 @@ export default function Event({
 }) {
   const [inputs, setInputs] = useState({});
   const [newDate, setNewDate] = useState("");
+  const [newPlace, setNewPlace] = useState("");
   const isAdmin = useSelector((store) => store.admin);
 
   const dispatch = useDispatch();
@@ -64,6 +69,42 @@ export default function Event({
     dispatch(editEvent(id, inputs));
     handleClose();
   }
+
+  function onPlaceSelect(newPlace) {
+    console.log(newPlace);
+  }
+
+  function onSuggectionChange(newPlace) {
+    console.log(newPlace);
+  }
+
+  function preprocessHook(newPlace) {
+    return `${newPlace}, Munich, Germany`;
+  }
+
+  function postprocessHook(feature) {
+    return feature.properties.street;
+  }
+
+  function suggestionsFilter(suggestions) {
+    const processedStreets = [];
+
+    const filtered = suggestions.filter((value) => {
+      if (
+        !value.properties.street ||
+        processedStreets.indexOf(value.properties.street) >= 0
+      ) {
+        return false;
+      } else {
+        processedStreets.push(value.properties.street);
+        return true;
+      }
+    });
+
+    return filtered;
+  }
+  console.log("newPlace", newPlace);
+
   return (
     <div className="story event">
       <PopupState variant="popover" popupId="demo-popup-popover">
@@ -197,15 +238,23 @@ export default function Event({
             value={inputs.people}
             onChange={inputsHandler}
           />
-          <TextField
+          {/* <TextField
             name="place"
             required
             id="outlined-required"
             label="Place"
             value={inputs.place}
             onChange={inputsHandler}
-          />
+          /> */}
 
+          <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
+            <GeoapifyGeocoderAutocomplete
+              placeSelect={onPlaceSelect}
+              suggestionsChange={onSuggectionChange}
+              value={newPlace}
+              onChange={(event) => setNewPlace(event.target.value)}
+            />
+          </GeoapifyContext>
           <TextareaAutosize
             name="description"
             value={inputs.description}

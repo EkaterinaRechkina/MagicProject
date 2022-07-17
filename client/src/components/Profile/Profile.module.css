@@ -7,8 +7,10 @@
 }
 
 .profile {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-columns: repeat(2, auto);
     justify-content: center;
     align-items: center;
     margin: 50px;

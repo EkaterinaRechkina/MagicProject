@@ -9,6 +9,12 @@ import { addEvent } from "../../redux/actions/event.action";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import {
+  GeoapifyGeocoderAutocomplete,
+  GeoapifyContext,
+} from "@geoapify/react-geocoder-autocomplete";
+import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+import { width } from "@mui/system";
 
 function AddEventForm() {
   const [title, setTitle] = useState("");
@@ -36,7 +42,40 @@ function AddEventForm() {
     setPeople("");
     setPlace("");
   }
+  const [value, setValue] = useState({});
+  function onPlaceSelect(value) {
+    console.log(value);
+  }
 
+  function onSuggectionChange(value) {
+    console.log(value);
+  }
+
+  function preprocessHook(value) {
+    return `${value}, Munich, Germany`;
+  }
+
+  function postprocessHook(feature) {
+    return feature.properties.street;
+  }
+
+  function suggestionsFilter(suggestions) {
+    const processedStreets = [];
+
+    const filtered = suggestions.filter((value) => {
+      if (
+        !value.properties.street ||
+        processedStreets.indexOf(value.properties.street) >= 0
+      ) {
+        return false;
+      } else {
+        processedStreets.push(value.properties.street);
+        return true;
+      }
+    });
+
+    return filtered;
+  }
   return (
     <>
       <Button
@@ -96,7 +135,6 @@ function AddEventForm() {
               value={date}
               onChange={(event) => setDate(event.target.value)}
             /> */}
-
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Date"
@@ -107,7 +145,6 @@ function AddEventForm() {
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
-
             <TextField
               required
               id="outlined-required"
@@ -115,19 +152,34 @@ function AddEventForm() {
               value={people}
               onChange={(event) => setPeople(event.target.value)}
             />
-            <TextField
+            {/* <TextField
               required
               id="outlined-required"
               label="Place"
               value={place}
               onChange={(event) => setPlace(event.target.value)}
-            />
+            /> */}
+
+            <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
+              <GeoapifyGeocoderAutocomplete
+                placeSelect={onPlaceSelect}
+                suggestionsChange={onSuggectionChange}
+                onChange={(event) => setPlace(event.target.value)}
+                value={place}
+              />
+            </GeoapifyContext>
 
             <TextareaAutosize
               value={description}
               aria-label="description"
               placeholder="Event description"
-              style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+              style={{
+                width: 400,
+                height: 300,
+                resize: "none",
+                fontSize: 16,
+                marginTop: "10px",
+              }}
               onChange={(event) => setDescription(event.target.value)}
             />
             <Button

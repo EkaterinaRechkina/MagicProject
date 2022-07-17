@@ -7,6 +7,17 @@ router.get("/", async (req, res) => {
     const allEvents = await Event.findAll({
       order: [["createdAt", "DESC"]],
     });
+
+    // const { q } = req.query;
+    // const keys = ["date"];
+
+    // const search = (data) => {
+    //   return data.filter((item) =>
+    //     keys.some((key) => item[key].toLowerCase().includes(q))
+    //   );
+    // };
+
+    // res.json(search(allEvents), q);
     res.json(allEvents);
   } catch (err) {
     console.log(err);
@@ -35,16 +46,17 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-const {id} = req.params
-const { title, description, place, image, price, date, people } = req.body;
-  const editedEvent = await Event.update({
-    title,
-    description,
-    date,
-    img: image,
-    price,
-    people,
-    place
+  const { id } = req.params;
+  const { title, description, place, image, price, date, people } = req.body;
+  const editedEvent = await Event.update(
+    {
+      title,
+      description,
+      date,
+      img: image,
+      price,
+      people,
+      place,
     },
     { where: { id } }
   );

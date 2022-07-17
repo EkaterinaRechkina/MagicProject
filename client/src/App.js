@@ -14,6 +14,7 @@ import UserProducts from "./components/UserProducts/UserProducts";
 import AllEvents from "./components/AllEvents/AllEvents";
 import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
+import Test from "./components/Test";
 
 function App() {
   return (
@@ -28,7 +29,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/map" element={<Map />} />
-          <Route path="/events" element={<AllEvents />} />
+          <Route
+            path="/events"
+            element={
+              <>
+                <AllEvents />
+              </>
+            }
+          />
           <Route path="/shop" element={<Shop />} />
           <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />
