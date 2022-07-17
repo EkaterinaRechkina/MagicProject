@@ -123,10 +123,10 @@ export default function Event({
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ width: 305, position: "relative" }}>
+            <Card sx={{ width: 305, position: "relative", height: "400px" }}>
               <CardMedia
                 component="img"
-                height="350"
+                height="250"
                 image={img}
                 alt={title}
                 {...bindTrigger(popupState)}
