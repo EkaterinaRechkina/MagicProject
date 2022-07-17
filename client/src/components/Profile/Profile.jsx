@@ -11,7 +11,6 @@ import AddEventForm from "../AddEventForm/AddEventForm";
 import { checkAdmin } from "../../hooks/checkAdmin";
 import { checkAuth } from "../../hooks/checkAuth";
 
-
 function Profile() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -25,7 +24,7 @@ function Profile() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkAuth())
+    dispatch(checkAuth());
     dispatch(checkAdmin());
     dispatch(getUserInfo());
   }, [dispatch]);

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const setEvents = () => async (dispatch) => {
+export const setEvents = (q) => async (dispatch) => {
   try {
     const result = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
       withCredentials: true,
@@ -39,13 +39,15 @@ export const addEvent =
       console.log(err);
     }
   };
-export const editEvent = (id, inputs) =>
-  async (dispatch) => {
-console.log(inputs);
+export const editEvent =
+  (id, inputs, newDate, newPlace) => async (dispatch) => {
+    console.log(inputs);
     try {
       const result = await axios.put(
-        `${process.env.REACT_APP_API_URL}/events/${id}`, inputs);
-        console.log('result', result.data);
+        `${process.env.REACT_APP_API_URL}/events/${id}`,
+        { inputs, newDate, newPlace }
+      );
+      console.log("result", result.data);
       dispatch({
         type: "EDIT_EVENT",
         payload: result.data,
