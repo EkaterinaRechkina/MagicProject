@@ -66,10 +66,12 @@ router
     .route('/:id')
     .put(async (req, res) => {
 
-        const { id, title, description, img, price } = req.body;
+        const { id, title, description, img } = req.body;
+        let { price } = req.body;
+        if (!price) price = 0;
 
         await Product.update(
-            { title, description, img, price },
+            { title, description, img, price: price+'$' },
             { where: { id } }
         );
 

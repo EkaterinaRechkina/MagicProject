@@ -6,6 +6,7 @@ import { checkAuth } from "../../hooks/checkAuth";
 import { checkAdmin } from "../../hooks/checkAdmin";
 import { useDispatch } from "react-redux";
 import "./login.css";
+import 'animate.css';
 
 export default function Login() {
   const [name, setName] = useState("");
@@ -45,6 +46,7 @@ export default function Login() {
           label="Login"
           variant="outlined"
           required
+          className='animate__animated animate__fadeInDown animate__delay-0.5s'
         />
         <TextField
           value={password}
@@ -55,16 +57,22 @@ export default function Login() {
           type="password"
           label="password"
           variant="outlined"
+          className='animate__animated animate__fadeInDown animate__delay-1s'
           required
         />
         <Button
           type="submit"
           variant="outlined"
           sx={{ width: "150px", color: "#2b256f" }}
+          className='animate__animated animate__fadeInDown animate__delay-2s'
         >
           LOGIN
         </Button>
       </form>
+      <div id='witch' className="witch">
+        <img src={require('../../images/witchLeft.png')} alt='#' className='witchImg'/>
+        <img src={require('../../images/witch.png')} alt='#' className='witchRImg'/>
+      </div>
     </div>
   );
 }
