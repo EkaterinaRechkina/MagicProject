@@ -9,11 +9,18 @@ input[type=number] {
 }
 
 .body {
+    font-family: 'Cormorant SC', serif;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     width: 100%;
+}
+
+p {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
 }
 
 .ulProducts {
@@ -22,16 +29,22 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    border-left: 1px solid black;
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .filter {
-    align-self: flex-start;
-    min-width: 400px;
+    position: fixed;
+    left: 0;
+    top: 80px;
+    min-width: 350px;
+    height: 100%;
+    border-right: 1px solid black;
 }
 
 .inputs {
-    margin: 20px 0 0 0;
+    margin: 100px 0 0 0;
     font-size: 20px;
 }
 

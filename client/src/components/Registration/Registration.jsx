@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { checkAuth } from "../../hooks/checkAuth";
 import { useDispatch } from "react-redux";
 import "./registration.css";
+import 'animate.css';
 
 export default function Registration() {
   const [name, setName] = useState("");
@@ -46,6 +47,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Login"
           variant="outlined"
+          className='animate__animated animate__fadeInDown animate__delay-.5s'
           required
         />
         <TextField
@@ -57,6 +59,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Email"
           variant="outlined"
+          className='animate__animated animate__fadeInDown animate__delay-1s'
           required
         />
         <TextField
@@ -68,16 +71,22 @@ export default function Registration() {
           id="outlined-basic"
           label="password"
           variant="outlined"
+          className='animate__animated animate__fadeInDown animate__delay-2s'
           required
         />
         <Button
           type="submit"
           variant="outlined"
           sx={{ width: "150px", color: "#2b256f" }}
+          className='animate__animated animate__fadeInDown animate__delay-2s'
         >
           Register
         </Button>
       </form>
+      <div id='witch' className="witch">
+        <img src={require('../../images/witchLeft.png')} alt='#' className='witchImg'/>
+        <img src={require('../../images/witch.png')} alt='#' className='witchRImg'/>
+      </div>
     </div>
   );
 }

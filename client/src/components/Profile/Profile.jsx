@@ -16,7 +16,7 @@ function Profile() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -105,6 +105,7 @@ function Profile() {
             />
             <TextField
               required
+              type='number'
               id="outlined-required"
               label="Price"
               value={price}

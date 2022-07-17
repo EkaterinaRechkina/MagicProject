@@ -7,8 +7,8 @@ import style from './Shop.module.css'
 
 export default function Shop() {
     const [query, setQuery] = useState('');
-    const [inputMin, setInputMin] = useState(0);
-    const [inputMax, setInputMax] = useState(99999);
+    const [inputMin, setInputMin] = useState('');
+    const [inputMax, setInputMax] = useState('');
     const products = useSelector(store => store.product);
     const dispatch = useDispatch();
 
@@ -16,19 +16,34 @@ export default function Shop() {
         const fetchProducts = async () => {
             await axios.get(`http://localhost:3001/shop?q=${query}`,{ withCredentials: true })
                 .then(response => {
-                    if (inputMin < 0 || inputMax < 0) {
-                        dispatch({
-                            type: "GET_PRODUCT",
-                            payload: [],
-                        })
-                    } else {
-                        dispatch({
-                            type: "GET_PRODUCT",
-                            payload: response.data.filter( item =>
-                                +item.price.slice(0,item.price.length-1) >= inputMin &&
-                                +item.price.slice(0,item.price.length-1) <= inputMax),
-                        })
-                    }
+                        if (inputMin === '' && inputMax === '') {
+                            dispatch({
+                                type: "GET_PRODUCT",
+                                payload: response.data,
+                            })
+                        } else if (inputMin < 0 || inputMax < 0) {
+                            dispatch({
+                                type: "GET_PRODUCT",
+                                payload: [],
+                            })
+                        } else {
+                            if (inputMax === '') {
+                                dispatch({
+                                    type: "GET_PRODUCT",
+                                    payload: response.data.filter(item =>
+                                        +item.price.slice(0, item.price.length - 1) >= inputMin &&
+                                        +item.price.slice(0, item.price.length - 1) <= 99999),
+                                })
+                            } else {
+                                dispatch({
+                                    type: "GET_PRODUCT",
+                                    payload: response.data.filter(item =>
+                                        +item.price.slice(0, item.price.length - 1) >= inputMin &&
+                                        +item.price.slice(0, item.price.length - 1) <= inputMax),
+                                })
+                            }
+
+                        }
                 });
         };
         fetchProducts();
@@ -57,7 +72,7 @@ export default function Shop() {
             </div>
             <ul className={style.ulProducts}>
                 {products.length === 0 ? <h1>Простите, по вашему запросу товаров сейчас нет.</h1> :
-                        products.map(item => <Product key={item.id} item={item}/>)}
+                        products.map(item => <Product key={item.id} item={item} />)}
             </ul>
         </div>
     );

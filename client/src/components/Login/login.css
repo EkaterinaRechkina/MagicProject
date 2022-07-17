@@ -6,3 +6,37 @@
     gap: 20px;
     margin-top: 10%;
 }
+
+.witch {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+.witch img {
+    /*transform: scale(-1, 1);*/
+}
+
+.witchImg {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    animation: levelFlight 5s forwards;
+}
+
+.witchRImg {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    animation: levelFlightR 7s forwards;
+}
+
+@keyframes levelFlight {
+    from { right: -800px; top: -600px}
+    to { right: 3000px; top: -100px}
+}
+
+@keyframes levelFlightR {
+    from { left: -4500px; top: 0}
+    to { left: -1400px; top: -700px}
+}

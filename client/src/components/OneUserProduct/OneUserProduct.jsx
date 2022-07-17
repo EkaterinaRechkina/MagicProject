@@ -134,7 +134,7 @@ function OneUserProduct({ id, author, title, description, img, price }) {
             variant="standard"
             required
           />
-          <TextField
+          <TextField type='number'
             onChange={(event) => setNewPrice(event.target.value)}
             value={newPrice}
             id="standard-basic"
