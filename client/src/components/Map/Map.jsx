@@ -381,7 +381,7 @@ export default function Map() {
 
   return (
     <div className="container">
-      <div className="text">
+      <div className="map-text">
         <h2 className="title">Magic places around the world</h2>
         <p className="description">
           The fascination that the occult and the dark arts hold for many of us

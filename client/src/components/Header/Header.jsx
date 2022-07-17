@@ -189,42 +189,43 @@ const Header = () => {
               >
                 {isAuth ? (
                   <div>
-                    <MenuItem key={9} onClick={handleCloseUserMenu}>
-                      <Link to="profile" className="link-sidebar">
-                        Profile
-                      </Link>
-                    </MenuItem>
-                    <MenuItem key={10} onClick={handleCloseUserMenu}>
-                      <Link to="yourproducts" className="link-sidebar">
-                        My goods
-                      </Link>
-                    </MenuItem>
-                    <MenuItem key={14} onClick={handleCloseUserMenu}>
-                      <Link to="cart" className="link-sidebar">
-                        My cart
-                      </Link>
-                    </MenuItem>
-            
+                    <Link to="profile" className="link-sidebar">
+                      <MenuItem key={9} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar">Profile</p>
+                      </MenuItem>
+                    </Link>
 
-                    <MenuItem key={11} onClick={logoutHandler}>
+                    <Link to="yourproducts" className="link-sidebar">
+                      <MenuItem key={10} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar"> My goods</p>
+                      </MenuItem>
+                    </Link>
 
-                      <Link to="/" className="link-sidebar">
-                        Logout
-                      </Link>
-                    </MenuItem>
+                    <Link to="cart" className="link-sidebar">
+                      <MenuItem key={14} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar"> My cart</p>
+                      </MenuItem>
+                    </Link>
+
+                    <Link to="/" className="link-sidebar">
+                      <MenuItem key={11} onClick={logoutHandler}>
+                        <p className="link-sidebar"> Logout</p>
+                      </MenuItem>
+                    </Link>
                   </div>
                 ) : (
                   <div>
-                    <MenuItem key={12} onClick={handleCloseUserMenu}>
-                      <Link to="login" className="link-sidebar">
-                        Sign in
-                      </Link>
-                    </MenuItem>
-                    <MenuItem key={13} onClick={handleCloseUserMenu}>
-                      <Link to="registration" className="link-sidebar">
-                        Sign up
-                      </Link>
-                    </MenuItem>
+                    <Link to="login" className="link-sidebar">
+                      <MenuItem key={12} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar"> Sign in</p>
+                      </MenuItem>
+                    </Link>
+
+                    <Link to="registration" className="link-sidebar">
+                      <MenuItem key={13} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar"> Sign up</p>
+                      </MenuItem>
+                    </Link>
                   </div>
                 )}
               </Menu>
