@@ -1,0 +1,32 @@
+.cart {
+    max-width: 900px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 1% auto;
+    justify-items: center;
+    justify-content: center;
+}
+
+.listItem {
+    padding: 1%;
+    margin: 1% auto;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(165, 159, 159);
+    list-style: none;
+    width: 700px;
+    height: 150px;
+}
+.image {
+    width: 100px;
+    height: 100px;
+}
+.imgBlock {
+    margin: 1%;
+}
+.descr {
+    border: 1px solid black;
+    width: 200px;
+    font-size: 12px;
+}

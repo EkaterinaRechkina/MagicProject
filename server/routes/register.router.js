@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const mailer = require('../controllers/mailController')
 
 const { User } = require("../db/models");
 
@@ -26,10 +27,10 @@ router
             });
 
             if (checkUserEmail) {
-                const message = 'Пользователь с данным почтовым адресом уже существует. Войдите или зарегистрируйтесь, используя другую почту.'
+                const message = 'A user with this email address already exists. Log in or register with a different email address.'
                 res.json({ message })
             } else if (checkUserName) {
-                const message = 'Пользователь с данным логином уже существует. Войдите или зарегистрируйтесь, используя другой логин.'
+                const message = 'A user with this username already exists. Log in or register with another username.'
                 res.json({ message })
             } else {
                 const newUser = await User.create({
@@ -41,7 +42,19 @@ router
 
                 req.session.userId = newUser.id;
                 req.session.userName = newUser.name;
-                
+
+
+                const massage = {
+                    to: newUser.email,
+                    subject: 'Регистрация почтового адреса',
+                    text: `
+                    Поздравляем вы успешно зарегистрированы!
+                    Ваш логин в личном кабинете : ${newUser.name}
+                    Ваш пароль :  ${password}.
+                    `,
+                  };
+                  mailer(massage);
+
                 const userInfo = [newUser.id, newUser.name, newUser.email];
                 res.json({ userInfo })
             }

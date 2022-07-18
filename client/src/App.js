@@ -15,6 +15,7 @@ import AllEvents from "./components/AllEvents/AllEvents";
 import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
 import Test from "./components/Test";
+import Favorites from "./components/Favorites/Favorites";
 import {
   createTheme,
   makeStyles,
@@ -50,9 +51,13 @@ const useStyles = makeStyles((theme) =>
 
 const theme = createTheme({});
 
+
+
+
 function App() {
   return (
     <div className="App">
+
       <ThemeProvider theme={theme}>
         <header>
           <Header />
