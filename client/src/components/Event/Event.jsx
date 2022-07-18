@@ -301,9 +301,16 @@ export default function Event({
             type="submit"
             size="small"
             sx={{
+              margin: "0 auto",
               width: "200px",
-              margin: "1% auto",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
           >
             Edit Event
@@ -312,9 +319,16 @@ export default function Event({
             variant="text"
             size="small"
             sx={{
+              margin: "0 auto",
               width: "200px",
-              margin: "1% auto",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             onClick={handleClose}
           >

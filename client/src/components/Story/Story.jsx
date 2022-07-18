@@ -164,7 +164,16 @@ export default function Story({ id, title, description, img, author }) {
           />
           <Button
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             id={id}
             size="small"
@@ -174,7 +183,16 @@ export default function Story({ id, title, description, img, author }) {
           </Button>
           <Button
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             size="small"
             onClick={handleClose}
