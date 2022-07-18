@@ -7,7 +7,7 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import "../Story/Story";
 import "./product.css";
-import { addToCart } from "../../hooks/cartActions";
+import { addToCart } from "../../redux/actions/cartActions";
 
 function Product({item}) {
   return (
