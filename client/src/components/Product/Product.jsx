@@ -28,7 +28,7 @@ function Product({ item }) {
           </div>
           <div className="description-popup ">Price $: {item.price}</div>
           <div className="description-popup author-product">
-            Author: {item.author}
+            Seller: {item.author}
           </div>
           <CardActions>
             <Button
