@@ -8,9 +8,10 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import Star from "@mui/icons-material/Star"
 import "../Story/Story";
 import "./product.css";
-import { addToCart } from "../../hooks/cartActions";
+
 import {addFavorites, deleteFavorites, editFavorites} from "../../redux/actions/favorites.action";
 import {useDispatch, useSelector} from "react-redux";
+import { addToCart } from "../../redux/actions/cartActions";
 
 function Product({item}) {
     const [status, setStatus] = useState(true);
