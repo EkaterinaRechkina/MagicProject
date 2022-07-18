@@ -62,7 +62,7 @@ export default function Story({ id, title, description, img, author }) {
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ maxWidth: 305, position: "relative" }}>
+            <Card sx={{ width: 305, position: "relative" }}>
               <CardMedia
                 component="img"
                 height="350"
@@ -79,7 +79,7 @@ export default function Story({ id, title, description, img, author }) {
                         position: "absolute",
                         top: 5,
                         right: 0,
-                        color: "#2ca1c7",
+                        color: "#3e8ec1",
                       }}
                     >
                       <DeleteIcon onClick={() => deleteStoryHandler(id)} />
@@ -91,7 +91,7 @@ export default function Story({ id, title, description, img, author }) {
                         position: "absolute",
                         top: 5,
                         right: 35,
-                        color: "#2ca1c7",
+                        color: "#3e8ec1",
                       }}
                     >
                       <EditIcon onClick={handleOpen} />

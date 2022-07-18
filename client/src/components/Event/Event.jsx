@@ -50,9 +50,15 @@ export default function Event({
   people,
   place,
 }) {
-  const [inputs, setInputs] = useState({});
-  const [newDate, setNewDate] = useState("");
-  const [newPlace, setNewPlace] = useState("");
+  const [inputs, setInputs] = useState({
+    title,
+    description,
+    img,
+    price,
+    people,
+  });
+  const [newDate, setNewDate] = useState(date);
+  const [newPlace, setNewPlace] = useState(place);
   const isAdmin = useSelector((store) => store.admin);
 
   const dispatch = useDispatch();
@@ -151,9 +157,14 @@ export default function Event({
                 ) : null}
 
                 <div className="title">{title}</div>
-                <div className="description-popup">Place: {place}</div>
+                <div className="description-popup">
+                  <strong>Place: </strong> {place}
+                </div>
 
-                <div className="description-popup">Date: {date}</div>
+                <div className="description-popup">
+                  <strong>Date: </strong>
+                  {date}
+                </div>
               </CardContent>
               <CardActions>
                 <Button size="small"></Button>

@@ -9,43 +9,55 @@ import "../Story/Story";
 import "./product.css";
 import { addToCart } from "../../redux/actions/cartActions";
 
-function Product({item}) {
+function Product({ item }) {
   return (
-    <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
-      <CardMedia component="img" height="200" image={item.img} alt="" />
+    <div className="card-product">
+      <Card sx={{ position: "relative", margin: 0, width: 205 }}>
+        <CardMedia
+          component="img"
+          height="200"
+          image={item.img}
+          alt=""
+          sx={{ width: "100%" }}
+        />
 
-      <div className="story product">
-        <div className="title">{item.title}</div>
-        <div className="description-popup ">{item.description}</div>
-        <div className="description-popup ">Price: {item.price}</div>
-        <div className="description-popup ">Author: {item.author}</div>
-        <CardActions>
-          <Button
-            onClick={() => addToCart(item)}
-            size="small"
-            sx={{
-              color: "#2ca1c7",
-              position: "absolute",
-              bottom: 5,
-              right: 40,
-            }}
-          >
-            <LocalGroceryStoreIcon />
-          </Button>
-          <Button
-            size="small"
-            sx={{
-              color: "#2ca1c7",
-              position: "absolute",
-              bottom: 5,
-              right: 0,
-            }}
-          >
-            <StarBorderIcon />
-          </Button>
-        </CardActions>
-      </div>
-    </Card>
+        <div className="story product">
+          <div className="title product-title">{item.title}</div>
+          <div className="description-popup description-product ">
+            {item.description}
+          </div>
+          <div className="description-popup ">Price $: {item.price}</div>
+          <div className="description-popup author-product">
+            Author: {item.author}
+          </div>
+          <CardActions>
+            <Button
+              onClick={() => addToCart(item)}
+              size="small"
+              sx={{
+                color: "#3e8ec1",
+                position: "absolute",
+                bottom: 5,
+                right: 40,
+              }}
+            >
+              <LocalGroceryStoreIcon />
+            </Button>
+            <Button
+              size="small"
+              sx={{
+                color: "#3e8ec1",
+                position: "absolute",
+                bottom: 5,
+                right: 0,
+              }}
+            >
+              <StarBorderIcon />
+            </Button>
+          </CardActions>
+        </div>
+      </Card>
+    </div>
   );
 }
 

@@ -19,7 +19,7 @@ function Tarot() {
         onClick={() => getTarot()}
         variant="contained"
         sx={{
-          backgroundColor: "#2ca1c7",
+          backgroundColor: "#3e8ec1",
           width: "200px",
           margin: "0 auto",
         }}

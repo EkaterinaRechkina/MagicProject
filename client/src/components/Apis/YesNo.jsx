@@ -21,7 +21,7 @@ function YesNo() {
       <Button
         onClick={() => getAnswer(1, 3)}
         variant="contained"
-        sx={{ backgroundColor: "#2ca1c7", width: "200px" }}
+        sx={{ backgroundColor: "#3e8ec1", width: "200px" }}
       >
         Will it come true
       </Button>

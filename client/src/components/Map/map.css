@@ -40,8 +40,9 @@
     margin-bottom: 2%;
 }
 
-.description{ 
+.description-map{ 
     margin-top: 5%;
     line-height: 1.5;
     font-size: 14px;
+    font-weight: 400;
 }

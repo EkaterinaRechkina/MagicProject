@@ -104,7 +104,7 @@ function Profile() {
             />
             <TextField
               required
-              type='number'
+              type="number"
               id="outlined-required"
               label="Price"
               value={price}
@@ -113,8 +113,8 @@ function Profile() {
             <TextareaAutosize
               value={description}
               aria-label="description"
-              placeholder="Product description"
-              style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+              placeholder="Product description 50 symbols"
+              style={{ width: 400, height: 100, resize: "none", fontSize: 16 }}
               onChange={(event) => setDescription(event.target.value)}
             />
             <Button

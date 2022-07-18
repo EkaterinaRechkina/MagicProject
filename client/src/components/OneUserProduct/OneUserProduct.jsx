@@ -73,7 +73,7 @@ function OneUserProduct({ id, author, title, description, img, price }) {
                   <EditIcon onClick={handleOpen} />
                 </Button>
                 <div className="title">{title}</div>
-                <div>Price: {price}</div>
+                <div>Price $: {price}</div>
                 <div>Author: {author}</div>
               </CardContent>
             </Card>
@@ -134,7 +134,8 @@ function OneUserProduct({ id, author, title, description, img, price }) {
             variant="standard"
             required
           />
-          <TextField type='number'
+          <TextField
+            type="number"
             onChange={(event) => setNewPrice(event.target.value)}
             value={newPrice}
             id="standard-basic"

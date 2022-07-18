@@ -1,5 +1,5 @@
 .container {
-    margin: 6% auto 0;
+    margin: 3% auto 0;
     width: 80%;
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -8,7 +8,7 @@
 }
 .faceimg {
     padding: 5%;
-    width: 400px;
+    width: 500px;
     height: 600px;
 }
 .faceimg img {

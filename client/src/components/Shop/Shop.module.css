@@ -1,4 +1,4 @@
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -6,46 +6,39 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
-}
+} */
 
 .body {
     font-family: 'Cormorant SC', serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 3%;
     width: 100%;
+    margin-top: 3%;
 }
 
-p {
+/* p {
     font-size: 24px;
     color: black;
     font-weight: bold;
-}
+} */
 
 .ulProducts {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-left: 15%;
-    margin-right: 15%;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 3%;
+    justify-content: start;
 }
 
 .filter {
-    position: fixed;
-    left: 0;
-    top: 80px;
     min-width: 350px;
-    height: 100%;
-    border-right: 1px solid black;
 }
 
 .inputs {
-    margin: 100px 0 0 0;
-    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .search {
@@ -58,7 +51,8 @@ p {
 
 .filters_inputs {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 3%;
     align-items: center;
     color: gray;
 }
@@ -75,13 +69,35 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 133px;
+    width: 200px;
     height: 40px;
     border: 1px solid gray;
     border-radius: 4px;
     padding: 0 10px;
+    margin-bottom: 2%;
 }
 
 .filter_price_text {
     font-size: 16px;
 }
+
+@media only screen and (max-width: 1250px) {
+    .ulProducts {
+        grid-template-columns: repeat(3, auto);
+    }
+  }
+  @media only screen and (max-width: 1000px) {
+    .ulProducts {
+        grid-template-columns: repeat(2, auto);
+    }
+    @media only screen and (max-width: 610px) {
+        .body {
+            grid-template-columns: 1fr
+        }
+  }
+  @media only screen and (max-width: 430px) {
+    .ulProducts {
+        grid-template-columns: repeat(1, auto);
+    }
+}
+  }
