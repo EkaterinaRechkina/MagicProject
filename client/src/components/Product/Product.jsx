@@ -1,54 +1,50 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import Star from "@mui/icons-material/Star"
+import Star from "@mui/icons-material/Star";
 import "../Story/Story";
 import "./product.css";
 import { addToCart } from "../../redux/actions/cart.actions";
-import { useDispatch } from "react-redux";
+import {
+  addFavorites,
+  deleteFavorites,
+  editFavorites,
+} from "../../redux/actions/favorites.action";
+import { useDispatch, useSelector } from "react-redux";
 
-function Product({item}) {
+function Product({ item }) {
+  const [status, setStatus] = useState(true);
   const dispatch = useDispatch();
 
+  const favoritesProduct = useSelector((store) => store.favorites);
 
-import {addFavorites, deleteFavorites, editFavorites} from "../../redux/actions/favorites.action";
-import {useDispatch, useSelector} from "react-redux";
-import { addToCart } from "../../redux/actions/cartActions";
-
-
-function Product({item}) {
-    const [status, setStatus] = useState(true);
-    const dispatch = useDispatch();
-
-    const favoritesProduct = useSelector((store) => store.favorites);
-
-    const addFavHandler = (id) => {
-        setStatus(!status);
-        let count = 0;
-        if (favoritesProduct.length === 0) {
-            dispatch(addFavorites(id));
-        } else {
-            favoritesProduct.forEach(item => {
-                for (let key in item) {
-                    if (key === 'id' && id !== item[key]) {
-                        count++;
-                    }
-                }
-            });
-            if (count === favoritesProduct.length) {
-                dispatch(addFavorites(id))
-            }
+  const addFavHandler = (id) => {
+    setStatus(!status);
+    let count = 0;
+    if (favoritesProduct.length === 0) {
+      dispatch(addFavorites(id));
+    } else {
+      favoritesProduct.forEach((item) => {
+        for (let key in item) {
+          if (key === "id" && id !== item[key]) {
+            count++;
+          }
         }
+      });
+      if (count === favoritesProduct.length) {
+        dispatch(addFavorites(id));
+      }
     }
+  };
 
-    const deleteFavHandler = (id) => {
-        setStatus(!status);
-        dispatch(deleteFavorites(id, status));
-    }
+  const deleteFavHandler = (id) => {
+    setStatus(!status);
+    dispatch(deleteFavorites(id, status));
+  };
 
   return (
     <div className="card-product">
@@ -61,7 +57,6 @@ function Product({item}) {
           sx={{ width: "100%" }}
         />
 
-
         <div className="story product">
           <div className="title product-title">{item.title}</div>
           <div className="description-popup description-product ">
@@ -73,7 +68,7 @@ function Product({item}) {
           </div>
           <CardActions>
             <Button
-               onClick={() => dispatch(addToCart(item))}
+              onClick={() => dispatch(addToCart(item))}
               size="small"
               sx={{
                 color: "#3e8ec1",
@@ -96,24 +91,38 @@ function Product({item}) {
               <StarBorderIcon />
             </Button>
             {status ? (
-                    <Button id = {item.id} size="small" sx={{color: "#2ca1c7", position: "absolute", bottom: 5, right: 0,}}
-                            onClick={() => addFavHandler(item.id)}>
-                        <StarBorderIcon />
-                    </Button>
-                ) :
-                (
-                    <Button id = {item.id} size="small" sx={{color: "#2ca1c7", position: "absolute", bottom: 5, right: 0,}}
-                            onClick={() => deleteFavHandler(item.id)}>
-                        <Star />
-                    </Button>
-                )}
-            
+              <Button
+                id={item.id}
+                size="small"
+                sx={{
+                  color: "#2ca1c7",
+                  position: "absolute",
+                  bottom: 5,
+                  right: 0,
+                }}
+                onClick={() => addFavHandler(item.id)}
+              >
+                <StarBorderIcon />
+              </Button>
+            ) : (
+              <Button
+                id={item.id}
+                size="small"
+                sx={{
+                  color: "#2ca1c7",
+                  position: "absolute",
+                  bottom: 5,
+                  right: 0,
+                }}
+                onClick={() => deleteFavHandler(item.id)}
+              >
+                <Star />
+              </Button>
+            )}
           </CardActions>
         </div>
       </Card>
     </div>
-
-
   );
 }
 
