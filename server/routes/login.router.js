@@ -17,7 +17,7 @@ router
             })
 
             if (!user) {
-                const message = 'Пользователь не найден!'
+                const message = 'User not found!'
                 res.json({ message });
             }
 

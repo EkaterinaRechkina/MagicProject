@@ -3,6 +3,7 @@ import * as tt from "@tomtom-international/web-sdk-maps";
 import * as ttapi from "@tomtom-international/web-sdk-services";
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import "./map.css";
+import 'animate.css';
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 
 export default function Map() {
@@ -395,6 +396,10 @@ export default function Map() {
         </p>
       </div>
       <div ref={mapElement} className="map"></div>
+      <div id='cat' className="cat">
+        <img src={require('../../images/cat_sitting.gif')} alt='#' className='catGifSitting animate__animated animate__bounceIn animate__delay-5s'/>
+        <img src={require('../../images/black_cat.gif')} alt='#' className='catGif'/>
+      </div>
     </div>
   );
 }

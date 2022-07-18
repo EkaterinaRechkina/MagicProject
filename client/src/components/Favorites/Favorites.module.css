@@ -1,0 +1,23 @@
+.wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.ulFav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.liFav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageFav {
+    max-width: 100px;
+    max-height: 100px;
+}
