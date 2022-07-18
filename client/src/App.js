@@ -51,13 +51,9 @@ const useStyles = makeStyles((theme) =>
 
 const theme = createTheme({});
 
-
-
-
 function App() {
   return (
     <div className="App">
-
       <ThemeProvider theme={theme}>
         <header>
           <Header />
@@ -85,6 +81,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/yourproducts" element={<UserProducts />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
         <footer>
