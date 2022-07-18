@@ -19,6 +19,8 @@ const userInfoRouter = require('./routes/userInfo.router');
 const shopRouter = require('./routes/shop.router');
 const eventRouter = require('./routes/event.router')
 
+const cartRouter = require('./routes/cart.router')
+
 app.use('/static', express.static(__dirname + '/public'));
 
 
@@ -64,6 +66,7 @@ app.use('/userinfo', userInfoRouter);
 app.use('/shop', shopRouter);
 app.use('/admin', adminRouter);
 app.use('/events', eventRouter)
+app.use('/cart', cartRouter)
 
 app.listen(PORT, async () => {
   try {
