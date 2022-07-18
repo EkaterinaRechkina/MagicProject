@@ -5,6 +5,7 @@ import { userReducer } from "./reducers/user.reducer";
 import { productReducer } from "./reducers/product.reducer";
 import { adminReducer } from "./reducers/admin.reducer";
 import { eventReducer } from "./reducers/event.reducer";
+import { favoriteReducer } from "./reducers/favorites.reducer";
 
 const initState = {
   story: {
@@ -31,6 +32,11 @@ const initState = {
     sLoading: false,
     value: [],
     error: null,
+  },
+  favorites: {
+    sLoading: false,
+    value: [],
+    error: null,
   }
 };
 
@@ -42,6 +48,7 @@ const store = configureStore({
     product: productReducer,
     admin: adminReducer,
     events: eventReducer,
+    favorites: favoriteReducer,
   },
 });
 
