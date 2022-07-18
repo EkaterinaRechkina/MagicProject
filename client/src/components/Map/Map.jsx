@@ -182,7 +182,7 @@ export default function Map() {
     //   searchMarkersManager.clear();
     // }
 
-    const ttSearchBox = new SearchBox(ttapi, options);
+    // const ttSearchBox = new SearchBox(ttapi, options);
     // var searchMarkersManager = new SearchMarkersManager(map);
     // ttSearchBox.on("tomtom.searchbox.resultsfound", handleResultsFound);
     // ttSearchBox.on("tomtom.searchbox.resultselected", handleResultSelection);
@@ -190,7 +190,7 @@ export default function Map() {
     // ttSearchBox.on("tomtom.searchbox.resultscleared", handleResultClearing);
 
     // ttSearchBox.query();
-    map.addControl(ttSearchBox, "top-left");
+    // map.addControl(ttSearchBox, "top-left");
 
     // ttSearchBox.on("tomtom.searchbox.resultsfound", function (data) {
     //   console.log(data);
@@ -384,7 +384,7 @@ export default function Map() {
     <div className="container">
       <div className="map-text">
         <h2 className="title">Magic places around the world</h2>
-        <p className="description">
+        <p className="description-map">
           The fascination that the occult and the dark arts hold for many of us
           is undeniable. Some people dismiss anything connected with witchcraft
           as mere superstition, but on Halloween, even the most skeptical won’t

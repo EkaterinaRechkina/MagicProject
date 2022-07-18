@@ -17,7 +17,7 @@ function KanyeApi() {
       <Button
         onClick={() => askKanye()}
         variant="contained"
-        sx={{ backgroundColor: "#2ca1c7", width: "200px" }}
+        sx={{ backgroundColor: "#3e8ec1", width: "200px" }}
       >
         Ask Kanye
       </Button>

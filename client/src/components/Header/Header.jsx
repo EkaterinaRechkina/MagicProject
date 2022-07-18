@@ -70,7 +70,15 @@ const Header = () => {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: {
+                  xs: "flex",
+                  md: "none",
+                },
+              }}
+            >
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -80,14 +88,6 @@ const Header = () => {
                 color="inherit"
               >
                 <MenuIcon />
-                <img
-                  src={logo}
-                  style={{
-                    width: "45px",
-                    height: "45px",
-                    alignContent: "center",
-                  }}
-                />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -101,6 +101,14 @@ const Header = () => {
               >
                 <MenuItem key={15} onClick={handleCloseNavMenu}>
                   <Link to="/" className="link-sidebar">
+                    <img
+                      src={logo}
+                      style={{
+                        width: "45px",
+                        height: "45px",
+                        alignContent: "center",
+                      }}
+                    />
                     Home
                   </Link>
                 </MenuItem>
@@ -137,20 +145,23 @@ const Header = () => {
                   xs: "none",
                   md: "flex",
                   alignItems: "center",
-                  justifyContent: "space-around",
+                  justifyContent: "flex-start",
+                  gap: "5%",
                 },
               }}
             >
-              <img
-                src={logo}
-                style={{
-                  width: "55px",
-                  height: "55px",
-                  alignContent: "center",
-                }}
-              />
-              <Link to="/" key={16} className="link">
-                Home
+              <Link to="/" key={16} className="link link-home">
+                <div className="link-home">
+                  <img
+                    src={logo}
+                    style={{
+                      width: "55px",
+                      height: "55px",
+                      alignContent: "center",
+                    }}
+                  />
+                  Home
+                </div>
               </Link>
 
               <Link to="shop" key={5} className="link">

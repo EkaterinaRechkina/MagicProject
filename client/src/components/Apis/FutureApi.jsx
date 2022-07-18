@@ -20,7 +20,7 @@ function FutureApi() {
       <Button
         onClick={() => getFortune()}
         variant="contained"
-        sx={{ backgroundColor: "#2ca1c7", width: "200px" }}
+        sx={{ backgroundColor: "#3e8ec1", width: "200px" }}
       >
         Get wisdom
       </Button>

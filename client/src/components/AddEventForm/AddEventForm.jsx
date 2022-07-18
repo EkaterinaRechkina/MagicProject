@@ -89,12 +89,15 @@ function AddEventForm() {
         onClick={openForm}
         variant="outlined"
         sx={{
-          margin: "20px 30px",
-          display: "flex",
-          color: "#2b256f",
           width: "200px",
+          border: "none",
+          color: "#2b256f",
           textAlign: "center",
-          border: "1px solid #2b256f",
+          ":hover": {
+            border: "none",
+            bgcolor: "#eba7d0",
+            color: "#fff", // theme.palette.primary.main
+          },
         }}
       >
         ADD EVENT
@@ -193,10 +196,16 @@ function AddEventForm() {
               variant="outlined"
               type="submit"
               sx={{
-                width: 200,
                 marginTop: 2,
+                width: "200px",
+                border: "none",
                 color: "#2b256f",
-                border: "1px solid #2b256f",
+                textAlign: "center",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
             >
               Add Event
@@ -204,10 +213,16 @@ function AddEventForm() {
             <Button
               variant="outlined"
               sx={{
-                width: 200,
                 marginTop: 2,
+                width: "200px",
+                border: "none",
                 color: "#2b256f",
-                border: "1px solid #2b256f",
+                textAlign: "center",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
               onClick={closeForm}
             >

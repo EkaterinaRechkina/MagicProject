@@ -2,8 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 200px;
+  /* min-width: 200px; */
   height: 180px;
-  margin-top: 5%;
+  margin-top: 5% 0;
   text-align: center;
+}
+.card-product{
+  width: 205px;
+}
+.product-title {
+  margin-top: 3%;
+}
+.description-product  {
+  font-size: 14px;
 }

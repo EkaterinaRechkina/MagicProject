@@ -18,6 +18,11 @@
     font-weight: bold;
 }
 
+.link-home{
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
 
 /* .link-sidebar :link { text-decoration: none; }
 .link-sidebar :visited { text-decoration: none; }

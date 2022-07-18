@@ -16,39 +16,81 @@ import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
 import Test from "./components/Test";
 import Favorites from "./components/Favorites/Favorites";
+import {
+  createTheme,
+  makeStyles,
+  createStyles,
+  Theme as AugmentedTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+
+import { orange, blue, green } from "@material-ui/core/colors";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      // color: green[900],
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "rgba(0, 0, 0, 0.23)",
+          color: "#000", // default
+        },
+
+        "&.Mui-focused fieldset": {
+          border: "2px solid #711d6f",
+          // color: #711d6f",
+        },
+        "&.Mui-focused textareaAutosize": {
+          border: "2px solid #711d6f",
+          // color: #711d6f",
+        },
+      },
+    },
+  })
+);
+
+const theme = createTheme({});
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <Header />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/map" element={<Map />} />
-          <Route
-            path="/events"
-            element={
-              <>
-                <AllEvents />
-              </>
-            }
-          />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/stories" element={<AllStories />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/yourproducts" element={<UserProducts />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+
+      <ThemeProvider theme={theme}>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/map" element={<Map />} />
+            <Route
+              path="/events"
+              element={
+                <>
+                  <AllEvents />
+                </>
+              }
+            />
+            <Route path="/shop" element={<Shop />} />
+            <Route
+              path="/stories"
+              element={<AllStories useStyles={useStyles} />}
+            />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/yourproducts" element={<UserProducts />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </ThemeProvider>
     </div>
   );
 }

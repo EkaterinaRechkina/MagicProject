@@ -38,11 +38,15 @@
     margin-bottom: 2%;
 }
 
-.description{
+
+.description-map{ 
     margin-top: 5%;
     line-height: 1.5;
     font-size: 14px;
+    font-weight: 400;
 }
+
+
 
 .cat {
     position: absolute;
@@ -69,3 +73,4 @@
     from { right: -800px; top: 60px}
     to { right: 2100px; top: 60px}
 }
+

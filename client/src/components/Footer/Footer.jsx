@@ -42,12 +42,6 @@ const Footer = () => {
               Our Team
             </Link>
           </MenuItem>
-
-          <MenuItem key={2}>
-            <Link to="project" className="link">
-              About our project
-            </Link>
-          </MenuItem>
         </Box>
       </AppBar>
     </div>

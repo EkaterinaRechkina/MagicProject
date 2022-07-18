@@ -62,7 +62,7 @@ export default function Story({ id, title, description, img, author }) {
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ maxWidth: 305, position: "relative" }}>
+            <Card sx={{ width: 305, position: "relative" }}>
               <CardMedia
                 component="img"
                 height="350"
@@ -79,7 +79,7 @@ export default function Story({ id, title, description, img, author }) {
                         position: "absolute",
                         top: 5,
                         right: 0,
-                        color: "#2ca1c7",
+                        color: "#3e8ec1",
                       }}
                     >
                       <DeleteIcon onClick={() => deleteStoryHandler(id)} />
@@ -91,7 +91,7 @@ export default function Story({ id, title, description, img, author }) {
                         position: "absolute",
                         top: 5,
                         right: 35,
-                        color: "#2ca1c7",
+                        color: "#3e8ec1",
                       }}
                     >
                       <EditIcon onClick={handleOpen} />
@@ -164,7 +164,16 @@ export default function Story({ id, title, description, img, author }) {
           />
           <Button
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             id={id}
             size="small"
@@ -174,7 +183,16 @@ export default function Story({ id, title, description, img, author }) {
           </Button>
           <Button
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             size="small"
             onClick={handleClose}

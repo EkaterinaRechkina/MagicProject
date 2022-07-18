@@ -50,9 +50,15 @@ export default function Event({
   people,
   place,
 }) {
-  const [inputs, setInputs] = useState({});
-  const [newDate, setNewDate] = useState("");
-  const [newPlace, setNewPlace] = useState("");
+  const [inputs, setInputs] = useState({
+    title,
+    description,
+    img,
+    price,
+    people,
+  });
+  const [newDate, setNewDate] = useState(date);
+  const [newPlace, setNewPlace] = useState(place);
   const isAdmin = useSelector((store) => store.admin);
 
   const dispatch = useDispatch();
@@ -123,10 +129,10 @@ export default function Event({
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ width: 305, position: "relative" }}>
+            <Card sx={{ width: 305, position: "relative", height: "400px" }}>
               <CardMedia
                 component="img"
-                height="350"
+                height="250"
                 image={img}
                 alt={title}
                 {...bindTrigger(popupState)}
@@ -151,9 +157,14 @@ export default function Event({
                 ) : null}
 
                 <div className="title">{title}</div>
-                <div className="description-popup">Place: {place}</div>
+                <div className="description-popup">
+                  <strong>Place: </strong> {place}
+                </div>
 
-                <div className="description-popup">Date: {date}</div>
+                <div className="description-popup">
+                  <strong>Date: </strong>
+                  {date}
+                </div>
               </CardContent>
               <CardActions>
                 <Button size="small"></Button>
@@ -290,9 +301,16 @@ export default function Event({
             type="submit"
             size="small"
             sx={{
+              margin: "0 auto",
               width: "200px",
-              margin: "1% auto",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
           >
             Edit Event
@@ -301,9 +319,16 @@ export default function Event({
             variant="text"
             size="small"
             sx={{
+              margin: "0 auto",
               width: "200px",
-              margin: "1% auto",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             onClick={handleClose}
           >

@@ -9,9 +9,11 @@ import { display } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 import { getUserInfo } from "../../redux/actions/userActions";
+import { makeStyles } from "@material-ui/core/styles";
 import "./allStories.css";
 
-export default function AllStories() {
+export default function AllStories({ useStyles }) {
+  const classes = useStyles();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
   const [img, setImg] = useState(null);
@@ -61,8 +63,13 @@ export default function AllStories() {
             display: "flex",
             justifyContent: "flex-start",
 
-            border: "1px solid #2b256f",
+            border: "none",
             color: "#2b256f",
+            ":hover": {
+              bgcolor: "#eba7d0", // theme.palette.primary.main
+              border: "none",
+              color: "#fff",
+            },
           }}
         >
           Add your story
@@ -90,6 +97,18 @@ export default function AllStories() {
             }}
           >
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Title"
@@ -97,6 +116,18 @@ export default function AllStories() {
               onChange={(event) => setTitle(event.target.value)}
             />
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Image"
@@ -104,6 +135,9 @@ export default function AllStories() {
               onChange={(event) => setImg(event.target.value)}
             />
             <TextareaAutosize
+              classes={{
+                root: classes.root,
+              }}
               required
               value={description}
               aria-label="description"
@@ -120,10 +154,15 @@ export default function AllStories() {
               variant="outlined"
               type="submit"
               sx={{
-                border: "1px solid #2b256f",
+                border: "none",
                 width: "200px",
                 marginTop: 2,
                 color: "#2b256f",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
             >
               Add story
@@ -132,10 +171,15 @@ export default function AllStories() {
             <Button
               variant="outlined"
               sx={{
-                border: "1px solid #2b256f",
+                border: "none",
                 width: "200px",
                 marginTop: 2,
                 color: "#2b256f",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
               onClick={closeForm}
             >

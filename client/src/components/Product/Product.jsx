@@ -19,6 +19,7 @@ import {addFavorites, deleteFavorites, editFavorites} from "../../redux/actions/
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 
+
 function Product({item}) {
     const [status, setStatus] = useState(true);
     const dispatch = useDispatch();
@@ -49,29 +50,51 @@ function Product({item}) {
         dispatch(deleteFavorites(id, status));
     }
 
-
   return (
-    <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
-      <CardMedia component="img" height="200" image={item.img} alt="" />
+    <div className="card-product">
+      <Card sx={{ position: "relative", margin: 0, width: 205 }}>
+        <CardMedia
+          component="img"
+          height="200"
+          image={item.img}
+          alt=""
+          sx={{ width: "100%" }}
+        />
 
-      <div className="story product">
-        <div className="title">{item.title}</div>
-        <div className="description-popup ">{item.description}</div>
-        <div className="description-popup ">Price: {item.price}</div>
-        <div className="description-popup ">Author: {item.author}</div>
-        <CardActions>
-          <Button
-            onClick={() => dispatch(addToCart(item))}
-            size="small"
-            sx={{
-              color: "#2ca1c7",
-              position: "absolute",
-              bottom: 5,
-              right: 40,
-            }}
-          >
-            <LocalGroceryStoreIcon />
-          </Button>
+
+        <div className="story product">
+          <div className="title product-title">{item.title}</div>
+          <div className="description-popup description-product ">
+            {item.description}
+          </div>
+          <div className="description-popup ">Price $: {item.price}</div>
+          <div className="description-popup author-product">
+            Seller: {item.author}
+          </div>
+          <CardActions>
+            <Button
+               onClick={() => dispatch(addToCart(item))}
+              size="small"
+              sx={{
+                color: "#3e8ec1",
+                position: "absolute",
+                bottom: 5,
+                right: 40,
+              }}
+            >
+              <LocalGroceryStoreIcon />
+            </Button>
+            <Button
+              size="small"
+              sx={{
+                color: "#3e8ec1",
+                position: "absolute",
+                bottom: 5,
+                right: 0,
+              }}
+            >
+              <StarBorderIcon />
+            </Button>
             {status ? (
                     <Button id = {item.id} size="small" sx={{color: "#2ca1c7", position: "absolute", bottom: 5, right: 0,}}
                             onClick={() => addFavHandler(item.id)}>
@@ -84,10 +107,13 @@ function Product({item}) {
                         <Star />
                     </Button>
                 )}
+            
+          </CardActions>
+        </div>
+      </Card>
+    </div>
 
-        </CardActions>
-      </div>
-    </Card>
+
   );
 }
 

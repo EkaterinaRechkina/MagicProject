@@ -49,11 +49,11 @@ function OneUserProduct({ id, author, title, description, img, price }) {
   }
 
   return (
-    <div className="story">
+    <div className="story oneProduct">
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ maxWidth: 205, position: "relative", margin: 5 }}>
+            <Card sx={{ width: 205, position: "relative", margin: 0 }}>
               <CardMedia
                 component="img"
                 height="200"
@@ -73,8 +73,8 @@ function OneUserProduct({ id, author, title, description, img, price }) {
                   <EditIcon onClick={handleOpen} />
                 </Button>
                 <div className="title">{title}</div>
-                <div>Price: {price}</div>
-                <div>Author: {author}</div>
+                <div>Price $: {price}</div>
+                <div>Seller: {author}</div>
               </CardContent>
             </Card>
 
@@ -134,7 +134,8 @@ function OneUserProduct({ id, author, title, description, img, price }) {
             variant="standard"
             required
           />
-          <TextField type='number'
+          <TextField
+            type="number"
             onChange={(event) => setNewPrice(event.target.value)}
             value={newPrice}
             id="standard-basic"

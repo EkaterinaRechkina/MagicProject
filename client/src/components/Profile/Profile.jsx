@@ -63,15 +63,23 @@ function Profile() {
             variant="outlined"
             sx={{
               width: "200px",
-              border: "1px solid #2b256f",
+              border: "none",
               color: "#2b256f",
               textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
           >
             Sell something
           </Button>
-          {isAdmin ? <AddEventForm /> : null}
         </div>
+      </div>
+      <div>
+        <p className="title">Admin</p>
+        {isAdmin ? <AddEventForm /> : null}
       </div>
       {open && (
         <Box
@@ -104,17 +112,18 @@ function Profile() {
             />
             <TextField
               required
-              type='number'
+              type="number"
               id="outlined-required"
               label="Price"
               value={price}
               onChange={(event) => setPrice(event.target.value)}
             />
             <TextareaAutosize
+              maxLength={50}
               value={description}
               aria-label="description"
-              placeholder="Product description"
-              style={{ width: 400, height: 300, resize: "none", fontSize: 16 }}
+              placeholder="Product description 50 symbols"
+              style={{ width: 400, height: 80, resize: "none", fontSize: 16 }}
               onChange={(event) => setDescription(event.target.value)}
             />
             <Button
@@ -145,7 +154,7 @@ function Profile() {
         </Box>
       )}
 
-      <div className={style.ulProductUser}></div>
+      {/* <div className={style.ulProductUser}></div> */}
     </div>
   );
 }
