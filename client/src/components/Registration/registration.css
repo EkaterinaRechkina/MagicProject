@@ -1,3 +1,7 @@
+.wrapp {
+
+}
+
 .form-registration {
     display: flex;
     flex-direction: column;
@@ -7,14 +11,14 @@
     gap: 20px;
 }
 
+.red_alert_reg {
+    background-color: #ffbcbc;
+}
+
 .witch {
     position: absolute;
     bottom: 50px;
     right: 50px;
-}
-
-.witch img {
-    /*transform: scale(-1, 1);*/
 }
 
 .witchImg {

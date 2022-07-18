@@ -6,11 +6,14 @@ import { checkAuth } from "../../hooks/checkAuth";
 import { useDispatch } from "react-redux";
 import "./registration.css";
 import 'animate.css';
+import {checkAdmin} from "../../hooks/checkAdmin";
 
 export default function Registration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [statusName, setStatusName] = useState(true);
+  const [statusEmail, setStatusEmail] = useState(true);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -24,10 +27,17 @@ export default function Registration() {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data.message) {
+        if (response.data.message === 'A user with this username already exists. Log in or register with another username.') {
+          setStatusName(false);
+          alert(response.data.message);
+        } else if (response.data.message === 'A user with this email address already exists. Log in or register with a different email address.') {
+          setStatusEmail(false);
           alert(response.data.message);
         } else {
-          checkAuth(dispatch);
+          setStatusName(true);
+          setStatusEmail(true);
+          dispatch(checkAuth())
+          dispatch(checkAdmin())
           navigate("/");
         }
       });
@@ -47,7 +57,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Login"
           variant="outlined"
-          className='animate__animated animate__fadeInDown animate__delay-.5s'
+          className= {statusName ? 'animate__animated animate__fadeInDown animate__delay-.5s' : 'red_alert_reg'}
           required
         />
         <TextField
@@ -59,7 +69,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          className='animate__animated animate__fadeInDown animate__delay-1s'
+          className= {statusEmail ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert_reg'}
           required
         />
         <TextField

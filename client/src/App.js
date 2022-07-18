@@ -15,6 +15,7 @@ import AllEvents from "./components/AllEvents/AllEvents";
 import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
 import Test from "./components/Test";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/stories" element={<AllStories />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/yourproducts" element={<UserProducts />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>

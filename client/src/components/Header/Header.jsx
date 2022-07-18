@@ -202,13 +202,19 @@ const Header = () => {
                     </Link>
 
                     <Link to="cart" className="link-sidebar">
-                      <MenuItem key={14} onClick={handleCloseUserMenu}>
+                      <MenuItem key={11} onClick={handleCloseUserMenu}>
                         <p className="link-sidebar"> My cart</p>
                       </MenuItem>
                     </Link>
 
+                    <Link to="favorites" className="link-sidebar">
+                      <MenuItem key={12} onClick={handleCloseUserMenu}>
+                        <p className="link-sidebar"> My favorites</p>
+                      </MenuItem>
+                    </Link>
+
                     <Link to="/" className="link-sidebar">
-                      <MenuItem key={11} onClick={logoutHandler}>
+                      <MenuItem key={13} onClick={logoutHandler}>
                         <p className="link-sidebar"> Logout</p>
                       </MenuItem>
                     </Link>
@@ -216,13 +222,13 @@ const Header = () => {
                 ) : (
                   <div>
                     <Link to="login" className="link-sidebar">
-                      <MenuItem key={12} onClick={handleCloseUserMenu}>
+                      <MenuItem key={14} onClick={handleCloseUserMenu}>
                         <p className="link-sidebar"> Sign in</p>
                       </MenuItem>
                     </Link>
 
                     <Link to="registration" className="link-sidebar">
-                      <MenuItem key={13} onClick={handleCloseUserMenu}>
+                      <MenuItem key={15} onClick={handleCloseUserMenu}>
                         <p className="link-sidebar"> Sign up</p>
                       </MenuItem>
                     </Link>

@@ -17,7 +17,8 @@ const adminRouter = require('./routes/admin.router');
 
 const userInfoRouter = require('./routes/userInfo.router');
 const shopRouter = require('./routes/shop.router');
-const eventRouter = require('./routes/event.router')
+const eventRouter = require('./routes/event.router');
+const favoritesRouter = require('./routes/favorites.router');
 
 const cartRouter = require('./routes/cart.router')
 
@@ -54,8 +55,6 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
 app.use("/registration", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
@@ -65,8 +64,9 @@ app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
 app.use('/shop', shopRouter);
 app.use('/admin', adminRouter);
-app.use('/events', eventRouter)
 app.use('/cart', cartRouter)
+app.use('/events', eventRouter);
+app.use('/favorites', favoritesRouter);
 
 app.listen(PORT, async () => {
   try {
