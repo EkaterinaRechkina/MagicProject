@@ -20,6 +20,8 @@ const shopRouter = require('./routes/shop.router');
 const eventRouter = require('./routes/event.router');
 const favoritesRouter = require('./routes/favorites.router');
 
+const cartRouter = require('./routes/cart.router')
+
 app.use('/static', express.static(__dirname + '/public'));
 
 
@@ -62,6 +64,7 @@ app.use("/stories", storiesRouter);
 app.use('/userinfo', userInfoRouter);
 app.use('/shop', shopRouter);
 app.use('/admin', adminRouter);
+app.use('/cart', cartRouter)
 app.use('/events', eventRouter);
 app.use('/favorites', favoritesRouter);
 

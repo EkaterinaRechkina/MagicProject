@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const mailer = require('../controllers/mailController')
 
 const { User } = require("../db/models");
 
@@ -41,6 +42,18 @@ router
 
                 req.session.userId = newUser.id;
                 req.session.userName = newUser.name;
+
+
+                const massage = {
+                    to: newUser.email,
+                    subject: 'Регистрация почтового адреса',
+                    text: `
+                    Поздравляем вы успешно зарегистрированы!
+                    Ваш логин в личном кабинете : ${newUser.name}
+                    Ваш пароль :  ${password}.
+                    `,
+                  };
+                  mailer(massage);
 
                 const userInfo = [newUser.id, newUser.name, newUser.email];
                 res.json({ userInfo })

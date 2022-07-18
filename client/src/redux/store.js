@@ -5,7 +5,9 @@ import { userReducer } from "./reducers/user.reducer";
 import { productReducer } from "./reducers/product.reducer";
 import { adminReducer } from "./reducers/admin.reducer";
 import { eventReducer } from "./reducers/event.reducer";
+import { cartReducer } from "./reducers/cart.reducer";
 import { favoriteReducer } from "./reducers/favorites.reducer";
+
 
 const initState = {
   story: {
@@ -33,6 +35,11 @@ const initState = {
     value: [],
     error: null,
   },
+  cart: {
+    sLoading: false,
+    value: [],
+    error: null
+},
   favorites: {
     sLoading: false,
     value: [],
@@ -48,6 +55,7 @@ const store = configureStore({
     product: productReducer,
     admin: adminReducer,
     events: eventReducer,
+    cart: cartReducer,
     favorites: favoriteReducer,
   },
 });

@@ -8,6 +8,12 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import Star from "@mui/icons-material/Star"
 import "../Story/Story";
 import "./product.css";
+import { addToCart } from "../../redux/actions/cart.actions";
+import { useDispatch } from "react-redux";
+
+function Product({item}) {
+  const dispatch = useDispatch();
+
 
 import {addFavorites, deleteFavorites, editFavorites} from "../../redux/actions/favorites.action";
 import {useDispatch, useSelector} from "react-redux";
@@ -43,6 +49,7 @@ function Product({item}) {
         dispatch(deleteFavorites(id, status));
     }
 
+
   return (
     <Card sx={{ maxWidth: 205, position: "relative", margin: 10 }}>
       <CardMedia component="img" height="200" image={item.img} alt="" />
@@ -54,7 +61,7 @@ function Product({item}) {
         <div className="description-popup ">Author: {item.author}</div>
         <CardActions>
           <Button
-            onClick={() => addToCart(item)}
+            onClick={() => dispatch(addToCart(item))}
             size="small"
             sx={{
               color: "#2ca1c7",
