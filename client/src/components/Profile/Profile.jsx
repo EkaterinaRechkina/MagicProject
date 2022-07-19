@@ -11,7 +11,8 @@ import AddEventForm from "../AddEventForm/AddEventForm";
 import { checkAdmin } from "../../hooks/checkAdmin";
 import { checkAuth } from "../../hooks/checkAuth";
 
-function Profile() {
+function Profile({ useStyles }) {
+  const classes = useStyles();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [img, setImg] = useState("");
@@ -78,12 +79,12 @@ function Profile() {
         </div>
       </div>
       <div>
-        {isAdmin ? 
-              <>
-              <p className="title">Admin</p>
-              <AddEventForm />
-              </>
-               : null}
+        {isAdmin ? (
+          <>
+            <p className="title">Admin</p>
+            <AddEventForm useStyles={useStyles} />
+          </>
+        ) : null}
       </div>
       {open && (
         <Box
@@ -101,6 +102,18 @@ function Profile() {
             }}
           >
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Title"
@@ -108,6 +121,18 @@ function Profile() {
               onChange={(event) => setTitle(event.target.value)}
             />
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Image"
@@ -115,6 +140,18 @@ function Profile() {
               onChange={(event) => setImg(event.target.value)}
             />
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               type="number"
               id="outlined-required"
@@ -123,6 +160,18 @@ function Profile() {
               onChange={(event) => setPrice(event.target.value)}
             />
             <TextareaAutosize
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               maxLength={50}
               value={description}
               aria-label="description"
@@ -134,10 +183,16 @@ function Profile() {
               variant="outlined"
               type="submit"
               sx={{
-                width: 200,
-                marginTop: 2,
-                border: "1px solid #2b256f",
+                margin: "2% auto",
+                width: "200px",
+                border: "none",
                 color: "#2b256f",
+                textAlign: "center",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
             >
               Add product
@@ -145,10 +200,16 @@ function Profile() {
             <Button
               variant="outlined"
               sx={{
-                width: 200,
-                marginTop: 2,
-                border: "1px solid #2b256f",
+                margin: "0 auto",
+                width: "200px",
+                border: "none",
                 color: "#2b256f",
+                textAlign: "center",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
               }}
               onClick={closeForm}
             >

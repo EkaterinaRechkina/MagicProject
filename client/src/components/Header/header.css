@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
 .header{
     font-family: 'Calligraffitti', cursive;
     font-weight: bold;
@@ -12,10 +12,11 @@
     text-decoration: none;
 }
 .link-sidebar {
+    font-family: 'Cormorant SC', serif;
     color: black;
     text-decoration: none;
-    font-family: 'Calligraffitti', cursive;
-    font-weight: bold;
+    font-style: italic;
+
 }
 
 .link-home{
@@ -24,7 +25,3 @@
     gap: 10%;
 }
 
-/* .link-sidebar :link { text-decoration: none; }
-.link-sidebar :visited { text-decoration: none; }
-.link-sidebar :hover { text-decoration: none; }
-.link-sidebar :active { text-decoration: none; } */

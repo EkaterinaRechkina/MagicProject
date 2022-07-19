@@ -22,6 +22,7 @@ import ImgProfile from "../../witch.jpg";
 import logo from "../../images/logo.svg";
 import "./header.css";
 import { checkAdmin } from "../../hooks/checkAdmin";
+import { TextField } from "@mui/material";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -187,10 +188,12 @@ const Header = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open profile">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={require('../../images/penta.png')}/>
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={require("../../images/penta.png")}
+                  />
                 </IconButton>
               </Tooltip>
-
               <Menu
                 sx={{ mt: "45px" }}
                 id="menu-appbar"
