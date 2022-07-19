@@ -11,8 +11,7 @@ import 'animate.css';
 export default function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [statusName, setStatusName] = useState(true);
-  const [statusPas, setStatusPas] = useState(true);
+  const [statusInfo, setStatusInfo] = useState("");
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -26,15 +25,9 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data.message === 'User not found!') {
-          alert(response.data.message);
-          setStatusName(false);
-        } else if (response.data.message === 'Wrong password!') {
-          alert(response.data.message);
-          setStatusPas(false);
+        if (response.data.message) {
+          setStatusInfo(response.data.message);
         } else {
-          setStatusName(true);
-          setStatusPas(true);
           dispatch(checkAuth())
           dispatch(checkAdmin())
           navigate("/");
@@ -54,7 +47,7 @@ export default function Login() {
           label="Login"
           variant="outlined"
           required
-          className = {statusName ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert'}
+          className = {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert'}
         />
         <TextField
           value={password}
@@ -65,7 +58,7 @@ export default function Login() {
           type="password"
           label="password"
           variant="outlined"
-          className={statusPas ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert'}
+          className={!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert'}
           required
         />
         <Button
@@ -81,6 +74,7 @@ export default function Login() {
         <img src={require('../../images/witchLeft.png')} alt='#' className='witchImg'/>
         <img src={require('../../images/witch.png')} alt='#' className='witchRImg'/>
       </div>
+      {statusInfo? <p className="info">{statusInfo}</p> : null}
     </div>
   );
 }

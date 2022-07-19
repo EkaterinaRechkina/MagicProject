@@ -1,7 +1,9 @@
 .wrapp {
     overflow: hidden;
 }
-
+.info {
+    color: red;
+}
 .login-form{
     display: flex;
     flex-direction: column;

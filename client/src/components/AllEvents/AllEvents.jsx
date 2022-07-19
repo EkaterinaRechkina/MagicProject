@@ -12,6 +12,8 @@ function AllEvents() {
   const events = useSelector((store) => store.events);
 
   useEffect(() => {
+    dispatch(checkAuth())
+    dispatch(checkAdmin())
     dispatch(setEvents());
   }, [dispatch]);
 
