@@ -97,6 +97,18 @@ export default function AllStories({ useStyles }) {
             }}
           >
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Title"
