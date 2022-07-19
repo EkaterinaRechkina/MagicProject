@@ -21,6 +21,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import ImgProfile from "../../witch.jpg";
 import logo from "../../images/logo.svg";
 import "./header.css";
+import { checkAdmin } from "../../hooks/checkAdmin";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Header = () => {
   }, [dispatch]);
 
   const isAuth = useSelector((store) => store.auth);
+  const isAdmin = useSelector((store) => store.admin);
 
   const navigate = useNavigate();
 
@@ -39,6 +41,7 @@ const Header = () => {
       .then((response) => {
         localStorage.clear();
         dispatch(checkAuth());
+        dispatch(checkAdmin());
       });
   }
 
@@ -211,19 +214,21 @@ const Header = () => {
                         <p className="link-sidebar"> My goods</p>
                       </MenuItem>
                     </Link>
+                    {!isAdmin ? (
+                      <>
+                        <Link to="cart" className="link-sidebar">
+                          <MenuItem key={11} onClick={handleCloseUserMenu}>
+                            <p className="link-sidebar"> My cart</p>
+                          </MenuItem>
+                        </Link>
 
-                    <Link to="cart" className="link-sidebar">
-                      <MenuItem key={11} onClick={handleCloseUserMenu}>
-                        <p className="link-sidebar"> My cart</p>
-                      </MenuItem>
-                    </Link>
-
-                    <Link to="favorites" className="link-sidebar">
-                      <MenuItem key={12} onClick={handleCloseUserMenu}>
-                        <p className="link-sidebar"> My favorites</p>
-                      </MenuItem>
-                    </Link>
-
+                        <Link to="favorites" className="link-sidebar">
+                          <MenuItem key={12} onClick={handleCloseUserMenu}>
+                            <p className="link-sidebar"> My favorites</p>
+                          </MenuItem>
+                        </Link>
+                      </>
+                    ) : null}
                     <Link to="/" className="link-sidebar">
                       <MenuItem key={13} onClick={logoutHandler}>
                         <p className="link-sidebar"> Logout</p>

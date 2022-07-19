@@ -78,8 +78,12 @@ function Profile() {
         </div>
       </div>
       <div>
-        <p className="title">Admin</p>
-        {isAdmin ? <AddEventForm /> : null}
+        {isAdmin ? 
+              <>
+              <p className="title">Admin</p>
+              <AddEventForm />
+              </>
+               : null}
       </div>
       {open && (
         <Box
