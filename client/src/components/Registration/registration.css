@@ -15,32 +15,32 @@
     background-color: #ffbcbc;
 }
 
-.witch {
+.witchReg {
     position: absolute;
     bottom: 50px;
     right: 50px;
 }
 
-.witchImg {
+.witchImgReg {
     width: 250px;
     height: 250px;
     position: relative;
-    animation: levelFlight 5s forwards;
+    animation: levelFlightRegR 5s forwards;
 }
 
-.witchRImg {
+.witchRImgReg {
     width: 300px;
     height: 300px;
     position: relative;
-    animation: levelFlightR 7s forwards;
+    animation: levelFlightRegL 7s forwards;
 }
 
-@keyframes levelFlight {
+@keyframes levelFlightRegR {
     from { right: -800px; top: -600px}
     to { right: 3000px; top: -100px}
 }
 
-@keyframes levelFlightR {
+@keyframes levelFlightRegL {
     from { left: -4500px; top: 0}
     to { left: -1400px; top: -700px}
 }

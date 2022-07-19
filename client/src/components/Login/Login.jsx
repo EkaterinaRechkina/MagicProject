@@ -58,14 +58,14 @@ export default function Login() {
           type="password"
           label="password"
           variant="outlined"
-          className={!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert'}
+          className={!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert'}
           required
         />
         <Button
           type="submit"
           variant="outlined"
           sx={{ width: "150px", color: "#2b256f" }}
-          className='animate__animated animate__fadeInDown animate__delay-2s'
+          className='animate__animated animate__fadeInDown animate__delay-0.5s'
         >
           LOGIN
         </Button>

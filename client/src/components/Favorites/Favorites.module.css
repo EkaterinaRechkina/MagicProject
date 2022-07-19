@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+
 .wrap {
     width: 100%;
     height: 100%;
+    text-align: center;
+    font-family: 'Cormorant SC', serif;
+    font-weight: bold;
 }
 
 .ulFav {
@@ -13,11 +18,35 @@
 .liFav {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    border: 2px solid #701d6f;
+    width: 700px;
+    height: 200px
+}
+
+.itemLiImg {
+    width: 250px;
 }
 
 .imageFav {
-    max-width: 100px;
-    max-height: 100px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.itemLiTitle {
+    font-size: 30px;
+    width: 150px;
+}
+
+.itemLiPrice {
+    font-size: 30px;
+    width: 100px;
+}
+
+
+.itemLiButton {
+    width: 50px;
 }

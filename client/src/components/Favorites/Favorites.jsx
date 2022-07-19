@@ -3,9 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import style from './Favorites.module.css';
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import CardContent from "@mui/material/CardContent";
-import {deleteProduct} from "../../redux/actions/product.action";
 import {deleteFavorites} from "../../redux/actions/favorites.action";
 
 function Favorites() {
@@ -32,10 +29,12 @@ function Favorites() {
                 <ul className={style.ulFav}>
                     {favoritesProduct.map(item =>
                         <li key={item.id} className={style.liFav} id={item.id}>
-                            <img src={item.img} alt="#" className={style.imageFav}/>
-                            <p>{item.title}</p>
-                            <p>{item.price}</p>
-                            <Button id={item.id} onClick={() => deleteFavHandler(item.id)}>
+                            <div className={`${style.itemLiImg}`}>
+                                <img src={item.img} alt="#" className={`${style.imageFav}`} />
+                            </div>
+                            <p className={`${style.itemLiTitle}`}>{item.title}</p>
+                            <p className={`${style.itemLiPrice}`}>{item.price}$</p>
+                            <Button id={item.id} onClick={() => deleteFavHandler(item.id)} className={`${style.itemLiButton}`}>
                                 <DeleteIcon />
                             </Button>
                         </li>

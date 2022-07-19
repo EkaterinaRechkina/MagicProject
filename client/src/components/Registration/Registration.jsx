@@ -50,7 +50,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Login"
           variant="outlined"
-          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-.5s' : 'red_alert_reg'}
+          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert_reg'}
           required
         />
         <TextField
@@ -62,7 +62,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert_reg'}
+          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert_reg'}
           required
         />
         <TextField
@@ -74,21 +74,21 @@ export default function Registration() {
           id="outlined-basic"
           label="password"
           variant="outlined"
-          className='animate__animated animate__fadeInDown animate__delay-2s'
+          className='animate__animated animate__fadeInDown animate__delay-0.5s'
           required
         />
         <Button
           type="submit"
           variant="outlined"
           sx={{ width: "150px", color: "#2b256f" }}
-          className='animate__animated animate__fadeInDown animate__delay-2s'
+          className='animate__animated animate__fadeInDown animate__delay-0.5s'
         >
           Register
         </Button>
       </form>
-      <div id='witch' className="witch">
-        <img src={require('../../images/witchLeft.png')} alt='#' className='witchImg'/>
-        <img src={require('../../images/witch.png')} alt='#' className='witchRImg'/>
+      <div id='witchReg' className="witchReg">
+        <img src={require('../../images/witchLeft.png')} alt='#' className='witchImgReg'/>
+        <img src={require('../../images/witch.png')} alt='#' className='witchRImgReg'/>
       </div>
       {statusInfo ? <p className="info">{statusInfo}</p> : null}
     </div>
