@@ -49,7 +49,9 @@ export default function Event({
   price,
   people,
   place,
+  useStyles,
 }) {
+  const classes = useStyles();
   const [inputs, setInputs] = useState({
     title,
     description,
@@ -213,6 +215,18 @@ export default function Event({
       >
         <Box sx={style}>
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             name="title"
             required
             id="outlined-required"
@@ -221,6 +235,18 @@ export default function Event({
             onChange={inputsHandler}
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             name="image"
             required
             id="outlined-required"
@@ -229,6 +255,18 @@ export default function Event({
             onChange={inputsHandler}
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             name="price"
             required
             id="outlined-required"
@@ -251,10 +289,41 @@ export default function Event({
               onChange={(newValue) => {
                 setNewDate(newValue.toDateString());
               }}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  classes={{
+                    root: classes.root,
+                  }}
+                  sx={{
+                    svg: { color: "#711d6f" },
+                    input: { color: "#711d6f" },
+                    label: { color: " #711d6f" },
+                    "& label": { color: "#711d6f" },
+                    "& label.Mui-focused": {
+                      color: "#711d6f",
+                    },
+                    "& legend": {
+                      color: "#711d6f",
+                    },
+                  }}
+                />
+              )}
             />
           </LocalizationProvider>
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             name="people"
             required
             id="outlined-required"
@@ -273,12 +342,36 @@ export default function Event({
 
           <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
             <GeoapifyGeocoderAutocomplete
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               placeSelect={onPlaceSelect}
               suggestionsChange={onSuggectionChange}
               // value={newPlace}
             />
           </GeoapifyContext>
           <TextareaAutosize
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             name="description"
             value={inputs.description}
             aria-label="description"

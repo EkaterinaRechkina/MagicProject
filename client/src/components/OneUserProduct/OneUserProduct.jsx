@@ -27,9 +27,17 @@ const style = {
   flexDirection: "column",
   gap: "20px",
 };
-function OneUserProduct({ id, author, title, description, img, price }) {
+function OneUserProduct({
+  id,
+  author,
+  title,
+  description,
+  img,
+  price,
+  useStyles,
+}) {
   const dispatch = useDispatch();
-
+  const classes = useStyles();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newImg, setNewImg] = useState(img);
@@ -112,6 +120,18 @@ function OneUserProduct({ id, author, title, description, img, price }) {
       >
         <Box sx={style}>
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             required
             id="outlined-required"
             label="Image"
@@ -119,34 +139,76 @@ function OneUserProduct({ id, author, title, description, img, price }) {
             onChange={(event) => setNewImg(event.target.value)}
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             onChange={(event) => setNewTitle(event.target.value)}
             value={newTitle}
             id="standard-basic"
             label="Title"
-            variant="standard"
             required
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             onChange={(event) => setNewDescription(event.target.value)}
             value={newDescription}
             id="standard-basic"
             label="Description"
-            variant="standard"
             required
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             type="number"
             onChange={(event) => setNewPrice(event.target.value)}
             value={newPrice}
             id="standard-basic"
             label="Price"
-            variant="standard"
             required
           />
           <Button
             id={id}
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             size="small"
             onClick={() =>
@@ -158,7 +220,16 @@ function OneUserProduct({ id, author, title, description, img, price }) {
           <Button
             size="small"
             sx={{
+              margin: "0 auto",
+              width: "200px",
+              border: "none",
               color: "#2b256f",
+              textAlign: "center",
+              ":hover": {
+                border: "none",
+                bgcolor: "#eba7d0",
+                color: "#fff", // theme.palette.primary.main
+              },
             }}
             onClick={handleClose}
           >

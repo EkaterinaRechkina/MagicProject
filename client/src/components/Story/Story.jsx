@@ -32,7 +32,15 @@ const style = {
   gap: "20px",
 };
 
-export default function Story({ id, title, description, img, author }) {
+export default function Story({
+  id,
+  title,
+  description,
+  img,
+  author,
+  useStyles,
+}) {
+  const classes = useStyles();
   const dispatch = useDispatch();
 
   const [newTitle, setNewTitle] = useState(title);
@@ -140,6 +148,18 @@ export default function Story({ id, title, description, img, author }) {
       >
         <Box sx={style}>
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             required
             id="outlined-required"
             label="Image"
@@ -147,19 +167,41 @@ export default function Story({ id, title, description, img, author }) {
             onChange={(event) => setNewImg(event.target.value)}
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             onChange={(event) => setNewTitle(event.target.value)}
             value={newTitle}
             id="standard-basic"
             label="Title"
-            variant="standard"
             required
           />
           <TextField
+            classes={{
+              root: classes.root,
+            }}
+            sx={{
+              "& label": { color: "#711d6f" },
+              "& label.Mui-focused": {
+                color: "#711d6f",
+              },
+              "& legend": {
+                color: "#711d6f",
+              },
+            }}
             onChange={(event) => setNewDescription(event.target.value)}
             value={newDescription}
             id="standard-basic"
             label="Description"
-            variant="standard"
             required
           />
           <Button

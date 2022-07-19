@@ -61,25 +61,30 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/registration"
+              element={<Registration useStyles={useStyles} />}
+            />
+            <Route path="/login" element={<Login useStyles={useStyles} />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/map" element={<Map />} />
             <Route
               path="/events"
-              element={
-                <>
-                  <AllEvents />
-                </>
-              }
+              element={<AllEvents useStyles={useStyles} />}
             />
             <Route path="/shop" element={<Shop />} />
             <Route
               path="/stories"
               element={<AllStories useStyles={useStyles} />}
             />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/yourproducts" element={<UserProducts />} />
+            <Route
+              path="/profile"
+              element={<Profile useStyles={useStyles} />}
+            />
+            <Route
+              path="/yourproducts"
+              element={<UserProducts useStyles={useStyles} />}
+            />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>

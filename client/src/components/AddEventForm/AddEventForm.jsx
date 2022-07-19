@@ -16,7 +16,8 @@ import {
 import "@geoapify/geocoder-autocomplete/styles/minimal.css";
 import { width } from "@mui/system";
 
-function AddEventForm() {
+function AddEventForm({ useStyles }) {
+  const classes = useStyles();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -118,6 +119,18 @@ function AddEventForm() {
             }}
           >
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Title"
@@ -125,6 +138,18 @@ function AddEventForm() {
               onChange={(event) => setTitle(event.target.value)}
             />
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Image"
@@ -132,6 +157,18 @@ function AddEventForm() {
               onChange={(event) => setImg(event.target.value)}
             />
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="Price"
@@ -152,10 +189,41 @@ function AddEventForm() {
                 onChange={(newValue) => {
                   setDate(newValue.toDateString());
                 }}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    classes={{
+                      root: classes.root,
+                    }}
+                    sx={{
+                      svg: { color: "#711d6f" },
+                      input: { color: "#711d6f" },
+                      label: { color: " #711d6f" },
+                      "& label": { color: "#711d6f" },
+                      "& label.Mui-focused": {
+                        color: "#711d6f",
+                      },
+                      "& legend": {
+                        color: "#711d6f",
+                      },
+                    }}
+                  />
+                )}
               />
             </LocalizationProvider>
             <TextField
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               required
               id="outlined-required"
               label="People"
@@ -172,6 +240,18 @@ function AddEventForm() {
 
             <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
               <GeoapifyGeocoderAutocomplete
+                classes={{
+                  root: classes.root,
+                }}
+                sx={{
+                  "& label": { color: "#711d6f" },
+                  "& label.Mui-focused": {
+                    color: "#711d6f",
+                  },
+                  "& legend": {
+                    color: "#711d6f",
+                  },
+                }}
                 placeSelect={onPlaceSelect}
                 suggestionsChange={onSuggectionChange}
                 // onChange={(event) => setPlace(event.target.value)}
@@ -180,6 +260,18 @@ function AddEventForm() {
             </GeoapifyContext>
 
             <TextareaAutosize
+              classes={{
+                root: classes.root,
+              }}
+              sx={{
+                "& label": { color: "#711d6f" },
+                "& label.Mui-focused": {
+                  color: "#711d6f",
+                },
+                "& legend": {
+                  color: "#711d6f",
+                },
+              }}
               value={description}
               aria-label="description"
               placeholder="Event description"
