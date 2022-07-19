@@ -398,15 +398,24 @@ export default function Map() {
       <div ref={mapElement} className="map"></div>
       <div id="cat" className="cat">
         <img
-          src={require("../../images/cat_sitting.gif")}
-          alt="#"
-          className="catGifSitting animate__animated animate__bounceIn animate__delay-3s"
-        />
-        <img
           src={require("../../images/black_cat.gif")}
           alt="#"
           className="catGif"
         />
+      </div>
+      <img
+        src={require("../../images/cat_sitting.gif")}
+        alt="#"
+        className="catGifSitting animate__animated animate__bounceIn animate__delay-5s"
+      />
+      <img
+        src={require("../../images/for_text.png")}
+        alt="#"
+        className="cloudForText animate__animated animate__bounceIn animate__delay-5s"
+      />
+      <div className="textInCloud animate__animated animate__bounceIn animate__delay-5s">
+        <p>Go to history,</p>
+        <p>I'll look here.</p>
       </div>
     </div>
   );
