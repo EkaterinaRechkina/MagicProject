@@ -1,10 +1,9 @@
 .events {
     display: grid;
     grid-template-columns:repeat(2, auto);
-    justify-content: flex-start;
-    gap: 6%;
-    margin: 5% 0 10%;
-
+    justify-content: space-around;
+    gap: 3%;
+    margin: 3%;
 }
 
 .events-list {
@@ -16,9 +15,24 @@
 .event {
     margin-left: 3%;
 }
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1750px) {
     .events {  
         grid-template-columns:repeat(2, auto);
+        gap: 1%
+    }
+    .events-list {  
+        grid-template-columns:repeat(3, auto);
+        gap: 1%
+    }
+  }
+@media only screen and (max-width: 1050px) {
+    .events {  
+        grid-template-columns:repeat(1, auto);
+        gap: 1%
+    }
+    .events-list {  
+        grid-template-columns:repeat(2, auto);
+        gap: 1%
     }
   }
   @media only screen and (max-width: 680px) {
@@ -26,4 +40,9 @@
         grid-template-columns:repeat(1, auto);
         gap: 1%;
     }
+    .events-list {  
+        grid-template-columns:repeat(1, auto);
+        gap: 1%
+    }
   }
+
