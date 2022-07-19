@@ -33,8 +33,7 @@ export default function Shop() {
                 type: "GET_PRODUCT",
                 payload: response.data.filter(
                   (item) =>
-                    +item.price.slice(0, item.price.length - 1) >= inputMin &&
-                    +item.price.slice(0, item.price.length - 1) <= 99999
+                    +item.price >= inputMin && +item.price <= 99999
                 ),
               });
             } else {
@@ -42,8 +41,7 @@ export default function Shop() {
                 type: "GET_PRODUCT",
                 payload: response.data.filter(
                   (item) =>
-                    +item.price.slice(0, item.price.length - 1) >= inputMin &&
-                    +item.price.slice(0, item.price.length - 1) <= inputMax
+                    +item.price >= inputMin && +item.price <= inputMax
                 ),
               });
             }

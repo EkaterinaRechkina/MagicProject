@@ -39,38 +39,48 @@
 }
 
 
-.description-map{ 
+.description-map{
     margin-top: 5%;
     line-height: 1.5;
     font-size: 14px;
     font-weight: 400;
 }
 
-
-
 .cat {
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    bottom: 70px;
+    left: 10px;
 }
 
 .catGif {
-    width: 40%;
-    height: 40%;
     position: relative;
+    width: 100%;
     animation: levelFlight 5s forwards;
 }
 
 .catGifSitting {
+    width: 10%;
+    position: absolute;
+    left: 150px;
+    bottom: 70px;
+}
+
+.cloudForText {
     width: 15%;
-    height: 15%;
-    position: relative;
-    right: 1250px;
-    top: -40px
+    position: absolute;
+    left: 220px;
+    bottom: 280px;
+}
+
+.textInCloud {
+    position: absolute;
+    left: 285px;
+    bottom: 420px;
+    font-size: 40px;
 }
 
 @keyframes levelFlight {
-    from { right: -800px; top: 60px}
-    to { right: 2100px; top: 60px}
+    from { right: -2500px; top: 60px}
+    to { right: 400px; top: 60px}
 }
 
