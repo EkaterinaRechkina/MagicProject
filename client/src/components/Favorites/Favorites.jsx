@@ -33,7 +33,7 @@ function Favorites() {
                                 <img src={item.img} alt="#" className={`${style.imageFav}`} />
                             </div>
                             <p className={`${style.itemLiTitle}`}>{item.title}</p>
-                            <p className={`${style.itemLiPrice}`}>{item.price}$</p>
+                            <p className={`${style.itemLiPrice}`}>$: {item.price}</p>
                             <Button id={item.id} onClick={() => deleteFavHandler(item.id)} className={`${style.itemLiButton}`}>
                                 <DeleteIcon />
                             </Button>
