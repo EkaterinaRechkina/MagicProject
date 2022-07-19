@@ -7,13 +7,13 @@ import { checkAdmin } from "../../hooks/checkAdmin";
 import { checkAuth } from "../../hooks/checkAuth";
 import MyCalendar from "../Calendar/Calendar";
 
-function AllEvents() {
+function AllEvents({ useStyles }) {
   const dispatch = useDispatch();
   const events = useSelector((store) => store.events);
 
   useEffect(() => {
-    dispatch(checkAuth())
-    dispatch(checkAdmin())
+    dispatch(checkAuth());
+    dispatch(checkAdmin());
     dispatch(setEvents());
   }, [dispatch]);
 
@@ -24,7 +24,12 @@ function AllEvents() {
       </div>
       <div className="events-list">
         {events.map((event) => (
-          <Event {...event} key={event.id} className="event" />
+          <Event
+            {...event}
+            key={event.id}
+            className="event"
+            useStyles={useStyles}
+          />
         ))}
       </div>
     </div>

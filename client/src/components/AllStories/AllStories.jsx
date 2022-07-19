@@ -191,7 +191,9 @@ export default function AllStories({ useStyles }) {
 
       <div className="stories">
         {story &&
-          story.map((element) => <Story key={element.id} {...element} />)}
+          story.map((element) => (
+            <Story key={element.id} {...element} useStyles={useStyles} />
+          ))}
       </div>
     </>
   );

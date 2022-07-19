@@ -1,14 +1,13 @@
-.wrapp {
-
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
 
 .form-registration {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10%;
     gap: 20px;
+    font-family: 'Cormorant SC', serif;
+    margin-top: 3%;
 }
 
 .red_alert_reg {
@@ -43,4 +42,11 @@
 @keyframes levelFlightRegL {
     from { left: -4500px; top: 0}
     to { left: -1400px; top: -700px}
+}
+
+.info {
+    font-size: 24px;
+    max-width: 400px;
+    margin: 3% auto;
+    font-family: 'Cormorant SC', serif;
 }
