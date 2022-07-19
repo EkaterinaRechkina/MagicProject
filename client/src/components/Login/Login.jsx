@@ -88,11 +88,7 @@ export default function Login({ useStyles }) {
           type="password"
           label="password"
           variant="outlined"
-          className={
-            !statusInfo
-              ? "animate__animated animate__fadeInDown animate__delay-1s"
-              : "red_alert"
-          }
+          className={!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert'}
           required
         />
         <Button
@@ -110,7 +106,7 @@ export default function Login({ useStyles }) {
               color: "#fff", // theme.palette.primary.main
             },
           }}
-          className="animate__animated animate__fadeInDown animate__delay-2s"
+          className='animate__animated animate__fadeInDown animate__delay-0.5s'
         >
           LOGIN
         </Button>

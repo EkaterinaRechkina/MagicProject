@@ -20,7 +20,7 @@
 
 .witch {
     position: absolute;
-    bottom: 50px;
+    bottom: 150px;
     right: 50px;
 }
 
@@ -28,24 +28,24 @@
     width: 250px;
     height: 250px;
     position: relative;
-    animation: levelFlight 5s forwards;
+    animation: levelFlightR 5s forwards;
 }
 
 .witchRImg {
     width: 300px;
     height: 300px;
     position: relative;
-    animation: levelFlightR 7s forwards;
-}
-
-@keyframes levelFlight {
-    from { right: -800px; top: -600px}
-    to { right: 3000px; top: -100px}
+    animation: levelFlightL 7s forwards;
 }
 
 @keyframes levelFlightR {
+    from { right: -600px; top: -300px}
+    to { right: 3000px; top: -100px}
+}
+
+@keyframes levelFlightL {
     from { left: -4500px; top: 0}
-    to { left: -1400px; top: -700px}
+    to { left: -1400px; top: -650px}
 }
 .info {
     font-size: 24px;

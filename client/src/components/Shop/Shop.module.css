@@ -1,4 +1,4 @@
-/* input::-webkit-outer-spin-button,
+ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -6,7 +6,7 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
-} */
+}
 
 .body {
   font-family: "Cormorant SC", serif;
@@ -70,7 +70,7 @@ input[type=number] {
 .filter_price_label {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 200px;
   height: 40px;
   border: 1px solid gray;
