@@ -7,10 +7,10 @@ export const addToCart = (item) => async (dispatch) => {
   });
 };
 
-export const removeFromCart = (item) => async (dispatch) => {
+export const removeFromCart = (id) => async (dispatch) => {
   dispatch({
     type: "DEL_ITEM",
-    payload: item.id,
+    payload: id,
   });
 };
 export const createOrder = (userId, cart) => {
