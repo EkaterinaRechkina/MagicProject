@@ -12,8 +12,7 @@ export default function Registration() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [statusName, setStatusName] = useState(true);
-  const [statusEmail, setStatusEmail] = useState(true);
+  const [statusInfo, setStatusInfo] = useState("");
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -27,15 +26,9 @@ export default function Registration() {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data.message === 'A user with this username already exists. Log in or register with another username.') {
-          setStatusName(false);
-          alert(response.data.message);
-        } else if (response.data.message === 'A user with this email address already exists. Log in or register with a different email address.') {
-          setStatusEmail(false);
-          alert(response.data.message);
+        if (response.data.message) {
+          setStatusInfo(response.data.message);
         } else {
-          setStatusName(true);
-          setStatusEmail(true);
           dispatch(checkAuth())
           dispatch(checkAdmin())
           navigate("/");
@@ -57,7 +50,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Login"
           variant="outlined"
-          className= {statusName ? 'animate__animated animate__fadeInDown animate__delay-.5s' : 'red_alert_reg'}
+          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-.5s' : 'red_alert_reg'}
           required
         />
         <TextField
@@ -69,7 +62,7 @@ export default function Registration() {
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          className= {statusEmail ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert_reg'}
+          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-1s' : 'red_alert_reg'}
           required
         />
         <TextField
@@ -97,6 +90,7 @@ export default function Registration() {
         <img src={require('../../images/witchLeft.png')} alt='#' className='witchImg'/>
         <img src={require('../../images/witch.png')} alt='#' className='witchRImg'/>
       </div>
+      {statusInfo ? <p className="info">{statusInfo}</p> : null}
     </div>
   );
 }
