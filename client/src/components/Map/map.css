@@ -74,3 +74,14 @@
     to { right: 2100px; top: 60px}
 }
 
+
+@media only screen and (max-width: 1920px) {
+    .catGifSitting {
+    
+        right: 550px;
+     
+    }
+  }
+  @media only screen and (max-width: 680px) {
+   
+  }
