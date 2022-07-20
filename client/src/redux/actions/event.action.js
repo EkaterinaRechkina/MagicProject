@@ -41,7 +41,6 @@ export const addEvent =
   };
 export const editEvent =
   (id, inputs, newDate, newPlace) => async (dispatch) => {
-    console.log(inputs);
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_API_URL}/events/${id}`,
