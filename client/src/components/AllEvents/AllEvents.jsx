@@ -19,9 +19,9 @@ function AllEvents({ useStyles }) {
 
   return (
     <div className="events">
-      <div className="calendar-event">
         <MyCalendar />
-      </div>
+      {/* <div className="calendar-event">
+      </div> */}
       <div className="events-list">
         {events.map((event) => (
           <Event
