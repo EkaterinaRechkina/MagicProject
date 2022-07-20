@@ -85,14 +85,26 @@
     to { right: 400px; top: 60px}
 }
 
-
 @media only screen and (max-width: 1920px) {
     .catGifSitting {
-    
-        right: 550px;
-     
+        width: 10%;
+        position: absolute;
+        left: 150px;
+        bottom: 70px;
     }
-  }
-  @media only screen and (max-width: 680px) {
-   
-  }
+
+    .cloudForText {
+        width: 17%;
+        position: absolute;
+        left: 180px;
+        bottom: 210px;
+    }
+
+    .textInCloud {
+        position: absolute;
+        left: 228px;
+        bottom: 320px;
+        font-size: 36px;
+    }
+}
+

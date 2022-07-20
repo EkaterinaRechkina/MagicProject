@@ -46,10 +46,9 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  console.log(req.body);
   const { id } = req.params;
-  const { title, description, newPlace, image, price, newDate, people } =
-    req.body;
+  const { newPlace, newDate, } = req.body;
+  const { title, description, image, price, people } = req.body.inputs;
 
   const editedEvent = await Event.update(
     {
@@ -64,6 +63,7 @@ router.put("/:id", async (req, res) => {
     { where: { id } }
   );
   const currentEvent = await Event.findOne({ where: { id } });
+
   res.json(currentEvent);
 });
 

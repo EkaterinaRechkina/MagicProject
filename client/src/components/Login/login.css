@@ -53,3 +53,15 @@
     margin: 3% auto;
     font-family: 'Cormorant SC', serif;
 }
+
+@media only screen and (max-width: 1920px) {
+    @keyframes levelFlightR {
+        from { right: -400px; top: -300px}
+        to { right: 3000px; top: -50px}
+    }
+
+    @keyframes levelFlightL {
+        from { left: -4500px; top: 0}
+        to { left: -1100px; top: -550px}
+    }
+}
