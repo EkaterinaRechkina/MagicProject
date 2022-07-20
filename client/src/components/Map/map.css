@@ -6,7 +6,7 @@
     margin: 8% auto 0;
     align-items: center !important;
     /* justify-content: space-around !important; */
-    max-width: 1280px;
+    max-width: 1400px;
 }
 
 .map{
@@ -60,9 +60,10 @@
 }
 
 .catGifSitting {
-    width: 10%;
+    width: 6%;
+    height: 150px;
     position: absolute;
-    left: 150px;
+  
     bottom: 70px;
 }
 
@@ -94,7 +95,7 @@
     }
 
     .cloudForText {
-        width: 17%;
+        width: 14%;
         position: absolute;
         left: 180px;
         bottom: 210px;
@@ -102,9 +103,9 @@
 
     .textInCloud {
         position: absolute;
-        left: 228px;
-        bottom: 320px;
-        font-size: 36px;
+        left: 211px;
+        bottom: 297px;
+        font-size: 31px;
     }
 }
 

@@ -19,7 +19,7 @@ function Cart() {
       <div className={style.cart}>
         <ul className={style.list}>
           {cart.length ? (
-            cart.map((item) => <CartElement {...item} key={item.id}/>)
+            cart.map((item) => <CartElement {...item} key={item.id} />)
           ) : (
             <p>Your cart still empty</p>
           )}
@@ -28,12 +28,24 @@ function Cart() {
           <>
             <strong> Total: ${sum}</strong>
             <Button
+              sx={{
+                margin: "10px auto",
+                width: "100px",
+                border: "none",
+                color: "#2b256f",
+                textAlign: "center",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff", // theme.palette.primary.main
+                },
+              }}
               onClick={() => {
                 createOrder(userId, cart);
                 setOrder(true);
               }}
             >
-              Checkout
+              Buy
             </Button>
           </>
         ) : null}
