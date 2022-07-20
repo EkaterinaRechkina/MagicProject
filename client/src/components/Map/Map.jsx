@@ -414,7 +414,7 @@ export default function Map() {
         className="cloudForText animate__animated animate__bounceIn animate__delay-5s"
       />
       <div className="textInCloud animate__animated animate__bounceIn animate__delay-5s">
-        <p>Go to history,</p>
+        <p>Go to Stories,</p>
         <p>I'll look here.</p>
       </div>
     </div>

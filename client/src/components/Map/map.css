@@ -67,17 +67,17 @@
 }
 
 .cloudForText {
-    width: 15%;
+    width: 12%;
     position: absolute;
     left: 220px;
-    bottom: 280px;
+    bottom: 240px;
 }
 
 .textInCloud {
     position: absolute;
-    left: 285px;
-    bottom: 420px;
-    font-size: 40px;
+    left: 255px;
+    bottom: 310px;
+    font-size: 26px;
 }
 
 @keyframes levelFlight {
