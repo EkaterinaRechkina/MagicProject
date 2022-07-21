@@ -15,36 +15,38 @@ export const setEvents = (q) => async (dispatch) => {
   }
 };
 
-export const addEvent =
-  (title, description, date, img, price, people, place) => async (dispatch) => {
-    try {
-      const result = await axios.post(
-        `${process.env.REACT_APP_API_URL}/events`,
-        {
-          title,
-          description,
-          date,
-          img,
-          price,
-          people,
-          place,
+export const addEvent = (formData) => async (dispatch) => {
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_API_URL}/events`,
+      formData,
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-        { withCredentials: true }
-      );
-      dispatch({
-        type: "ADD_EVENT",
-        payload: result.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      }
+    );
+    dispatch({
+      type: "ADD_EVENT",
+      payload: result.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const editEvent =
-  (id, inputs, newDate, newPlace) => async (dispatch) => {
+  (id, formData, inputs, newDate, newPlace) => async (dispatch) => {
     try {
       const result = await axios.put(
         `${process.env.REACT_APP_API_URL}/events/${id}`,
-        { inputs, newDate, newPlace }
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       console.log("result", result.data);
       dispatch({

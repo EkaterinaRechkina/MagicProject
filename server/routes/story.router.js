@@ -1,7 +1,22 @@
 const checkIsAutor= require('../middleware/checkAuthor')
 const { Story, User } = require("../db/models");
+const multer = require('multer')
 
 const router = require("express").Router();
+
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+      pathFile = 'public/img/storypic';
+      cb(null, pathFile)
+  },
+  
+  filename(req, file, cb) {
+   cb(null, file.originalname);
+  },
+})
+
+const upload = multer({ storage })
 
 router.get("/", async (req, res) => {
 
@@ -47,16 +62,19 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id",checkIsAutor, async (req, res) => {
-  const { id, title, description,img } = req.body;
-  // console.log(id, title, description);
+router.put("/:id",checkIsAutor , upload.array('storypic'), async (req, res) => {
+  const { id } = req.params;
+  const obj = JSON.parse(JSON.stringify(req.body))
+  const imgPath = `/img/storypic/${req.files[0].filename}`
+  const { title, description } = obj;
+
 
   const story = await Story.update(
-    { title, description,img },
+    { title, description,img: imgPath },
     { where: { id } }
   );
   const currentStory = await Story.findOne({ where: { id } });
-  console.log(currentStory);
+  // console.log(currentStory);
   res.json(currentStory);
 });
 
