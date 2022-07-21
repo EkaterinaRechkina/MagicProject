@@ -16,24 +16,20 @@ export const setStories = () => async (dispatch) => {
   }
 };
 
-export const addStory =
-  (title, description, img, author) => async (dispatch) => {
+export const addStory = (formData) => async (dispatch) => {
     try {
       const result = await axios.post(
-        `${process.env.REACT_APP_API_URL}/stories`,
-        {
-          title,
-          description,
-          img,
-          author,
-        },
-        { withCredentials: true }
-      );
-      console.log("result", result.data);
-      dispatch({
-        type: ADD_STORY,
-        payload: result.data,
-      });
+        `${process.env.REACT_APP_API_URL}/stories`, formData, {
+              withCredentials: true,
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              }
+          })
+        dispatch({
+            type: ADD_STORY,
+            payload: result.data,
+        });
+
     } catch (err) {
       console.log(err);
     }

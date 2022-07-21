@@ -52,7 +52,7 @@ function Product({ item }) {
         <CardMedia
           component="img"
           height="200"
-          image={item.img}
+          image={`${process.env.REACT_APP_API_URL}/static${item.img}`}
           alt=""
           sx={{ width: "100%" }}
         />
