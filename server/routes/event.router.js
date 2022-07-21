@@ -24,11 +24,11 @@ router.post("/", upload.array('pic'), async (req, res) => {
     const newElement = await Event.create({
       title: title[0],
       description: description[0],
-      date: date[0],
+      date,
       img: imgPath,
       price: price[0],
       people: people[0],
-      place: place[0],
+      place,
     });
 
     return res.status(201).json(newElement);
