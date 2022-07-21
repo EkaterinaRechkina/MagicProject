@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { editProduct, deleteProduct } from "../../redux/actions/product.action";
+import {editProduct, deleteProduct, addProduct} from "../../redux/actions/product.action";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import { Box, Modal, TextField } from "@mui/material";
@@ -19,41 +19,46 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "rgba(255,255,255, 0.9)",
-
-  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
   flexDirection: "column",
   gap: "20px",
 };
-function OneUserProduct({
-  id,
-  author,
-  title,
-  description,
-  img,
-  price,
-  useStyles,
-}) {
+
+function OneUserProduct({id, author, title, description, img, price, useStyles}) {
   const dispatch = useDispatch();
+
   const classes = useStyles();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newImg, setNewImg] = useState(img);
   const [newPrice, setNewPrice] = useState(price);
+  const [file, setFile] = useState('');
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+  }
+
   function deleteProductHandler(id) {
     dispatch(deleteProduct(id));
   }
 
-  function editHandler(id, title, description, img, price) {
-    dispatch(editProduct(id, title, description, img, price));
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    formData.append('title', newTitle);
+    formData.append('description', newDescription);
+    formData.append('price', newPrice);
+    formData.append("product", file);
+
+    dispatch(editProduct(id, formData));
     handleClose();
+    dispatch(addProduct());
   }
 
   return (
@@ -65,7 +70,7 @@ function OneUserProduct({
               <CardMedia
                 component="img"
                 height="200"
-                image={img}
+                image={`${process.env.REACT_APP_API_URL}/static${img}`}
                 alt=""
                 {...bindTrigger(popupState)}
               />
@@ -101,7 +106,7 @@ function OneUserProduct({
                 <CardMedia
                   component="img"
                   height="350"
-                  image={img}
+                  image={`${process.env.REACT_APP_API_URL}/static${img}`}
                   alt={title}
                 />
                 <div className="title-popup"> {title}</div>
@@ -118,26 +123,28 @@ function OneUserProduct({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <TextField
-            classes={{
-              root: classes.root,
-            }}
-            sx={{
-              "& label": { color: "#711d6f" },
-              "& label.Mui-focused": {
-                color: "#711d6f",
-              },
-              "& legend": {
-                color: "#711d6f",
-              },
-            }}
-            required
-            id="outlined-required"
-            label="Image"
-            value={newImg}
-            onChange={(event) => setNewImg(event.target.value)}
-          />
+          <Box sx={style}
+              method="put"
+              name="pic"
+              onSubmit={(e) => submitHandler(e)}
+              component="form"
+              encType="multipart/form-data"
+              autoComplete="off"
+          >
+            <input
+                name="product"
+                accept="image/*"
+                className={classes.input}
+                id="raised-button-file"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={(e) => uploadHandler(e)}
+            />
+            <label htmlFor="raised-button-file">
+              <Button variant="raised" component="span" className={classes.button}>
+                Upload Image
+              </Button>
+            </label>
           <TextField
             classes={{
               root: classes.root,
@@ -196,8 +203,7 @@ function OneUserProduct({
             label="Price"
             required
           />
-          <Button
-            id={id}
+          <Button id={id} type='submit'
             sx={{
               margin: "0 auto",
               width: "200px",
@@ -211,9 +217,6 @@ function OneUserProduct({
               },
             }}
             size="small"
-            onClick={() =>
-              editHandler(id, newTitle, newDescription, newImg, newPrice)
-            }
           >
             Submit
           </Button>
@@ -228,7 +231,7 @@ function OneUserProduct({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
             onClick={handleClose}

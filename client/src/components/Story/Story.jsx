@@ -84,7 +84,7 @@ export default function Story({
               <CardMedia
                 component="img"
                 height="350"
-                src={`${process.env.REACT_APP_API_URL}/static${img}`}
+                image={`${process.env.REACT_APP_API_URL}/static${img}`}
                 alt={title}
                 {...bindTrigger(popupState)}
               />
@@ -139,7 +139,7 @@ export default function Story({
                 <CardMedia
                   component="img"
                   height="350"
-                  image={img}
+                  image={`${process.env.REACT_APP_API_URL}/static${img}`}
                   alt={title}
                 />
                 <div className="title-popup"> {title}</div>

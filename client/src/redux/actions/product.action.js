@@ -14,42 +14,34 @@ export const getProduct = () => async (dispatch) => {
     }
 }
 
-export const addProduct = (author, title, description, img, user_id, price) => async (dispatch) => {
+export const addProduct = (formData) => async (dispatch) => {
         try {
             const response = await axios.post(
-                `${process.env.REACT_APP_API_URL}/shop`,
-                {
-                    author,
-                    title,
-                    description,
-                    img,
-                    user_id,
-                    price
-                },
-                { withCredentials: true }
+                `${process.env.REACT_APP_API_URL}/shop`, formData, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
             );
             dispatch({
                 type: "ADD_PRODUCT",
                 payload: response.data,
             });
-            console.log(author, title, description, img, user_id, price);
         } catch (err) {
             console.log(err);
         }
 };
 
-export const editProduct = (id, title, description, img, price) => async (dispatch) => {
+export const editProduct = (id, formData) => async (dispatch) => {
     try {
         const response = await axios.put(
-            `${process.env.REACT_APP_API_URL}/shop/${id}`,
-            {
-                id,
-                title,
-                description,
-                img,
-                price
-            },
-            { withCredentials: true }
+            `${process.env.REACT_APP_API_URL}/shop/${id}`, formData, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
         );
         dispatch({
             type: "EDIT_PRODUCT",
