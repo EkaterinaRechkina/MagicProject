@@ -41,3 +41,9 @@
 .priceblock{
     font-size: 20px;
 }
+
+.textOrder {
+    font-family: 'Cormorant SC', serif;
+    width: 500px;
+    margin: 2% auto;
+}

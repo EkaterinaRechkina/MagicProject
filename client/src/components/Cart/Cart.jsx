@@ -49,8 +49,13 @@ function Cart() {
             </Button>
           </>
         ) : null}
+        {order ? (
+          <p className={style.textOrder}>
+            Thank you for being our valued customer. We hope our products will
+            meet your expectations. Let us know if you have any questions.
+          </p>
+        ) : null}
       </div>
-      {order ? <p>Your order has been accepted</p> : null}
     </>
   );
 }

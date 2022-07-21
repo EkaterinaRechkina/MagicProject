@@ -14,7 +14,6 @@ import UserProducts from "./components/UserProducts/UserProducts";
 import AllEvents from "./components/AllEvents/AllEvents";
 import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
-import Test from "./components/Test";
 import Favorites from "./components/Favorites/Favorites";
 import {
   createTheme,
