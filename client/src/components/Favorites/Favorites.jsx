@@ -29,7 +29,8 @@ function Favorites() {
           {favoritesProduct.map((item) => (
             <li key={item.id} className={style.liFav} id={item.id}>
               <div className={`${style.itemLiImg}`}>
-                <img src={item.img} alt="#" className={`${style.imageFav}`} />
+                <img src={`${process.env.REACT_APP_API_URL}/static${item.img}`}
+                alt="#" className={`${style.imageFav}`} />
               </div>
               <p className={`${style.itemLiTitle}`}>{item.title}</p>
               <p className={`${style.itemLiPrice}`}>$: {item.price}</p>
