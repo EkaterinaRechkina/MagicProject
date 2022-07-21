@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    font-family: 'Cormorant SC', serif;
+    font-weight: bold;
+    font-size: 26px;
+    overflow: hidden;
+}
+
+.listOfParticipants {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10% 0 0;
+}
+
+.participant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.photoImage {
+    max-width: 300px;
+}
+
+.textName {
+    height: 40px;
+    padding: 5px;
+}
+
+.textPosition {
+    height: 100px;
+    padding: 5px;
+}
+
+.auntieOff {
+    display: none;
+}
+
+.danger {
+    width: 20%;
+    margin: 40px 0 0 0;
+    padding: 0;
+}
+
+.dangerOff {
+    display: none;
+}
+
+.dangerOn {
+
+}
+
+.auntieImage {
+    width: 500px;
+}
+
+.cloud {
+    position: absolute;
+    bottom: 200px;
+    left: 1000px;
+}
+
+.cloudAuntieForText {
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    left: 80px;
+    bottom: 300px;
+}
+
+.textAuntieInCloud {
+    position: absolute;
+    left: 120px;
+    bottom: 340px;
+    font-size: 26px;
+    width: 400px;
+}
+
+@media only screen and (max-width: 1920px) {
+    .wrapper {
+        font-size: 22px;
+    }
+    .auntieImage {
+        width: 400px;
+    }
+    .photoImage {
+        max-width: 200px;
+    }
+    .textPosition {
+        height: 60px;
+    }
+    .listOfParticipants {
+        margin: 5% 0 0;
+    }
+    .cloudAuntieForText{
+        width: 484px;
+        left: 71px;
+        bottom: 183px;
+    }
+    .textAuntieInCloud {
+        left: 120px;
+        bottom: 220px;
+        font-size: 26px;
+        width: 400px;
+    }
+}

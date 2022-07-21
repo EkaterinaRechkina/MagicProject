@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+.container{
+    font-family: 'Cormorant SC', serif;
+    display: flex;
+    flex-direction: row;
+    margin: 8% auto 0;
+    align-items: center !important;
+    /* justify-content: space-around !important; */
+    max-width: 1400px;
+}
+
+.map{
+    height: 400px;
+    width: 70% !important;
+}
+.map-text{
+    width: 30% !important;
+    margin-right: 15% !important;
+}
+.marker{
+    background-image: url('https://img.icons8.com/material-outlined/344/place-marker--v1.png');
+    background-size: cover;
+    width: 22px;
+    height: 22px;
+    background-color: yellow;
+    border-radius: 11px;
+    border: solid 3px darkblue;
+}
+
+.marker-delivery{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
+
+.title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 2%;
+}
+
+
+.description-map{
+    margin-top: 5%;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.cat {
+    position: absolute;
+    bottom: 70px;
+    left: 10px;
+}
+
+.catGif {
+    position: relative;
+    width: 100%;
+    animation: levelFlight 5s forwards;
+}
+
+.catGifSitting {
+    width: 6%;
+    height: 150px;
+    position: absolute;
+  
+    bottom: 70px;
+}
+
+.cloudForText {
+    width: 12%;
+    position: absolute;
+    left: 220px;
+    bottom: 240px;
+}
+
+.textInCloud {
+    position: absolute;
+    left: 255px;
+    bottom: 310px;
+    font-size: 26px;
+}
+
+@keyframes levelFlight {
+    from { right: -2500px; top: 60px}
+    to { right: 400px; top: 60px}
+}
+
+@media only screen and (max-width: 1920px) {
+    .catGifSitting {
+        width: 10%;
+        position: absolute;
+        left: 150px;
+        bottom: 70px;
+    }
+
+    .cloudForText {
+        width: 14%;
+        position: absolute;
+        left: 180px;
+        bottom: 210px;
+    }
+
+    .textInCloud {
+        position: absolute;
+        left: 211px;
+        bottom: 297px;
+        font-size: 31px;
+    }
+}
+

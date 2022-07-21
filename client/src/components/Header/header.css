@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+.header{
+    font-family: 'Calligraffitti', cursive;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+.link-sidebar {
+    font-family: 'Cormorant SC', serif;
+    color: black;
+    text-decoration: none;
+    font-style: italic;
+
+}
+
+.link-home{
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+

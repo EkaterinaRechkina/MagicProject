@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+  }
+
+.link{
+    color: white;
+    text-decoration: none;
+    font-family: 'Calligraffitti', cursive;
+    font-weight: bold;
+    font-size: 18px;
+}

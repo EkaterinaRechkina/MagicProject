@@ -1,0 +1,63 @@
+.container {
+  margin: 3% auto 0;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+.faceimg {
+  padding: 5%;
+  width: 500px;
+  height: 600px;
+}
+.faceimg img {
+  width: 100%;
+}
+.api {
+  margin: 3% auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-items: start;
+}
+.tarot {
+  align-items: center;
+  margin-right: 100px;
+}
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+}
+
+@media only screen and (max-width: 1350px) {
+  .tarot {
+    margin: 0 auto;
+  }
+  .faceimg {
+    width: 400px;
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 1170px) {
+    .tarot {
+        margin-top: 80px;
+      }
+  .api {
+    grid-template-columns: repeat(1, auto);
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .container {
+    grid-template-columns: repeat(1, auto);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .faceimg {
+    width: 250px;
+    height: 400px;
+  }
+}

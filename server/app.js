@@ -1,11 +1,29 @@
 require("dotenv").config();
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
-const sequelize = require("./db/models");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
+const { sequelize } = require("./db/models");
 
-// const indexRouter = require("./routes/index.routes");
-// const postsRouter = require("./routes/posts.routes");
+const app = express();
+const registerRouter = require("./routes/register.router");
+const loginRouter = require("./routes/login.router");
+const logoutRouter = require("./routes/logout.router");
+
+const storiesRouter = require("./routes/story.router");
+const getAPI = require("./routes/ApisRouter");
+const checkSession = require('./routes/checkSession.router');
+const adminRouter = require('./routes/admin.router');
+
+const userInfoRouter = require('./routes/userInfo.router');
+const shopRouter = require('./routes/shop.router');
+const eventRouter = require('./routes/event.router');
+const favoritesRouter = require('./routes/favorites.router');
+
+const cartRouter = require('./routes/cart.router')
+
+app.use('/static', express.static(__dirname + '/public'));
+
 
 app.use(
   cors({
@@ -13,14 +31,42 @@ app.use(
     credentials: true,
   })
 );
-const app = express();
+
 const PORT = process.env.PORT || 3002;
 
+const sessionConfig = {
+  store: new FileStore(),
+  key: process.env.COOKIE_NAME,
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  httpOnly: true,
+  cookie: { expires: 24 * 60 * 60e3 },
+};
+
+app.use(session(sessionConfig));
+app.use((req, res, next) => {
+  if (req.session.userId) {
+    res.locals.userId = req.session.userId;
+    res.locals.userName = req.session.userName;
+  }
+  next();
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use("/", indexRouter);
-// app.use("/posts", postsRouter);
+app.use("/registration", registerRouter);
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
+app.use("/api", getAPI);
+app.use("/checksession", checkSession);
+app.use("/stories", storiesRouter);
+app.use('/userinfo', userInfoRouter);
+app.use('/shop', shopRouter);
+app.use('/admin', adminRouter);
+app.use('/cart', cartRouter)
+app.use('/events', eventRouter);
+app.use('/favorites', favoritesRouter);
 
 app.listen(PORT, async () => {
   try {

@@ -8,19 +8,34 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      author: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       title: {
+        allowNull: false,
+        notEmpty: true,
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        allowNull: false,
+        notEmpty: true,
+        type: Sequelize.TEXT
       },
       user_id: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+        }
       },
       img: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       price: {
+        notEmpty: true,
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

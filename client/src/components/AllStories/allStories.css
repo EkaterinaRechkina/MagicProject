@@ -1,0 +1,23 @@
+.stories {
+    display: grid;
+    grid-template-columns:repeat(3, auto);
+    justify-content: center;
+    gap: 2%;
+    margin: 5% 0 10%;
+}
+
+.input-story {
+    background-color: blue;
+}
+
+@media only screen and (max-width: 1050px) {
+    .stories {  
+        grid-template-columns:repeat(2, auto);
+    }
+  }
+  @media only screen and (max-width: 680px) {
+    .stories {  
+        grid-template-columns:repeat(1, auto);
+        gap: 1%;
+    }
+  }
