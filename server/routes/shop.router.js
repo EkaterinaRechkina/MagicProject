@@ -33,7 +33,7 @@ router
         description: description,
         img: img,
         user_id: user_id,
-        price: price,
+        price: price
       });
 
       res.json({ newProduct });

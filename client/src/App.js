@@ -25,6 +25,7 @@ import {
 } from "@material-ui/core/styles";
 
 import { orange, blue, green } from "@material-ui/core/colors";
+import Team from "./components/Team/Team";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -87,6 +88,7 @@ function App() {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/team" element={<Team />} />
           </Routes>
         </main>
         <footer>
