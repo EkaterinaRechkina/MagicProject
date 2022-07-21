@@ -111,3 +111,12 @@ abbr[title] {
   text-align: center; */
   line-height: 6px;
 }
+
+@media only screen and (max-width: 450px) {
+.calendar {
+  align-items: center;
+  margin: 0 0 25% 10%;
+  width: 210px;
+  height: 150px;
+}
+}

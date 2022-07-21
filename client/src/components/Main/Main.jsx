@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import FutureApi from "../Apis/FutureApi";
 import Tarot from "../Apis/Tarot";
 import YesNo from "../Apis/YesNo";
 import KanyeApi from "../Apis/KanyeApi";
 import styles from "./styles.module.css";
+import zelda from "../../images/zelda2.jpg";
+import main from "../../images/main.jpg";
 
 function Main() {
+  const [change, setChange] = useState(false);
+
   return (
     <div className={styles.container}>
       <div className={styles.faceimg}>
         <img
-          src="https://images.unsplash.com/photo-1607773709367-06b7a91f7e4a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          src={change ? zelda : main}
           alt="img"
+          onClick={() => setChange((prevMode) => !prevMode)}
         />
       </div>
       <div className={styles.api}>

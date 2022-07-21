@@ -32,16 +32,14 @@ export default function Shop() {
               dispatch({
                 type: "GET_PRODUCT",
                 payload: response.data.filter(
-                  (item) =>
-                    +item.price >= inputMin && +item.price <= 99999
+                  (item) => +item.price >= inputMin && +item.price <= 99999
                 ),
               });
             } else {
               dispatch({
                 type: "GET_PRODUCT",
                 payload: response.data.filter(
-                  (item) =>
-                    +item.price >= inputMin && +item.price <= inputMax
+                  (item) => +item.price >= inputMin && +item.price <= inputMax
                 ),
               });
             }
