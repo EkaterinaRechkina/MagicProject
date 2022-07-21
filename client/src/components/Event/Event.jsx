@@ -357,7 +357,7 @@ export default function Event({
             value={inputs.place}
             onChange={inputsHandler}
           /> */}
-<>
+              <>
               <input
                 name="pic"
                 accept="image/*"
