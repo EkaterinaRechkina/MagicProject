@@ -57,7 +57,7 @@ function Product({ item }) {
           sx={{ width: "100%" }}
         />
 
-        <div className="story product">
+        <div className=" product">
           <div className="title product-title">{item.title}</div>
           <div className="description-popup description-product ">
             {item.description}

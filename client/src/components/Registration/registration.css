@@ -21,15 +21,15 @@
 }
 
 .witchImgReg {
-    width: 250px;
-    height: 250px;
+    width: 150px;
+    height: 150px;
     position: relative;
     animation: levelFlightRegR 5s forwards;
 }
 
 .witchRImgReg {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     position: relative;
     animation: levelFlightRegL 7s forwards;
 }
@@ -59,6 +59,6 @@
 
     @keyframes levelFlightRegL {
         from { left: -4500px; top: 0}
-        to { left: -1100px; top: -550px}
+        to { left: -1100px; top: -648px}
     }
 }
