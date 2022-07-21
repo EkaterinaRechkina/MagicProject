@@ -35,17 +35,17 @@ export const addStory = (formData) => async (dispatch) => {
     }
   };
 
-export const editStory = (id, title, description, img) => async (dispatch) => {
+export const editStory = (id, formData) => async (dispatch) => {
   try {
     const result = await axios.put(
-      `${process.env.REACT_APP_API_URL}/stories/${id}`,
+      `${process.env.REACT_APP_API_URL}/stories/${id}`, 
+      formData,
       {
-        id,
-        title,
-        description,
-        img,
-      },
-      { withCredentials: true }
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
     console.log("result", result.data);
     dispatch({

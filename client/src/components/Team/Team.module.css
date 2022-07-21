@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 50px 0;
+    margin: 10% 0 0;
 }
 
 .participant {
@@ -98,6 +98,17 @@
         height: 60px;
     }
     .listOfParticipants {
-        margin: 30px 0 10px 0;
+        margin: 5% 0 0;
+    }
+    .cloudAuntieForText{
+        width: 484px;
+        left: 71px;
+        bottom: 183px;
+    }
+    .textAuntieInCloud {
+        left: 120px;
+        bottom: 220px;
+        font-size: 26px;
+        width: 400px;
     }
 }

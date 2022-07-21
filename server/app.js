@@ -21,6 +21,7 @@ const eventRouter = require('./routes/event.router');
 const favoritesRouter = require('./routes/favorites.router');
 
 const cartRouter = require('./routes/cart.router')
+const uploadRouter = require('./routes/upload.router')
 
 app.use('/static', express.static(__dirname + '/public'));
 
@@ -67,6 +68,9 @@ app.use('/admin', adminRouter);
 app.use('/cart', cartRouter)
 app.use('/events', eventRouter);
 app.use('/favorites', favoritesRouter);
+app.use('/pics', uploadRouter);
+
+
 
 app.listen(PORT, async () => {
   try {

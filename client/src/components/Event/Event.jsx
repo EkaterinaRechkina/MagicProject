@@ -52,13 +52,12 @@ export default function Event({
   useStyles,
 }) {
   const classes = useStyles();
-  const [inputs, setInputs] = useState({
-    title,
-    description,
-    img,
-    price,
-    people,
-  });
+  const [inputs, setInputs] = useState({title, description, img, price, people});
+  const [file, setFile] = useState([]);
+  const [newTitle, setTitle] = useState(title);
+  const [newDescription, setDescription] = useState(description);
+  const [newPrice, setPrice] = useState(price);
+  const [newPeople, setPeople] = useState(people);
   const [newDate, setNewDate] = useState(date);
   const [newPlace, setNewPlace] = useState(place);
   const isAdmin = useSelector((store) => store.admin);
@@ -69,12 +68,26 @@ export default function Event({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function inputsHandler(e) {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  function uploadHandler(e) {
+    setFile(e.target.files[0])
+    console.log(e.target.files[0]);
   }
+  // function inputsHandler(e) {
+  //   setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  // }
 
-  function editHandler() {
-    dispatch(editEvent(id, inputs, newDate, newPlace));
+  function submitHandler(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append('title', newTitle);
+    formData.append('description', newDescription);
+    formData.append('date', newDate);
+    formData.append('price', newPrice);
+    formData.append('people', newPeople);
+    formData.append('place', newPlace);
+    formData.append("pic", file);
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>',file);
+    dispatch(editEvent(id, formData));
     handleClose();
   }
 
@@ -135,7 +148,7 @@ export default function Event({
               <CardMedia
                 component="img"
                 height="250"
-                image={img}
+                src={`${process.env.REACT_APP_API_URL}/static${img}`}
                 alt={title}
                 {...bindTrigger(popupState)}
               />
@@ -188,7 +201,8 @@ export default function Event({
                 <CardMedia
                   component="img"
                   height="350"
-                  image={img}
+                src={`${process.env.REACT_APP_API_URL}/static${img}`}
+                // image={img}
                   alt={title}
                 />
                 <div className="title-popup">{title}</div>
@@ -213,7 +227,13 @@ export default function Event({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={style}
+        name="pic"
+        onSubmit={(e) => submitHandler(e)}
+        component="form"
+        encType="multipart/form-data"
+        autoComplete="off"
+        >
           <TextField
             classes={{
               root: classes.root,
@@ -231,10 +251,10 @@ export default function Event({
             required
             id="outlined-required"
             label="Title"
-            value={inputs.title}
-            onChange={inputsHandler}
+            value={newTitle}
+            onChange={(event) => setTitle(event.target.value)}
           />
-          <TextField
+          {/* <TextField
             classes={{
               root: classes.root,
             }}
@@ -253,7 +273,7 @@ export default function Event({
             label="Image"
             value={inputs.image}
             onChange={inputsHandler}
-          />
+          /> */}
           <TextField
             classes={{
               root: classes.root,
@@ -271,8 +291,8 @@ export default function Event({
             required
             id="outlined-required"
             label="Price"
-            value={inputs.price}
-            onChange={inputsHandler}
+            value={newPrice}
+            onChange={(event) => setPrice(event.target.value)}
           />
           {/* <TextField
             name="date"
@@ -286,9 +306,7 @@ export default function Event({
             <DatePicker
               label="Date"
               value={newDate}
-              onChange={(newValue) => {
-                setNewDate(newValue.toDateString());
-              }}
+              onChange={(newValue) => {setNewDate(newValue.toDateString());}}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -328,8 +346,8 @@ export default function Event({
             required
             id="outlined-required"
             label="People"
-            value={inputs.people}
-            onChange={inputsHandler}
+            value={newPeople}
+            onChange={(event) => setPeople(event.target.value)}
           />
           {/* <TextField
             name="place"
@@ -339,7 +357,22 @@ export default function Event({
             value={inputs.place}
             onChange={inputsHandler}
           /> */}
-
+              <>
+              <input
+                name="pic"
+                accept="image/*"
+                className={classes.input}
+                style={{ display: 'none' }}
+                id="raised-button-file"
+                type="file"
+                onChange={(e) => uploadHandler(e)}
+              />
+              <label htmlFor="raised-button-file">
+                <Button variant="raised" component="span" className={classes.button}>
+                  Upload Image
+                </Button>
+              </label> 
+            </>
           <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
             <GeoapifyGeocoderAutocomplete
               classes={{
@@ -373,7 +406,7 @@ export default function Event({
               },
             }}
             name="description"
-            value={inputs.description}
+            value={newDescription}
             aria-label="description"
             placeholder="Event description"
             style={{
@@ -382,14 +415,11 @@ export default function Event({
               height: "150px",
               backgroundColor: "rgba(255,255,255, 0.1)",
             }}
-            onChange={inputsHandler}
+            onChange={(event) => setDescription(event.target.value)}
           />
           <Button
             id={id}
-            onClick={() => {
-              console.log(inputs);
-              editHandler(inputs);
-            }}
+            // onClick={() => {submitHandler(inputs)}}
             variant="text"
             type="submit"
             size="small"
