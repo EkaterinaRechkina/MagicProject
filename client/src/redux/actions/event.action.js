@@ -5,7 +5,6 @@ export const setEvents = (q) => async (dispatch) => {
     const result = await axios.get(`${process.env.REACT_APP_API_URL}/events`, {
       withCredentials: true,
     });
-    console.log(result.data);
     dispatch({
       type: "SET_EVENTS",
       payload: result.data,
@@ -48,7 +47,6 @@ export const editEvent =
           },
         }
       );
-      console.log("result", result.data);
       dispatch({
         type: "EDIT_EVENT",
         payload: result.data,

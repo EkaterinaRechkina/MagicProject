@@ -56,7 +56,6 @@ export default function AllStories({ useStyles }) {
     dispatch(setStories());
   }, []);
 
-  console.log("user", user);
 
   return (
     <>

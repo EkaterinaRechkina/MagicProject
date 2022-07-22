@@ -36,13 +36,11 @@ function AddEventForm({ useStyles }) {
 
    function uploadHandler(e) {
     setFile(e.target.files[0])
-    console.log(e.target.files[0]);
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    // console.log('------------', title);
     formData.append('title', title);
     formData.append('description', description);
     formData.append('date', date);
@@ -63,17 +61,13 @@ function AddEventForm({ useStyles }) {
   }
 
   function onPlaceSelect(place) {
-    console.log(
-      "select",
-      place.properties.address_line1 + " ," + place.properties.address_line2
-    );
     setPlace(
       place.properties.address_line1 + ", " + place.properties.address_line2
     );
   }
 
   function onSuggectionChange(value) {
-    // console.log(value);
+    
   }
 
   function preprocessHook(value) {

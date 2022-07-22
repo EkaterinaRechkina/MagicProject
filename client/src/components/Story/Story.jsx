@@ -58,7 +58,6 @@ export default function Story({
 
   function uploadHandler(e) {
     setFile(e.target.files[0])
-    console.log(e.target.files[0]);
   }
   function editHandler(e) {
     e.preventDefault();

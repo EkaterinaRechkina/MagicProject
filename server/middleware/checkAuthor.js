@@ -6,9 +6,7 @@ const checkIsAutor = async (req, res, next) => {
       const userId = req.session.userId
      let entry = await Story.findOne({where:{id:req.params.id}});
     let author = await User.findOne({where: {id: entry.user_id}}) 
-  //   console.log(entry.user_id)
-  //   console.log(req.params.id)
-  // console.log(author.id, req.session);
+
     if(author.id === userId ) {
       next()
     } else {

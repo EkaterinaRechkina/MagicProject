@@ -57,7 +57,7 @@ export default function Login({ useStyles }) {
           onChange={(event) => {
             setName(event.target.value);
           }}
-          id="outlined-basic"
+          id="outlined"
           label="Login"
           variant="outlined"
           required

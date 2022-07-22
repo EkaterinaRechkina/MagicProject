@@ -307,7 +307,7 @@ export default function Map() {
 
     const turinPopup =
       '<p style="display:inline">' +
-      '<img src="https://cdn.pixabay.com/photo/2016/10/31/14/53/italy-1785754_960_720.jpg" alt="pizza oven" style="width:50%;float:right;padding-top:10px">' +
+      '<img src="https://media.istockphoto.com/photos/turin-skyline-at-sunset-torino-italy-panorama-cityscape-with-the-mole-picture-id959635616?k=20&m=959635616&s=612x612&w=0&h=JTHWcciJQR_gMaAmakC77AxRGB4Olaf0Ra0pQ7iEN0g=" alt="pizza oven" style="width:50%;float:right;padding-top:10px">' +
       '<div style="width:50%; height:100%; padding-top:14px"><span style="font:10px Gotham">Beautiful Turin, joined by Lyon and Prague, is one of the three cities on the “white magic axis” ”. </span></br>' +
       '<a href="https://en.wikipedia.org/wiki/Turin" target="_blank">Turin, Piedmont</a>' +
       "</div></p>";

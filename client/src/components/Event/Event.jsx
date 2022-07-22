@@ -70,7 +70,6 @@ export default function Event({
 
   function uploadHandler(e) {
     setFile(e.target.files[0])
-    console.log(e.target.files[0]);
   }
   // function inputsHandler(e) {
   //   setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -86,18 +85,11 @@ export default function Event({
     formData.append('people', newPeople);
     formData.append('place', newPlace);
     formData.append("pic", file);
-    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>',file);
     dispatch(editEvent(id, formData));
     handleClose();
   }
 
   function onPlaceSelect(newPlace) {
-    console.log(
-      "select",
-      newPlace.properties.address_line1 +
-        " ," +
-        newPlace.properties.address_line2
-    );
     setNewPlace(
       newPlace.properties.address_line1 +
         ", " +
@@ -106,7 +98,7 @@ export default function Event({
   }
 
   function onSuggectionChange(newPlace) {
-    console.log("change", newPlace);
+    
   }
 
   function preprocessHook(newPlace) {
@@ -136,7 +128,7 @@ export default function Event({
   }
 
   function test(e) {
-    console.log(e.target.value);
+    
   }
 
   return (
