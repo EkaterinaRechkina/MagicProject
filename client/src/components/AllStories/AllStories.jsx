@@ -16,7 +16,6 @@ export default function AllStories({ useStyles }) {
   const [description, setDescription] = useState(null);
   const [file, setFile] = useState("");
 
-
   // const [currentPage, setCurrentPage] = useState(1);
   // const [postPerPage, setPostsPerPage] = useState(10);
 
@@ -54,14 +53,9 @@ export default function AllStories({ useStyles }) {
     dispatch(setStories());
   }, []);
 
-
   return (
-
     <div className="allStories">
-
-    <>
       {user.length === 0 ? (
-
         ""
       ) : (
         <Button
