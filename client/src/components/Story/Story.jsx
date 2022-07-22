@@ -57,14 +57,14 @@ export default function Story({
   }
 
   function uploadHandler(e) {
-    setFile(e.target.files[0])
+    setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   }
   function editHandler(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.append('title', newTitle);
-    formData.append('description', newDescription);
+    formData.append("title", newTitle);
+    formData.append("description", newDescription);
     formData.append("storypic", file);
     dispatch(editStory(id, formData));
     handleClose();
@@ -156,12 +156,14 @@ export default function Story({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}
-        name="storypic"
-        onSubmit={(e) => editHandler(e)}
-        component="form"
-        encType="multipart/form-data"
-        autoComplete="off">
+        <Box
+          sx={style}
+          name="storypic"
+          onSubmit={(e) => editHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          autoComplete="off"
+        >
           {/* <TextField
             classes={{
               root: classes.root,
@@ -181,22 +183,34 @@ export default function Story({
             value={newImg}
             onChange={(event) => setNewImg(event.target.value)}
           /> */}
-            <>
-              <input
-                name="storypic"
-                accept="image/*"
-                className={classes.input}
-                style={{ display: 'none' }}
-                id="raised-button-file"
-                type="file"
-                onChange={(e) => uploadHandler(e)}
-              />
-              <label htmlFor="raised-button-file">
-                <Button variant="raised" component="span" className={classes.button}>
-                  Upload Image
-                </Button>
-              </label> 
-            </>
+          <>
+            <input
+              name="storypic"
+              accept="image/*"
+              className={classes.input}
+              style={{ display: "none" }}
+              id="raised-button-file"
+              type="file"
+              onChange={(e) => uploadHandler(e)}
+            />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
+                Upload Image
+              </Button>
+            </label>
+          </>
           <TextField
             classes={{
               root: classes.root,
