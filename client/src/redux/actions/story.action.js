@@ -47,7 +47,6 @@ export const editStory = (id, formData) => async (dispatch) => {
         },
       }
     );
-    console.log("result", result.data);
     dispatch({
       type: EDIT_STORY,
       payload: result.data,
@@ -66,7 +65,6 @@ export const deleteStory = (id) => async (dispatch) => {
       // },
       { withCredentials: true }
     );
-    console.log(result);
 
     dispatch({
       type: DEL_STORY,

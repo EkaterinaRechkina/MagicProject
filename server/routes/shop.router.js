@@ -43,8 +43,6 @@ router
       const imgPath = `/img/products/${req.files[0].filename}`
       const {author, title, description, user_id, price} = obj;
 
-      console.log(author, title, description, user_id, price, imgPath)
-
       const newProduct = await Product.create({
         author: author,
         title: title,
@@ -86,8 +84,6 @@ router
 
     const { author, title, description, user_id } = obj;
     let { price } = obj;
-
-    console.log("ВСЕ ДАННЫЕ С ФРОНТА!", author, title, description, user_id, imgPath)
 
     if (!price) price = 0;
 

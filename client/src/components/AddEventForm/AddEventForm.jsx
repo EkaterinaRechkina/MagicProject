@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import style from "../Profile/Profile.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Input } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -14,8 +13,6 @@ import {
   GeoapifyContext,
 } from "@geoapify/react-geocoder-autocomplete";
 import "@geoapify/geocoder-autocomplete/styles/minimal.css";
-import { width } from "@mui/system";
-import axios from "axios";
 
 function AddEventForm({ useStyles }) {
   const classes = useStyles();
@@ -27,7 +24,6 @@ function AddEventForm({ useStyles }) {
   const [people, setPeople] = useState("");
   const [place, setPlace] = useState("");
   const [file, setFile] = useState([]);
-  const [value, setValue] = useState({});
   const [open, setOpen] = useState(false);
 
   const openForm = () => setOpen(true);
@@ -36,13 +32,11 @@ function AddEventForm({ useStyles }) {
 
   function uploadHandler(e) {
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    // console.log('------------', title);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("date", date);
@@ -63,17 +57,13 @@ function AddEventForm({ useStyles }) {
   }
 
   function onPlaceSelect(place) {
-    console.log(
-      "select",
-      place.properties.address_line1 + " ," + place.properties.address_line2
-    );
     setPlace(
       place.properties.address_line1 + ", " + place.properties.address_line2
     );
   }
 
   function onSuggectionChange(value) {
-    // console.log(value);
+    
   }
 
   function preprocessHook(value) {
