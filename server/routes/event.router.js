@@ -1,24 +1,23 @@
 const { Event, User } = require("../db/models");
-const multer = require('multer')
+const multer = require("multer");
 const router = require("express").Router();
 
-
 const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        pathFile = 'public/img/pic';
-        cb(null, pathFile)
-    },
-    
-    filename(req, file, cb) {
-     cb(null, file.originalname);
-    },
-})
+  destination(req, file, cb) {
+    pathFile = "public/img/pic";
+    cb(null, pathFile);
+  },
 
-const upload = multer({ storage })
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
 
-router.post("/", upload.array('pic'), async (req, res) => {
-  const obj = JSON.parse(JSON.stringify(req.body))
-  const imgPath = `/img/pic/${req.files[0].filename}`
+const upload = multer({ storage });
+
+router.post("/", upload.array("pic"), async (req, res) => {
+  const obj = JSON.parse(JSON.stringify(req.body));
+  const imgPath = `/img/pic/${req.files[0].filename}`;
   const { title, description, place, price, date, people } = obj;
   try {
     const newElement = await Event.create({
@@ -38,10 +37,10 @@ router.post("/", upload.array('pic'), async (req, res) => {
   }
 });
 
-router.put("/:id", upload.array('pic'), async (req, res) => {
-  const obj = JSON.parse(JSON.stringify(req.body))
-  console.log('>>>>>>>>',obj);
-  const imgPath = `/img/pic/${req.files[0].filename}`
+router.put("/:id", upload.array("pic"), async (req, res) => {
+  const obj = JSON.parse(JSON.stringify(req.body));
+  console.log(">>>>>>>>", obj);
+  const imgPath = `/img/pic/${req.files[0].filename}`;
 
   const { id } = req.params;
   const { title, description, date, place, price, people } = obj;
@@ -62,23 +61,12 @@ router.put("/:id", upload.array('pic'), async (req, res) => {
   res.json(currentEvent);
 });
 
-
 router.get("/", async (req, res) => {
   try {
     const allEvents = await Event.findAll({
       order: [["createdAt", "DESC"]],
     });
 
-    // const { q } = req.query;
-    // const keys = ["date"];
-
-    // const search = (data) => {
-    //   return data.filter((item) =>
-    //     keys.some((key) => item[key].toLowerCase().includes(q))
-    //   );
-    // };
-
-    // res.json(search(allEvents), q);
     res.json(allEvents);
   } catch (err) {
     console.log(err);
