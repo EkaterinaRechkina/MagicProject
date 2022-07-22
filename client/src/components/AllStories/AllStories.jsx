@@ -56,8 +56,12 @@ export default function AllStories({ useStyles }) {
 
 
   return (
+
+    <div className="allStories">
+
     <>
       {user.length === 0 ? (
+
         ""
       ) : (
         <Button
@@ -88,7 +92,9 @@ export default function AllStories({ useStyles }) {
           onSubmit={(e) => submitHandler(e)}
           component="form"
           encType="multipart/form-data"
-          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "45ch" },
+          }}
           autoComplete="off"
         >
           <div
@@ -204,6 +210,6 @@ export default function AllStories({ useStyles }) {
             <Story key={element.id} {...element} useStyles={useStyles} />
           ))}
       </div>
-    </>
+    </div>
   );
 }

@@ -69,6 +69,7 @@ const Header = () => {
         position="static"
         sx={{
           backgroundColor: "#711d6f",
+          padding: 0,
         }}
       >
         <Container maxWidth="xl">
@@ -186,7 +187,7 @@ const Header = () => {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open profile">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton onClick={handleOpenUserMenu} sx={{ padding: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
                     src={require("../../images/penta.png")}
