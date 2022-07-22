@@ -15,7 +15,9 @@ export default function Shop() {
   useEffect(() => {
     const fetchProducts = async () => {
       await axios
-        .get(`http://localhost:3001/shop?q=${query}`, { withCredentials: true })
+        .get(`${process.env.REACT_APP_API_URL}/shop?q=${query}`, {
+          withCredentials: true,
+        })
         .then((response) => {
           if (inputMin === "" && inputMax === "") {
             dispatch({

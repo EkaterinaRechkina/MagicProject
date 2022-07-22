@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import style from "../Profile/Profile.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Input } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -14,7 +13,6 @@ import {
   GeoapifyContext,
 } from "@geoapify/react-geocoder-autocomplete";
 import "@geoapify/geocoder-autocomplete/styles/minimal.css";
-import { width } from "@mui/system";
 
 function AddEventForm({ useStyles }) {
   const classes = useStyles();
@@ -25,15 +23,29 @@ function AddEventForm({ useStyles }) {
   const [price, setPrice] = useState("");
   const [people, setPeople] = useState("");
   const [place, setPlace] = useState("");
-
+  const [file, setFile] = useState([]);
   const [open, setOpen] = useState(false);
+
   const openForm = () => setOpen(true);
   const closeForm = () => setOpen(false);
   const dispatch = useDispatch();
 
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+  }
+
   function submitHandler(event) {
     event.preventDefault();
-    dispatch(addEvent(title, description, date, img, price, people, place));
+    const formData = new FormData(event.target);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("date", date);
+    formData.append("price", price);
+    formData.append("people", people);
+    formData.append("place", place);
+    formData.append("pic", file);
+
+    dispatch(addEvent(formData));
     closeForm();
     setTitle("");
     setDescription("");
@@ -43,20 +55,15 @@ function AddEventForm({ useStyles }) {
     setPeople("");
     setPlace("");
   }
-  const [value, setValue] = useState({});
 
   function onPlaceSelect(place) {
-    console.log(
-      "select",
-      place.properties.address_line1 + " ," + place.properties.address_line2
-    );
     setPlace(
       place.properties.address_line1 + ", " + place.properties.address_line2
     );
   }
 
   function onSuggectionChange(value) {
-    console.log(value);
+    
   }
 
   function preprocessHook(value) {
@@ -84,8 +91,23 @@ function AddEventForm({ useStyles }) {
 
     return filtered;
   }
+
   return (
     <>
+      {/* <form
+        name="pic"
+        onSubmit={(e) => uploadHandler(e)}
+        method="post"
+        encType="multipart/form-data"
+      >
+        <input type="file" name="pic" />
+        <input type="submit" name="pic" />
+      </form> */}
+      {/* <Button variant="contained" component="label">
+        Upload File
+        <input type="file" hidden />
+      </Button> */}
+
       <Button
         onClick={openForm}
         variant="outlined"
@@ -105,10 +127,16 @@ function AddEventForm({ useStyles }) {
       </Button>
       {open && (
         <Box
-          onSubmit={submitHandler}
+          method="post"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
           component="form"
-          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
-          noValidate
+          encType="multipart/form-data"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "45ch" },
+            marginBottom: "200px",
+          }}
+          // noValidate
           autoComplete="off"
         >
           <div
@@ -132,12 +160,13 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               required
+              name="title"
               id="outlined-required"
               label="Title"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
-            <TextField
+            {/* <TextField
               classes={{
                 root: classes.root,
               }}
@@ -155,7 +184,7 @@ function AddEventForm({ useStyles }) {
               label="Image"
               value={img}
               onChange={(event) => setImg(event.target.value)}
-            />
+            /> */}
             <TextField
               classes={{
                 root: classes.root,
@@ -172,6 +201,7 @@ function AddEventForm({ useStyles }) {
               required
               id="outlined-required"
               label="Price"
+              name="price"
               value={price}
               onChange={(event) => setPrice(event.target.value)}
             />
@@ -225,6 +255,7 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               required
+              name="people"
               id="outlined-required"
               label="People"
               value={people}
@@ -238,6 +269,34 @@ function AddEventForm({ useStyles }) {
               onChange={(event) => setPlace(event.target.value)}
             /> */}
 
+            <>
+              <input
+                name="pic"
+                accept="image/*"
+                className={classes.input}
+                style={{ display: "none" }}
+                id="raised-button-file"
+                type="file"
+                onChange={(e) => uploadHandler(e)}
+              />
+              <label htmlFor="raised-button-file">
+                <Button
+                  variant="raised"
+                  component="span"
+                  sx={{
+                    margin: "10px 0",
+                    color: "#711d6f",
+                    ":hover": {
+                      border: "none",
+                      bgcolor: "#eba7d0",
+                      color: "#fff",
+                    },
+                  }}
+                >
+                  Upload Image
+                </Button>
+              </label>
+            </>
             <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
               <GeoapifyGeocoderAutocomplete
                 classes={{
@@ -273,6 +332,7 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               value={description}
+              name="description"
               aria-label="description"
               placeholder="Event description"
               style={{

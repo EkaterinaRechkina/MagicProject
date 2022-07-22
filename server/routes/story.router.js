@@ -1,44 +1,60 @@
 const checkIsAutor= require('../middleware/checkAuthor')
 const { Story, User } = require("../db/models");
 
+const multer = require('multer')
+
 const router = require("express").Router();
 
-router.get("/", async (req, res) => {
 
-  try {
-    const allStories = await Story.findAll({
-      order: [["createdAt", "DESC"]],
-   
-    });
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+      pathFile = 'public/img/storypic';
+      cb(null, pathFile)
+  },
+  
+  filename(req, file, cb) {
+   cb(null, file.originalname);
+  },
+})
 
-    res.json(allStories );
-  } catch (err) {
-    console.log(err);
-    res.status(400).end();
-  }
-});
+const upload = multer({ storage })
 
-router.post("/", async (req, res) => {
-  console.log(req.body);
-  try {
-    const userId = req.session.userId;
-    
-    const user = await User.findOne({
-      where: { id: userId },
-    });
-    const user_id = user.id;
-    const author =user.name;
-    // console.log("userid", user_id);
-    const { id, title, description, img } = req.body;
+router
+    .route('/')
+    .get( async (req, res) => {
+      try {
+        const allStories = await Story.findAll({
+          order: [["createdAt", "DESC"]],
+        });
 
-    const newElement = await Story.create({
-      id,
-      title,
-      description,
-      img,
-      user_id,
-      author
-    });
+        res.json(allStories );
+      } catch (err) {
+        console.log(err);
+        res.status(400).end();
+      }
+    })
+    .post(upload.array('storypic'), async (req, res) => {
+      try {
+        const userId = req.session.userId;
+
+        const user = await User.findOne({
+          where: { id: userId },
+        });
+        const user_id = user.id;
+        const author = user.name;
+
+        const obj = JSON.parse(JSON.stringify(req.body))
+        const imgPath = `/img/storypic/${req.files[0].filename}`
+
+        const {title, description} = obj;
+
+        const newElement = await Story.create({
+          title,
+          description,
+          img: imgPath,
+          user_id,
+          author
+        });
 
     return res.status(201).json(newElement);
   } catch (err) {
@@ -47,16 +63,17 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id",checkIsAutor, async (req, res) => {
-  const { id, title, description,img } = req.body;
-  // console.log(id, title, description);
+router.put("/:id",checkIsAutor , upload.array('storypic'), async (req, res) => {
+  const { id } = req.params;
+  const obj = JSON.parse(JSON.stringify(req.body))
+  // const imgPath = `/img/storypic/${req.files[0].filename}`
+  const { title, description } = obj;
 
   const story = await Story.update(
-    { title, description,img },
+    { title, description },
     { where: { id } }
   );
   const currentStory = await Story.findOne({ where: { id } });
-  console.log(currentStory);
   res.json(currentStory);
 });
 

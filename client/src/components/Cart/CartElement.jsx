@@ -11,7 +11,7 @@ function CartElement({ id, img, title, price }) {
     <>
       <li className={style.listItem} key={id}>
         <div className={style.descrblock}>
-          <img className={style.image} src={img} alt="" />
+          <img className={style.image} src={`${process.env.REACT_APP_API_URL}/static${img}`} alt="" />
           <p className={style.descr}>{title}</p>
           <div className={style.priceblock}>$: {price}</div>
         </div>

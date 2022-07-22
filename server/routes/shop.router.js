@@ -1,6 +1,20 @@
 const router = require("express").Router();
+const multer = require('multer')
 
 const { Product } = require("../db/models");
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    pathFile = 'public/img/products';
+    cb(null, pathFile)
+  },
+
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
+})
+
+const upload = multer({ storage })
 
 router
   .route("/")
@@ -23,22 +37,24 @@ router
       console.log(error);
     }
   })
-  .post(async (req, res) => {
-    const { author, title, description, img, user_id, price } = req.body;
-
+  .post(upload.array('product'), async (req, res) => {
     try {
+      const obj = JSON.parse(JSON.stringify(req.body))
+      const imgPath = `/img/products/${req.files[0].filename}`
+      const {author, title, description, user_id, price} = obj;
+
       const newProduct = await Product.create({
         author: author,
         title: title,
         description: description,
-        img: img,
         user_id: user_id,
-        price: price
+        img: imgPath,
+        price: price,
       });
 
-      res.json({ newProduct });
-    } catch (error) {
-      console.log(error);
+      res.json({newProduct});
+    } catch (err) {
+      console.log(err);
     }
   });
 
@@ -61,13 +77,18 @@ router.route("/myproducts").post(async (req, res) => {
 
 router
   .route("/:id")
-  .put(async (req, res) => {
-    const { id, title, description, img } = req.body;
-    let { price } = req.body;
+  .put(upload.array('product'), async (req, res) => {
+    const { id } = req.params;
+    const obj = JSON.parse(JSON.stringify(req.body))
+    const imgPath = `/img/products/${req.files[0].filename}`;
+
+    const { author, title, description, user_id } = obj;
+    let { price } = obj;
+
     if (!price) price = 0;
 
     await Product.update(
-      { title, description, img, price: price },
+      {author, title, description, user_id, img: imgPath, price: price },
       { where: { id } }
     );
 

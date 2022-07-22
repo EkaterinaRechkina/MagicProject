@@ -5,22 +5,19 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import { display } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 import { getUserInfo } from "../../redux/actions/userActions";
-import { makeStyles } from "@material-ui/core/styles";
 import "./allStories.css";
 
 export default function AllStories({ useStyles }) {
   const classes = useStyles();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
-  const [img, setImg] = useState(null);
-  // const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState("");
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostsPerPage] = useState(10);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postPerPage, setPostsPerPage] = useState(10);
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -35,24 +32,30 @@ export default function AllStories({ useStyles }) {
 
   const user = useSelector((store) => store.user);
 
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+  }
+
   function submitHandler(event) {
     event.preventDefault();
-    dispatch(addStory(title, description, img));
+    const formData = new FormData(event.target);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("storypic", file);
+
+    dispatch(addStory(formData));
     closeForm();
     setTitle("");
     setDescription("");
-    setImg("");
   }
 
   useEffect(() => {
     dispatch(setStories());
   }, []);
 
-  console.log("user", user);
-
   return (
-    <>
-      {user.length == 0 ? (
+    <div className="allStories">
+      {user.length === 0 ? (
         ""
       ) : (
         <Button
@@ -78,15 +81,14 @@ export default function AllStories({ useStyles }) {
 
       {open && (
         <Box
-          onSubmit={submitHandler}
+          method="post"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
           component="form"
+          encType="multipart/form-data"
           sx={{
-            "& .MuiTextField-root": {
-              m: 1,
-              width: "45ch",
-            },
+            "& .MuiTextField-root": { m: 1, width: "45ch" },
           }}
-          noValidate
           autoComplete="off"
         >
           <div
@@ -115,25 +117,32 @@ export default function AllStories({ useStyles }) {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
-            <TextField
-              classes={{
-                root: classes.root,
-              }}
-              sx={{
-                "& label": { color: "#711d6f" },
-                "& label.Mui-focused": {
-                  color: "#711d6f",
-                },
-                "& legend": {
-                  color: "#711d6f",
-                },
-              }}
-              required
-              id="outlined-required"
-              label="Image"
-              value={img}
-              onChange={(event) => setImg(event.target.value)}
+            <input
+              name="storypic"
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => uploadHandler(e)}
             />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
+                Upload Image
+              </Button>
+            </label>
             <TextareaAutosize
               classes={{
                 root: classes.root,
@@ -161,7 +170,7 @@ export default function AllStories({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
             >
@@ -178,7 +187,7 @@ export default function AllStories({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
               onClick={closeForm}
@@ -195,6 +204,6 @@ export default function AllStories({ useStyles }) {
             <Story key={element.id} {...element} useStyles={useStyles} />
           ))}
       </div>
-    </>
+    </div>
   );
 }

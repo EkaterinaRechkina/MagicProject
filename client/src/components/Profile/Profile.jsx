@@ -15,8 +15,8 @@ function Profile({ useStyles }) {
   const classes = useStyles();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [img, setImg] = useState("");
   const [price, setPrice] = useState(0);
+  const [file, setFile] = useState("");
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -33,17 +33,27 @@ function Profile({ useStyles }) {
   const user = useSelector((store) => store.user);
   const isAdmin = useSelector((store) => store.admin);
 
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+  }
+
   function submitHandler(event) {
     event.preventDefault();
     const user_id = user[0];
     const author = user[1];
-    dispatch(addProduct(author, title, description, img, user_id, price));
-    console.log(author, title, description, img, user_id, price);
+    const formData = new FormData(event.target);
+    formData.append("user_id", user_id);
+    formData.append("author", author);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("product", file);
+
+    dispatch(addProduct(formData));
     closeForm();
     setTitle("");
     setDescription("");
-    setImg("");
-    setPrice("");
+    setPrice(0);
   }
 
   return (
@@ -88,10 +98,12 @@ function Profile({ useStyles }) {
       </div>
       {open && (
         <Box
-          onSubmit={submitHandler}
+          method="post"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
           component="form"
+          encType="multipart/form-data"
           sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
-          noValidate
           autoComplete="off"
         >
           <div
@@ -120,25 +132,32 @@ function Profile({ useStyles }) {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
-            <TextField
-              classes={{
-                root: classes.root,
-              }}
-              sx={{
-                "& label": { color: "#711d6f" },
-                "& label.Mui-focused": {
-                  color: "#711d6f",
-                },
-                "& legend": {
-                  color: "#711d6f",
-                },
-              }}
-              required
-              id="outlined-required"
-              label="Image"
-              value={img}
-              onChange={(event) => setImg(event.target.value)}
+            <input
+              name="product"
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => uploadHandler(e)}
             />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
+                Upload Image
+              </Button>
+            </label>
             <TextField
               classes={{
                 root: classes.root,
@@ -191,7 +210,7 @@ function Profile({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
             >
@@ -208,7 +227,7 @@ function Profile({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
               onClick={closeForm}
@@ -218,8 +237,6 @@ function Profile({ useStyles }) {
           </div>
         </Box>
       )}
-
-      {/* <div className={style.ulProductUser}></div> */}
     </div>
   );
 }

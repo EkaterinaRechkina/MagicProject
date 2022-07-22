@@ -18,7 +18,7 @@ export default function UserProducts({ useStyles }) {
     <div className={style.body}>
       <ul className={style.ulProducts}>
         {!allGoods.length ? (
-          <h1>Вы еще не добавили ни одного товара!</h1>
+          <h1>You have not added any products yet!</h1>
         ) : (
           allGoods &&
           allGoods.map((item) => (

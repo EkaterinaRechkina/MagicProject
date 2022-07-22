@@ -6,8 +6,6 @@ import "./calendar.css";
 export default function MyCalendar() {
   const [value, onChange] = useState(new Date());
 
-  //   console.log(typeof value);
-
   return (
     <>
       <div className="calendar">

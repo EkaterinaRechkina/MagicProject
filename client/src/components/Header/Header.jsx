@@ -9,20 +9,15 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import ImgProfile from "../../witch.jpg";
 import logo from "../../images/logo.svg";
 import "./header.css";
 import { checkAdmin } from "../../hooks/checkAdmin";
-import { TextField } from "@mui/material";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -34,11 +29,15 @@ const Header = () => {
   const isAuth = useSelector((store) => store.auth);
   const isAdmin = useSelector((store) => store.admin);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function logoutHandler() {
     axios
-      .post("http://localhost:3001/logout", {}, { withCredentials: true })
+      .post(
+        `${process.env.REACT_APP_API_URL}/logout`,
+        {},
+        { withCredentials: true }
+      )
       .then((response) => {
         localStorage.clear();
         dispatch(checkAuth());
@@ -70,6 +69,7 @@ const Header = () => {
         position="static"
         sx={{
           backgroundColor: "#711d6f",
+          padding: 0,
         }}
       >
         <Container maxWidth="xl">
@@ -187,7 +187,7 @@ const Header = () => {
 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open profile">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton onClick={handleOpenUserMenu} sx={{ padding: 0 }}>
                   <Avatar
                     alt="Remy Sharp"
                     src={require("../../images/penta.png")}

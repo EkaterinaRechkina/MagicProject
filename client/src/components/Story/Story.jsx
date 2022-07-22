@@ -4,10 +4,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
 import { useState, useEffect } from "react";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
@@ -45,7 +43,7 @@ export default function Story({
 
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newImg, setNewImg] = useState(img);
+  const [file, setFile] = useState([]);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -55,8 +53,16 @@ export default function Story({
     dispatch(deleteStory(id));
   }
 
-  function editHandler(id, title, description, img) {
-    dispatch(editStory(id, title, description, img));
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+  }
+  function editHandler(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append("title", newTitle);
+    formData.append("description", newDescription);
+    // formData.append("storypic", file);
+    dispatch(editStory(id, formData));
     handleClose();
   }
   useEffect(() => {
@@ -70,16 +76,16 @@ export default function Story({
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ width: 305, position: "relative", height: 500 }}>
+            <Card sx={{ width: 305, position: "relative", height: 450 }}>
               <CardMedia
                 component="img"
                 height="350"
-                image={img}
+                image={`${process.env.REACT_APP_API_URL}/static${img}`}
                 alt={title}
                 {...bindTrigger(popupState)}
               />
               <CardContent>
-                {user[1] == author && (
+                {user[1] === author && (
                   <>
                     <Button
                       id={id}
@@ -129,7 +135,7 @@ export default function Story({
                 <CardMedia
                   component="img"
                   height="350"
-                  image={img}
+                  image={`${process.env.REACT_APP_API_URL}/static${img}`}
                   alt={title}
                 />
                 <div className="title-popup"> {title}</div>
@@ -146,8 +152,15 @@ export default function Story({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <TextField
+        <Box
+          sx={style}
+          name="storypic"
+          onSubmit={(e) => editHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          autoComplete="off"
+        >
+          {/* <TextField
             classes={{
               root: classes.root,
             }}
@@ -165,7 +178,35 @@ export default function Story({
             label="Image"
             value={newImg}
             onChange={(event) => setNewImg(event.target.value)}
-          />
+          /> */}
+          <>
+            <input
+              name="storypic"
+              accept="image/*"
+              className={classes.input}
+              style={{ display: "none" }}
+              id="raised-button-file"
+              type="file"
+              onChange={(e) => uploadHandler(e)}
+            />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
+                Upload Image
+              </Button>
+            </label>
+          </>
           <TextField
             classes={{
               root: classes.root,
@@ -219,7 +260,8 @@ export default function Story({
             }}
             id={id}
             size="small"
-            onClick={() => editHandler(id, newTitle, newDescription, newImg)}
+            type="submit"
+            // onClick={(e) => editHandler(e)}
           >
             Submit
           </Button>

@@ -16,42 +16,37 @@ export const setStories = () => async (dispatch) => {
   }
 };
 
-export const addStory =
-  (title, description, img, author) => async (dispatch) => {
+export const addStory = (formData) => async (dispatch) => {
     try {
       const result = await axios.post(
-        `${process.env.REACT_APP_API_URL}/stories`,
-        {
-          title,
-          description,
-          img,
-          author,
-        },
-        { withCredentials: true }
-      );
-      console.log("result", result.data);
-      dispatch({
-        type: ADD_STORY,
-        payload: result.data,
-      });
+        `${process.env.REACT_APP_API_URL}/stories`, formData, {
+              withCredentials: true,
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              }
+          })
+        dispatch({
+            type: ADD_STORY,
+            payload: result.data,
+        });
+
     } catch (err) {
       console.log(err);
     }
   };
 
-export const editStory = (id, title, description, img) => async (dispatch) => {
+export const editStory = (id, formData) => async (dispatch) => {
   try {
     const result = await axios.put(
-      `${process.env.REACT_APP_API_URL}/stories/${id}`,
+      `${process.env.REACT_APP_API_URL}/stories/${id}`, 
+      formData,
       {
-        id,
-        title,
-        description,
-        img,
-      },
-      { withCredentials: true }
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
     );
-    console.log("result", result.data);
     dispatch({
       type: EDIT_STORY,
       payload: result.data,
@@ -70,7 +65,6 @@ export const deleteStory = (id) => async (dispatch) => {
       // },
       { withCredentials: true }
     );
-    console.log(result);
 
     dispatch({
       type: DEL_STORY,
