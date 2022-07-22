@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/EkaterinaRechkina/MagicProject/issues"
   },
-  "homepage": "https://github.com/EkaterinaRechkina/MagicProject#readme"
+  "homepage": "https://github.com/EkaterinaRechkina/MagicProject#readme",
+  "engines": {
+    "node": "16.15.0"
+  }
 }
