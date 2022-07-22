@@ -66,11 +66,11 @@ router
 router.put("/:id",checkIsAutor , upload.array('storypic'), async (req, res) => {
   const { id } = req.params;
   const obj = JSON.parse(JSON.stringify(req.body))
-  const imgPath = `/img/storypic/${req.files[0].filename}`
+  // const imgPath = `/img/storypic/${req.files[0].filename}`
   const { title, description } = obj;
 
   const story = await Story.update(
-    { title, description,img: imgPath },
+    { title, description },
     { where: { id } }
   );
   const currentStory = await Story.findOne({ where: { id } });

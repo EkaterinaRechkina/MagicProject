@@ -5,11 +5,9 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import { display } from "@mui/system";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 import { getUserInfo } from "../../redux/actions/userActions";
-import { makeStyles } from "@material-ui/core/styles";
 import "./allStories.css";
 
 export default function AllStories({ useStyles }) {
@@ -17,10 +15,10 @@ export default function AllStories({ useStyles }) {
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
   const [file, setFile] = useState("");
-  // const [loading, setLoading] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostsPerPage] = useState(10);
+
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postPerPage, setPostsPerPage] = useState(10);
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -59,7 +57,7 @@ export default function AllStories({ useStyles }) {
 
   return (
     <>
-      {user.length == 0 ? (
+      {user.length === 0 ? (
         ""
       ) : (
         <Button

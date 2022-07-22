@@ -4,10 +4,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
 import { useState, useEffect } from "react";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
@@ -45,7 +43,6 @@ export default function Story({
 
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
-  const [newImg, setNewImg] = useState(img);
   const [file, setFile] = useState([]);
 
   const [open, setOpen] = useState(false);
@@ -58,14 +55,13 @@ export default function Story({
 
   function uploadHandler(e) {
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   }
   function editHandler(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("title", newTitle);
     formData.append("description", newDescription);
-    formData.append("storypic", file);
+    // formData.append("storypic", file);
     dispatch(editStory(id, formData));
     handleClose();
   }
@@ -89,7 +85,7 @@ export default function Story({
                 {...bindTrigger(popupState)}
               />
               <CardContent>
-                {user[1] == author && (
+                {user[1] === author && (
                   <>
                     <Button
                       id={id}
