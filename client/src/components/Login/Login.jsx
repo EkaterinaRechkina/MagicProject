@@ -21,7 +21,7 @@ export default function Login({ useStyles }) {
     event.preventDefault();
     axios
       .post(
-        "http://localhost:3001/login",
+        `${process.env.REACT_APP_API_URL}/login`,
         { name, password },
         { withCredentials: true }
       )
@@ -88,7 +88,11 @@ export default function Login({ useStyles }) {
           type="password"
           label="password"
           variant="outlined"
-          className={!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert'}
+          className={
+            !statusInfo
+              ? "animate__animated animate__fadeInDown animate__delay-0.5s"
+              : "red_alert"
+          }
           required
         />
         <Button
@@ -106,7 +110,7 @@ export default function Login({ useStyles }) {
               color: "#fff", // theme.palette.primary.main
             },
           }}
-          className='animate__animated animate__fadeInDown animate__delay-0.5s'
+          className="animate__animated animate__fadeInDown animate__delay-0.5s"
         >
           LOGIN
         </Button>

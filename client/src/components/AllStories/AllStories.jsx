@@ -16,7 +16,7 @@ export default function AllStories({ useStyles }) {
   const classes = useStyles();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState("");
   // const [loading, setLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,8 +42,8 @@ export default function AllStories({ useStyles }) {
   function submitHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.append('title', title);
-    formData.append('description', description);
+    formData.append("title", title);
+    formData.append("description", description);
     formData.append("storypic", file);
 
     dispatch(addStory(formData));
@@ -84,15 +84,15 @@ export default function AllStories({ useStyles }) {
       )}
 
       {open && (
-          <Box
-              method="post"
-              name="pic"
-              onSubmit={(e) => submitHandler(e)}
-              component="form"
-              encType="multipart/form-data"
-              sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
-              autoComplete="off"
-          >
+        <Box
+          method="post"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
+          autoComplete="off"
+        >
           <div
             style={{
               display: "flex",
@@ -120,16 +120,28 @@ export default function AllStories({ useStyles }) {
               onChange={(event) => setTitle(event.target.value)}
             />
             <input
-                name="storypic"
-                accept="image/*"
-                className={classes.input}
-                id="raised-button-file"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={(e) => uploadHandler(e)}
+              name="storypic"
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => uploadHandler(e)}
             />
             <label htmlFor="raised-button-file">
-              <Button variant="raised" component="span" className={classes.button}>
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
                 Upload Image
               </Button>
             </label>
@@ -160,7 +172,7 @@ export default function AllStories({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
             >
@@ -177,7 +189,7 @@ export default function AllStories({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
               onClick={closeForm}

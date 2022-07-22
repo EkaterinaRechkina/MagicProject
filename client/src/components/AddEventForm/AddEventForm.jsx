@@ -34,21 +34,37 @@ function AddEventForm({ useStyles }) {
   const closeForm = () => setOpen(false);
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
    function uploadHandler(e) {
     setFile(e.target.files[0])
+=======
+  function uploadHandler(e) {
+    setFile(e.target.files[0]);
+    console.log(e.target.files[0]);
+>>>>>>> 539661db078b01d09b1266ee6e99f46e8ba52dff
   }
 
   function submitHandler(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
+<<<<<<< HEAD
     formData.append('title', title);
     formData.append('description', description);
     formData.append('date', date);
     formData.append('price', price);
     formData.append('people', people);
     formData.append('place', place);
+=======
+    // console.log('------------', title);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("date", date);
+    formData.append("price", price);
+    formData.append("people", people);
+    formData.append("place", place);
+>>>>>>> 539661db078b01d09b1266ee6e99f46e8ba52dff
     formData.append("pic", file);
-    
+
     dispatch(addEvent(formData));
     closeForm();
     setTitle("");
@@ -96,11 +112,8 @@ function AddEventForm({ useStyles }) {
     return filtered;
   }
 
-  
-
   return (
     <>
-
       {/* <form
         name="pic"
         onSubmit={(e) => uploadHandler(e)}
@@ -114,7 +127,6 @@ function AddEventForm({ useStyles }) {
         Upload File
         <input type="file" hidden />
       </Button> */}
-
 
       <Button
         onClick={openForm}
@@ -165,7 +177,7 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               required
-              name='title'
+              name="title"
               id="outlined-required"
               label="Title"
               value={title}
@@ -260,7 +272,7 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               required
-              name='people'
+              name="people"
               id="outlined-required"
               label="People"
               value={people}
@@ -279,16 +291,28 @@ function AddEventForm({ useStyles }) {
                 name="pic"
                 accept="image/*"
                 className={classes.input}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
                 id="raised-button-file"
                 type="file"
                 onChange={(e) => uploadHandler(e)}
               />
               <label htmlFor="raised-button-file">
-                <Button variant="raised" component="span" className={classes.button}>
+                <Button
+                  variant="raised"
+                  component="span"
+                  sx={{
+                    margin: "10px 0",
+                    color: "#711d6f",
+                    ":hover": {
+                      border: "none",
+                      bgcolor: "#eba7d0",
+                      color: "#fff",
+                    },
+                  }}
+                >
                   Upload Image
                 </Button>
-              </label> 
+              </label>
             </>
             <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
               <GeoapifyGeocoderAutocomplete
@@ -325,7 +349,7 @@ function AddEventForm({ useStyles }) {
                 },
               }}
               value={description}
-              name='description'
+              name="description"
               aria-label="description"
               placeholder="Event description"
               style={{

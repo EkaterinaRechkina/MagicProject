@@ -22,7 +22,7 @@ export default function Registration({ useStyles }) {
     event.preventDefault();
     axios
       .post(
-        "http://localhost:3001/registration",
+        `${process.env.REACT_APP_API_URL}/registration`,
         { name, email, password },
         { withCredentials: true }
       )
@@ -64,7 +64,11 @@ export default function Registration({ useStyles }) {
           id="outlined-basic"
           label="Login"
           variant="outlined"
-          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert_reg'}
+          className={
+            !statusInfo
+              ? "animate__animated animate__fadeInDown animate__delay-0.5s"
+              : "red_alert_reg"
+          }
           required
         />
         <TextField
@@ -88,7 +92,11 @@ export default function Registration({ useStyles }) {
           id="outlined-basic"
           label="Email"
           variant="outlined"
-          className= {!statusInfo ? 'animate__animated animate__fadeInDown animate__delay-0.5s' : 'red_alert_reg'}
+          className={
+            !statusInfo
+              ? "animate__animated animate__fadeInDown animate__delay-0.5s"
+              : "red_alert_reg"
+          }
           required
         />
         <TextField
@@ -112,7 +120,7 @@ export default function Registration({ useStyles }) {
           id="outlined-basic"
           label="password"
           variant="outlined"
-          className='animate__animated animate__fadeInDown animate__delay-0.5s'
+          className="animate__animated animate__fadeInDown animate__delay-0.5s"
           required
         />
         <Button
@@ -130,14 +138,22 @@ export default function Registration({ useStyles }) {
               color: "#fff", // theme.palette.primary.main
             },
           }}
-          className='animate__animated animate__fadeInDown animate__delay-0.5s'
+          className="animate__animated animate__fadeInDown animate__delay-0.5s"
         >
           Register
         </Button>
       </form>
-      <div id='witchReg' className="witchReg">
-        <img src={require('../../images/witchLeft.png')} alt='#' className='witchImgReg'/>
-        <img src={require('../../images/witch.png')} alt='#' className='witchRImgReg'/>
+      <div id="witchReg" className="witchReg">
+        <img
+          src={require("../../images/witchLeft.png")}
+          alt="#"
+          className="witchImgReg"
+        />
+        <img
+          src={require("../../images/witch.png")}
+          alt="#"
+          className="witchRImgReg"
+        />
       </div>
     </div>
   );

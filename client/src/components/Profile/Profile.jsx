@@ -16,7 +16,7 @@ function Profile({ useStyles }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState("");
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -42,11 +42,11 @@ function Profile({ useStyles }) {
     const user_id = user[0];
     const author = user[1];
     const formData = new FormData(event.target);
-    formData.append('user_id', user_id);
-    formData.append('author', author);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('price', price);
+    formData.append("user_id", user_id);
+    formData.append("author", author);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
     formData.append("product", file);
 
     dispatch(addProduct(formData));
@@ -97,15 +97,15 @@ function Profile({ useStyles }) {
         ) : null}
       </div>
       {open && (
-          <Box
-              method="post"
-              name="pic"
-              onSubmit={(e) => submitHandler(e)}
-              component="form"
-              encType="multipart/form-data"
-              sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
-              autoComplete="off"
-          >
+        <Box
+          method="post"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
+          autoComplete="off"
+        >
           <div
             style={{
               display: "flex",
@@ -133,16 +133,28 @@ function Profile({ useStyles }) {
               onChange={(event) => setTitle(event.target.value)}
             />
             <input
-                name="product"
-                accept="image/*"
-                className={classes.input}
-                id="raised-button-file"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={(e) => uploadHandler(e)}
+              name="product"
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              type="file"
+              style={{ display: "none" }}
+              onChange={(e) => uploadHandler(e)}
             />
             <label htmlFor="raised-button-file">
-              <Button variant="raised" component="span" className={classes.button}>
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
                 Upload Image
               </Button>
             </label>

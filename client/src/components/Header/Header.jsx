@@ -38,7 +38,11 @@ const Header = () => {
 
   function logoutHandler() {
     axios
-      .post("http://localhost:3001/logout", {}, { withCredentials: true })
+      .post(
+        `${process.env.REACT_APP_API_URL}/logout`,
+        {},
+        { withCredentials: true }
+      )
       .then((response) => {
         localStorage.clear();
         dispatch(checkAuth());

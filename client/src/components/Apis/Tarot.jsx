@@ -35,7 +35,8 @@ function Tarot() {
         <img
           className="img-tarot"
           src={
-            cardName && `http://localhost:3001/static/img/cards/${cardName}.jpg`
+            cardName &&
+            `${process.env.REACT_APP_API_URL}/static/img/cards/${cardName}.jpg`
           }
           alt=""
         />
