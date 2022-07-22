@@ -142,7 +142,10 @@ function AddEventForm({ useStyles }) {
           onSubmit={(e) => submitHandler(e)}
           component="form"
           encType="multipart/form-data"
-          sx={{ "& .MuiTextField-root": { m: 1, width: "45ch" } }}
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "45ch" },
+            marginBottom: "200px",
+          }}
           // noValidate
           autoComplete="off"
         >

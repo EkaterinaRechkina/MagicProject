@@ -80,7 +80,7 @@ export default function Story({
       <PopupState variant="popover" popupId="demo-popup-popover">
         {(popupState) => (
           <div id={id}>
-            <Card sx={{ width: 305, position: "relative", height: 500 }}>
+            <Card sx={{ width: 305, position: "relative", height: 450 }}>
               <CardMedia
                 component="img"
                 height="350"
