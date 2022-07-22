@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
@@ -52,13 +51,6 @@ export default function Event({
   useStyles,
 }) {
   const classes = useStyles();
-  const [inputs, setInputs] = useState({
-    title,
-    description,
-    img,
-    price,
-    people,
-  });
   const [file, setFile] = useState([]);
   const [newTitle, setTitle] = useState(title);
   const [newDescription, setDescription] = useState(description);
@@ -76,11 +68,7 @@ export default function Event({
 
   function uploadHandler(e) {
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   }
-  // function inputsHandler(e) {
-  //   setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  // }
 
   function submitHandler(e) {
     e.preventDefault();

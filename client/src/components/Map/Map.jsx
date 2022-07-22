@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as tt from "@tomtom-international/web-sdk-maps";
-import * as ttapi from "@tomtom-international/web-sdk-services";
-import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
 import "./map.css";
 import "animate.css";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
