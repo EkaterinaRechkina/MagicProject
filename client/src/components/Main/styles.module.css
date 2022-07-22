@@ -40,9 +40,9 @@
 }
 
 @media only screen and (max-width: 1170px) {
-    .tarot {
-        margin-top: 80px;
-      }
+  .tarot {
+    margin-top: 80px;
+  }
   .api {
     grid-template-columns: repeat(1, auto);
     gap: 20px;

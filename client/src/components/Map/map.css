@@ -4,18 +4,17 @@
     display: flex;
     flex-direction: row;
     margin: 8% auto 0;
-    align-items: center !important;
-    /* justify-content: space-around !important; */
+    align-items: center;
     max-width: 1400px;
 }
 
 .map{
     height: 400px;
-    width: 70% !important;
+    width: 70%;
 }
 .map-text{
-    width: 30% !important;
-    margin-right: 15% !important;
+    width: 30%;
+    margin-right: 15%;
 }
 .marker{
     background-image: url('https://img.icons8.com/material-outlined/344/place-marker--v1.png');

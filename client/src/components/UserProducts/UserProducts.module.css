@@ -5,12 +5,7 @@
 }
 
 .ulProducts {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
     display: grid;
-    /* gap: 3% 2%; */
     row-gap: 5%;
     column-gap: 2%;
     grid-template-columns: repeat(5,auto);
