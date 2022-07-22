@@ -6,7 +6,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {editProduct, deleteProduct, addProduct} from "../../redux/actions/product.action";
+import {
+  editProduct,
+  deleteProduct,
+  addProduct,
+} from "../../redux/actions/product.action";
 import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import { Box, Modal, TextField } from "@mui/material";
@@ -26,14 +30,22 @@ const style = {
   gap: "20px",
 };
 
-function OneUserProduct({id, author, title, description, img, price, useStyles}) {
+function OneUserProduct({
+  id,
+  author,
+  title,
+  description,
+  img,
+  price,
+  useStyles,
+}) {
   const dispatch = useDispatch();
 
   const classes = useStyles();
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newPrice, setNewPrice] = useState(price);
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState("");
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -51,9 +63,9 @@ function OneUserProduct({id, author, title, description, img, price, useStyles})
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    formData.append('title', newTitle);
-    formData.append('description', newDescription);
-    formData.append('price', newPrice);
+    formData.append("title", newTitle);
+    formData.append("description", newDescription);
+    formData.append("price", newPrice);
     formData.append("product", file);
 
     dispatch(editProduct(id, formData));
@@ -123,28 +135,41 @@ function OneUserProduct({id, author, title, description, img, price, useStyles})
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-          <Box sx={style}
-              method="put"
-              name="pic"
-              onSubmit={(e) => submitHandler(e)}
-              component="form"
-              encType="multipart/form-data"
-              autoComplete="off"
-          >
-            <input
-                name="product"
-                accept="image/*"
-                className={classes.input}
-                id="raised-button-file"
-                type="file"
-                style={{ display: 'none' }}
-                onChange={(e) => uploadHandler(e)}
-            />
-            <label htmlFor="raised-button-file">
-              <Button variant="raised" component="span" className={classes.button}>
-                Upload Image
-              </Button>
-            </label>
+        <Box
+          sx={style}
+          method="put"
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          autoComplete="off"
+        >
+          <input
+            name="product"
+            accept="image/*"
+            className={classes.input}
+            id="raised-button-file"
+            type="file"
+            style={{ display: "none" }}
+            onChange={(e) => uploadHandler(e)}
+          />
+          <label htmlFor="raised-button-file">
+            <Button
+              variant="raised"
+              component="span"
+              sx={{
+                margin: "10px 0",
+                color: "#711d6f",
+                ":hover": {
+                  border: "none",
+                  bgcolor: "#eba7d0",
+                  color: "#fff",
+                },
+              }}
+            >
+              Upload Image
+            </Button>
+          </label>
           <TextField
             classes={{
               root: classes.root,
@@ -203,7 +228,9 @@ function OneUserProduct({id, author, title, description, img, price, useStyles})
             label="Price"
             required
           />
-          <Button id={id} type='submit'
+          <Button
+            id={id}
+            type="submit"
             sx={{
               margin: "0 auto",
               width: "200px",

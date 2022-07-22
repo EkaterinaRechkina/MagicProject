@@ -52,7 +52,13 @@ export default function Event({
   useStyles,
 }) {
   const classes = useStyles();
-  const [inputs, setInputs] = useState({title, description, img, price, people});
+  const [inputs, setInputs] = useState({
+    title,
+    description,
+    img,
+    price,
+    people,
+  });
   const [file, setFile] = useState([]);
   const [newTitle, setTitle] = useState(title);
   const [newDescription, setDescription] = useState(description);
@@ -69,7 +75,7 @@ export default function Event({
   const handleClose = () => setOpen(false);
 
   function uploadHandler(e) {
-    setFile(e.target.files[0])
+    setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   }
   // function inputsHandler(e) {
@@ -79,12 +85,12 @@ export default function Event({
   function submitHandler(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
-    formData.append('title', newTitle);
-    formData.append('description', newDescription);
-    formData.append('date', newDate);
-    formData.append('price', newPrice);
-    formData.append('people', newPeople);
-    formData.append('place', newPlace);
+    formData.append("title", newTitle);
+    formData.append("description", newDescription);
+    formData.append("date", newDate);
+    formData.append("price", newPrice);
+    formData.append("people", newPeople);
+    formData.append("place", newPlace);
     formData.append("pic", file);
     // console.log('>>>>>>>>>>>>>>>>>>>>>>>>',file);
     dispatch(editEvent(id, formData));
@@ -201,8 +207,8 @@ export default function Event({
                 <CardMedia
                   component="img"
                   height="350"
-                src={`${process.env.REACT_APP_API_URL}/static${img}`}
-                // image={img}
+                  src={`${process.env.REACT_APP_API_URL}/static${img}`}
+                  // image={img}
                   alt={title}
                 />
                 <div className="title-popup">{title}</div>
@@ -227,12 +233,13 @@ export default function Event({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}
-        name="pic"
-        onSubmit={(e) => submitHandler(e)}
-        component="form"
-        encType="multipart/form-data"
-        autoComplete="off"
+        <Box
+          sx={style}
+          name="pic"
+          onSubmit={(e) => submitHandler(e)}
+          component="form"
+          encType="multipart/form-data"
+          autoComplete="off"
         >
           <TextField
             classes={{
@@ -306,7 +313,9 @@ export default function Event({
             <DatePicker
               label="Date"
               value={newDate}
-              onChange={(newValue) => {setNewDate(newValue.toDateString());}}
+              onChange={(newValue) => {
+                setNewDate(newValue.toDateString());
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -357,22 +366,34 @@ export default function Event({
             value={inputs.place}
             onChange={inputsHandler}
           /> */}
-              <>
-              <input
-                name="pic"
-                accept="image/*"
-                className={classes.input}
-                style={{ display: 'none' }}
-                id="raised-button-file"
-                type="file"
-                onChange={(e) => uploadHandler(e)}
-              />
-              <label htmlFor="raised-button-file">
-                <Button variant="raised" component="span" className={classes.button}>
-                  Upload Image
-                </Button>
-              </label> 
-            </>
+          <>
+            <input
+              name="pic"
+              accept="image/*"
+              className={classes.input}
+              style={{ display: "none" }}
+              id="raised-button-file"
+              type="file"
+              onChange={(e) => uploadHandler(e)}
+            />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                sx={{
+                  margin: "10px 0",
+                  color: "#711d6f",
+                  ":hover": {
+                    border: "none",
+                    bgcolor: "#eba7d0",
+                    color: "#fff",
+                  },
+                }}
+              >
+                Upload Image
+              </Button>
+            </label>
+          </>
           <GeoapifyContext apiKey={process.env.REACT_APP_API_INPUT}>
             <GeoapifyGeocoderAutocomplete
               classes={{
