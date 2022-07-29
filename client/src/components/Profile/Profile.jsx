@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import style from "./Profile.module.css";
+import "./Profile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../../redux/actions/userActions";
 import { addProduct } from "../../redux/actions/product.action";
-import { Button } from "@mui/material";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
+import { Button, Box, TextField } from "@mui/material";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import AddEventForm from "../AddEventForm/AddEventForm";
 import { checkAdmin } from "../../hooks/checkAdmin";
@@ -57,16 +55,16 @@ function Profile({ useStyles }) {
   }
 
   return (
-    <div className={style.wrap}>
-      <div className={style.profile}>
-        <div className={style.image_profile}>
+    <div className="wrap">
+      <div className="profile">
+        <div className="image_profile">
           <img src={require("../../images/profile.png")} alt="#" />
         </div>
-        <div className={style.info_profile}>
-          <div className={style.heading_profile}>
-            <h1 className={style.title}>Welcome, {user[1]}!</h1>
+        <div className="info_profile">
+          <div className="heading_profile">
+            <h1 className="title">Welcome, {user[1]}!</h1>
           </div>
-          <div className={style.text_profile}>
+          <div className="text_profile">
             <p>What are you willing to offer?</p>
           </div>
           <Button

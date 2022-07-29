@@ -4,9 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { checkAuth } from "../../hooks/checkAuth";
 import { useDispatch } from "react-redux";
-import "./registration.css";
-import "animate.css";
 import { checkAdmin } from "../../hooks/checkAdmin";
+import "./Registration.css";
+import "animate.css";
 
 export default function Registration({ useStyles }) {
   const classes = useStyles();
@@ -135,7 +135,7 @@ export default function Registration({ useStyles }) {
             ":hover": {
               border: "none",
               bgcolor: "#eba7d0",
-              color: "#fff", // theme.palette.primary.main
+              color: "#fff",
             },
           }}
           className="animate__animated animate__fadeInDown animate__delay-0.5s"

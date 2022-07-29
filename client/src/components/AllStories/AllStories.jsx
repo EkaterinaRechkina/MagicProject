@@ -2,22 +2,17 @@ import React from "react";
 import Story from "../Story/Story";
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { Box, TextField, TextareaAutosize } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addStory, setStories } from "../../redux/actions/story.action";
 import { getUserInfo } from "../../redux/actions/userActions";
-import "./allStories.css";
+import "./AllStories.css";
 
 export default function AllStories({ useStyles }) {
   const classes = useStyles();
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
   const [file, setFile] = useState("");
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postPerPage, setPostsPerPage] = useState(10);
 
   const [open, setOpen] = useState(false);
   const openForm = () => setOpen(true);
@@ -51,7 +46,7 @@ export default function AllStories({ useStyles }) {
 
   useEffect(() => {
     dispatch(setStories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="allStories">
@@ -69,7 +64,7 @@ export default function AllStories({ useStyles }) {
             border: "none",
             color: "#2b256f",
             ":hover": {
-              bgcolor: "#eba7d0", // theme.palette.primary.main
+              bgcolor: "#eba7d0",
               border: "none",
               color: "#fff",
             },

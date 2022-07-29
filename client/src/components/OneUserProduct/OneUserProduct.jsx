@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Button,
+  Box,
+  Modal,
+  TextField,
+  Popover,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   editProduct,
   deleteProduct,
   addProduct,
 } from "../../redux/actions/product.action";
-import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import { Box, Modal, TextField } from "@mui/material";
 import "../Story/Story";
 
 const style = {
@@ -240,7 +244,7 @@ function OneUserProduct({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
             size="small"

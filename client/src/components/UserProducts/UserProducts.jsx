@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import style from "./UserProducts.module.css";
+import "./UserProducts.css";
 import OneUserProduct from "../OneUserProduct/OneUserProduct";
 import { getProduct } from "../../redux/actions/product.action";
 
@@ -15,8 +15,8 @@ export default function UserProducts({ useStyles }) {
   }, [dispatch]);
 
   return (
-    <div className={style.body}>
-      <ul className={style.ulProducts}>
+    <div className="body">
+      <ul className="ulProducts">
         {!allGoods.length ? (
           <h1>You have not added any products yet!</h1>
         ) : (

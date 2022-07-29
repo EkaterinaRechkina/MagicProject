@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { checkAuth } from "../../hooks/checkAuth";
 import { checkAdmin } from "../../hooks/checkAdmin";
 import { useDispatch } from "react-redux";
-import "./login.css";
+import "./Login.css";
 import "animate.css";
 
 export default function Login({ useStyles }) {
@@ -107,7 +107,7 @@ export default function Login({ useStyles }) {
             ":hover": {
               border: "none",
               bgcolor: "#eba7d0",
-              color: "#fff", // theme.palette.primary.main
+              color: "#fff",
             },
           }}
           className="animate__animated animate__fadeInDown animate__delay-0.5s"
