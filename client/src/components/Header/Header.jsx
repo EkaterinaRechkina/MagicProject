@@ -1,23 +1,25 @@
 import * as React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "../../hooks/checkAuth";
 import { useEffect } from "react";
-
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import logo from "../../images/logo.svg";
-import "./header.css";
 import { checkAdmin } from "../../hooks/checkAdmin";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Menu,
+  Container,
+  Avatar,
+  Tooltip,
+  MenuItem,
+} from "@mui/material";
+
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import logo from "../../images/logo.svg";
+import "./Header.css";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,8 +30,6 @@ const Header = () => {
 
   const isAuth = useSelector((store) => store.auth);
   const isAdmin = useSelector((store) => store.admin);
-
-  // const navigate = useNavigate();
 
   function logoutHandler() {
     axios
@@ -107,6 +107,7 @@ const Header = () => {
                   <Link to="/" className="link-sidebar">
                     <img
                       src={logo}
+                      alt="logo"
                       style={{
                         width: "45px",
                         height: "45px",
@@ -158,6 +159,7 @@ const Header = () => {
                 <div className="link-home">
                   <img
                     src={logo}
+                    alt="logo"
                     style={{
                       width: "55px",
                       height: "55px",

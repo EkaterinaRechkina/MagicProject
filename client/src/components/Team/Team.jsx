@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from "./Team.module.css";
+import "./Team.css";
 import "animate.css";
 
 function Team() {
@@ -12,62 +12,60 @@ function Team() {
   };
 
   return (
-    <div className={style.wrapper}>
-      <div className={style.listOfParticipants}>
-        <li className={style.participant}>
+    <div className="wrapper">
+      <div className="listOfParticipants">
+        <li className="participant">
           <img
             src={require("../../images/team/Maxim.png")}
             alt="#"
-            className={style.photoImage}
+            className="photoImage"
           />
-          <p className={style.textName}>Maxim Zhilin</p>
-          <p className={style.textPosition}>Full-stack developer</p>
+          <p className="textName">Maxim Zhilin</p>
+          <p className="textPosition">Full-stack developer</p>
         </li>
-        <li className={style.participant}>
+        <li className="participant">
           <img
             src={require("../../images/team/Rechkina.png")}
             alt="#"
-            className={style.photoImage}
+            className="photoImage"
           />
-          <p className={style.textName}>Ekaterina Rechkina</p>
-          <p className={style.textPosition}>
+          <p className="textName">Ekaterina Rechkina</p>
+          <p className="textPosition">
             Team Lead <br /> Frontend developer
           </p>
         </li>
-        <li className={style.participant}>
+        <li className="participant">
           <img
             src={require("../../images/team/Krasnov.png")}
             alt="#"
-            className={style.photoImage}
+            className="photoImage"
           />
-          <p className={style.textName}>Anton Krasnov</p>
-          <p className={style.textPosition}>Full-stack developer</p>
+          <p className="textName">Anton Krasnov</p>
+          <p className="textPosition">Full-stack developer</p>
         </li>
       </div>
       <img
         src={require("../../images/team/auntie.png")}
         alt="#"
         className={
-          state
-            ? style.auntieOff
-            : `${style.auntieImage} animate__animated animate__flip`
+          state ? "auntieOff" : `auntieImage animate__animated animate__flip`
         }
       />
-      <div className={style.cloud}>
+      <div className="cloud">
         <img
           src={require("../../images/team/cloudTeam.png")}
           alt="#"
           className={
             state
-              ? style.auntieOff
-              : `${style.cloudAuntieForText} animate__animated animate__bounceIn animate__delay-1s`
+              ? "auntieOff"
+              : `cloudAuntieForText animate__animated animate__bounceIn animate__delay-1s`
           }
         />
         <div
           className={
             state
-              ? style.auntieOff
-              : `${style.textAuntieInCloud} animate__animated animate__bounceIn animate__delay-1s`
+              ? "auntieOff"
+              : `textAuntieInCloud animate__animated animate__bounceIn animate__delay-1s`
           }
         >
           <p>
@@ -78,12 +76,12 @@ function Team() {
       </div>
       <div
         onClick={auntieHandler}
-        className={redButton ? style.dangerOn : style.dangerOff}
+        className={redButton ? "dangerOn" : "dangerOff"}
       >
         <img
           src={require("../../images/secret.png")}
           alt="#"
-          className={style.danger}
+          className="danger"
         />
       </div>
     </div>

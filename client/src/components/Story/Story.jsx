@@ -1,19 +1,24 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState, useEffect } from "react";
-import Popover from "@mui/material/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import { deleteStory, editStory } from "../../redux/actions/story.action";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, Box, TextField } from "@mui/material";
+import {
+  Modal,
+  Box,
+  TextField,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Popover,
+} from "@mui/material";
 import { getUserInfo } from "../../redux/actions/userActions";
-import "./story.css";
+import "./Story.css";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,8 +26,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "rgba(255,255,255, 0.9)",
-
-  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -160,25 +163,6 @@ export default function Story({
           encType="multipart/form-data"
           autoComplete="off"
         >
-          {/* <TextField
-            classes={{
-              root: classes.root,
-            }}
-            sx={{
-              "& label": { color: "#711d6f" },
-              "& label.Mui-focused": {
-                color: "#711d6f",
-              },
-              "& legend": {
-                color: "#711d6f",
-              },
-            }}
-            required
-            id="outlined-required"
-            label="Image"
-            value={newImg}
-            onChange={(event) => setNewImg(event.target.value)}
-          /> */}
           <>
             <input
               name="storypic"
@@ -255,13 +239,12 @@ export default function Story({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
             id={id}
             size="small"
             type="submit"
-            // onClick={(e) => editHandler(e)}
           >
             Submit
           </Button>
@@ -275,7 +258,7 @@ export default function Story({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
             size="small"

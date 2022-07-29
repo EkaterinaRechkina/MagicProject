@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import Registration from "./components/Registration/Registration";
-import Logout from "./components/Logout/Logout";
 import Map from "./components/Map/Map";
 import AllStories from "./components/AllStories/AllStories";
 import Profile from "./components/Profile/Profile";
@@ -12,24 +11,20 @@ import Shop from "./components/Shop/Shop";
 import Main from "./components/Main/Main";
 import UserProducts from "./components/UserProducts/UserProducts";
 import AllEvents from "./components/AllEvents/AllEvents";
-import Calendar from "./components/Calendar/Calendar";
 import Cart from "./components/Cart/Cart";
 import Favorites from "./components/Favorites/Favorites";
 import {
   createTheme,
   makeStyles,
   createStyles,
-  Theme as AugmentedTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
 
-import { orange, blue, green } from "@material-ui/core/colors";
 import Team from "./components/Team/Team";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
-      // color: green[900],
       "& .MuiOutlinedInput-root": {
         "& fieldset": {
           borderColor: "rgba(0, 0, 0, 0.23)",
@@ -38,11 +33,9 @@ const useStyles = makeStyles((theme) =>
 
         "&.Mui-focused fieldset": {
           border: "2px solid #711d6f",
-          // color: #711d6f",
         },
         "&.Mui-focused textareaAutosize": {
           border: "2px solid #711d6f",
-          // color: #711d6f",
         },
       },
     },
@@ -66,7 +59,7 @@ function App() {
               element={<Registration useStyles={useStyles} />}
             />
             <Route path="/login" element={<Login useStyles={useStyles} />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/logout" element={<Main />} />
             <Route path="/map" element={<Map />} />
             <Route
               path="/events"

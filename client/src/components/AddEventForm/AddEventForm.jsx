@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Button } from "@mui/material";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { Button, Box, TextField, TextareaAutosize } from "@mui/material";
 import { addEvent } from "../../redux/actions/event.action";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -62,52 +59,10 @@ function AddEventForm({ useStyles }) {
     );
   }
 
-  function onSuggectionChange(value) {
-    
-  }
-
-  function preprocessHook(value) {
-    return `${value}, Munich, Germany`;
-  }
-
-  function postprocessHook(feature) {
-    return feature.properties.street;
-  }
-
-  function suggestionsFilter(suggestions) {
-    const processedStreets = [];
-
-    const filtered = suggestions.filter((value) => {
-      if (
-        !value.properties.street ||
-        processedStreets.indexOf(value.properties.street) >= 0
-      ) {
-        return false;
-      } else {
-        processedStreets.push(value.properties.street);
-        return true;
-      }
-    });
-
-    return filtered;
-  }
+  function onSuggectionChange(value) {}
 
   return (
     <>
-      {/* <form
-        name="pic"
-        onSubmit={(e) => uploadHandler(e)}
-        method="post"
-        encType="multipart/form-data"
-      >
-        <input type="file" name="pic" />
-        <input type="submit" name="pic" />
-      </form> */}
-      {/* <Button variant="contained" component="label">
-        Upload File
-        <input type="file" hidden />
-      </Button> */}
-
       <Button
         onClick={openForm}
         variant="outlined"
@@ -119,7 +74,7 @@ function AddEventForm({ useStyles }) {
           ":hover": {
             border: "none",
             bgcolor: "#eba7d0",
-            color: "#fff", // theme.palette.primary.main
+            color: "#fff",
           },
         }}
       >
@@ -136,7 +91,6 @@ function AddEventForm({ useStyles }) {
             "& .MuiTextField-root": { m: 1, width: "45ch" },
             marginBottom: "200px",
           }}
-          // noValidate
           autoComplete="off"
         >
           <div
@@ -166,25 +120,7 @@ function AddEventForm({ useStyles }) {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
-            {/* <TextField
-              classes={{
-                root: classes.root,
-              }}
-              sx={{
-                "& label": { color: "#711d6f" },
-                "& label.Mui-focused": {
-                  color: "#711d6f",
-                },
-                "& legend": {
-                  color: "#711d6f",
-                },
-              }}
-              required
-              id="outlined-required"
-              label="Image"
-              value={img}
-              onChange={(event) => setImg(event.target.value)}
-            /> */}
+
             <TextField
               classes={{
                 root: classes.root,
@@ -205,13 +141,7 @@ function AddEventForm({ useStyles }) {
               value={price}
               onChange={(event) => setPrice(event.target.value)}
             />
-            {/* <TextField
-              required
-              id="outlined-required"
-              label="Date"
-              value={date}
-              onChange={(event) => setDate(event.target.value)}
-            /> */}
+
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label="Date"
@@ -261,13 +191,6 @@ function AddEventForm({ useStyles }) {
               value={people}
               onChange={(event) => setPeople(event.target.value)}
             />
-            {/* <TextField
-              required
-              id="outlined-required"
-              label="Place"
-              value={place}
-              onChange={(event) => setPlace(event.target.value)}
-            /> */}
 
             <>
               <input
@@ -313,8 +236,6 @@ function AddEventForm({ useStyles }) {
                 }}
                 placeSelect={onPlaceSelect}
                 suggestionsChange={onSuggectionChange}
-                // onChange={(event) => setPlace(event.target.value)}
-                // value={place}
               />
             </GeoapifyContext>
 
@@ -356,7 +277,7 @@ function AddEventForm({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
             >
@@ -373,7 +294,7 @@ function AddEventForm({ useStyles }) {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
               onClick={closeForm}

@@ -1,9 +1,11 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import PopupState, { bindPopover, bindTrigger } from "material-ui-popup-state";
@@ -21,7 +23,7 @@ import {
   GeoapifyContext,
 } from "@geoapify/react-geocoder-autocomplete";
 import "@geoapify/geocoder-autocomplete/styles/minimal.css";
-import "../Story/story.css";
+import "../Story/Story.css";
 
 const style = {
   position: "absolute",
@@ -30,8 +32,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "rgba(255,255,255, 0.9)",
-
-  // border: "2px solid #000",
   boxShadow: 24,
   p: 4,
   display: "flex",
@@ -92,39 +92,7 @@ export default function Event({
     );
   }
 
-  function onSuggectionChange(newPlace) {
-    
-  }
-
-  function preprocessHook(newPlace) {
-    return `${newPlace}, Munich, Germany`;
-  }
-
-  function postprocessHook(feature) {
-    return feature.properties.street;
-  }
-
-  function suggestionsFilter(suggestions) {
-    const processedStreets = [];
-
-    const filtered = suggestions.filter((value) => {
-      if (
-        !value.properties.street ||
-        processedStreets.indexOf(value.properties.street) >= 0
-      ) {
-        return false;
-      } else {
-        processedStreets.push(value.properties.street);
-        return true;
-      }
-    });
-
-    return filtered;
-  }
-
-  function test(e) {
-    
-  }
+  function onSuggectionChange(newPlace) {}
 
   return (
     <div className="story event">
@@ -242,26 +210,6 @@ export default function Event({
             value={newTitle}
             onChange={(event) => setTitle(event.target.value)}
           />
-          {/* <TextField
-            classes={{
-              root: classes.root,
-            }}
-            sx={{
-              "& label": { color: "#711d6f" },
-              "& label.Mui-focused": {
-                color: "#711d6f",
-              },
-              "& legend": {
-                color: "#711d6f",
-              },
-            }}
-            name="image"
-            required
-            id="outlined-required"
-            label="Image"
-            value={inputs.image}
-            onChange={inputsHandler}
-          /> */}
           <TextField
             classes={{
               root: classes.root,
@@ -282,14 +230,7 @@ export default function Event({
             value={newPrice}
             onChange={(event) => setPrice(event.target.value)}
           />
-          {/* <TextField
-            name="date"
-            required
-            id="outlined-required"
-            label="Date"
-            value={inputs.date}
-            onChange={inputsHandler}
-          /> */}
+
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label="Date"
@@ -339,14 +280,7 @@ export default function Event({
             value={newPeople}
             onChange={(event) => setPeople(event.target.value)}
           />
-          {/* <TextField
-            name="place"
-            required
-            id="outlined-required"
-            label="Place"
-            value={inputs.place}
-            onChange={inputsHandler}
-          /> */}
+
           <>
             <input
               name="pic"
@@ -391,7 +325,6 @@ export default function Event({
               }}
               placeSelect={onPlaceSelect}
               suggestionsChange={onSuggectionChange}
-              // value={newPlace}
             />
           </GeoapifyContext>
           <TextareaAutosize
@@ -421,7 +354,6 @@ export default function Event({
           />
           <Button
             id={id}
-            // onClick={() => {submitHandler(inputs)}}
             variant="text"
             type="submit"
             size="small"
@@ -434,7 +366,7 @@ export default function Event({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
           >
@@ -452,7 +384,7 @@ export default function Event({
               ":hover": {
                 border: "none",
                 bgcolor: "#eba7d0",
-                color: "#fff", // theme.palette.primary.main
+                color: "#fff",
               },
             }}
             onClick={handleClose}

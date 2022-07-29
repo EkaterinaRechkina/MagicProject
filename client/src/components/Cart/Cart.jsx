@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import style from "./style.module.css";
-import { createOrder, removeFromCart } from "../../redux/actions/cart.actions";
+import { useSelector } from "react-redux";
+import "./Cart.css";
+import { createOrder } from "../../redux/actions/cart.actions";
 import CartElement from "./CartElement";
 
 function Cart() {
@@ -16,8 +16,8 @@ function Cart() {
 
   return (
     <>
-      <div className={style.cart}>
-        <ul className={style.list}>
+      <div className="cart">
+        <ul className="list">
           {cart.length ? (
             cart.map((item) => <CartElement {...item} key={item.id} />)
           ) : (
@@ -37,7 +37,7 @@ function Cart() {
                 ":hover": {
                   border: "none",
                   bgcolor: "#eba7d0",
-                  color: "#fff", // theme.palette.primary.main
+                  color: "#fff",
                 },
               }}
               onClick={() => {
@@ -50,7 +50,7 @@ function Cart() {
           </>
         ) : null}
         {order ? (
-          <p className={style.textOrder}>
+          <p className="textOrder">
             Thank you for being our valued customer. We hope our products will
             meet your expectations. Let us know if you have any questions.
           </p>

@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
+import React, { useState } from "react";
+import { Card, CardMedia, CardActions, Button } from "@mui/material";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import Star from "@mui/icons-material/Star";
 import "../Story/Story";
-import "./product.css";
+import "./Product.css";
 import { addToCart } from "../../redux/actions/cart.actions";
 import {
   addFavorites,
   deleteFavorites,
-  editFavorites,
 } from "../../redux/actions/favorites.action";
 import { useDispatch, useSelector } from "react-redux";
 

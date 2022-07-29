@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../Product/Product";
-import style from "./Shop.module.css";
+import "./Shop.css";
 
 export default function Shop() {
   const [query, setQuery] = useState("");
@@ -52,15 +52,15 @@ export default function Shop() {
   }, [query, inputMin, inputMax]);
 
   return (
-    <div className={style.body}>
-      <div className={style.filter}>
-        <div className={style.inputs}>
+    <div className="body">
+      <div className="filter">
+        <div className="inputs">
           <div>
             <p>Search</p>
             <input
               type="text"
               placeholder="Search..."
-              className={style.search}
+              className="search"
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
@@ -68,10 +68,10 @@ export default function Shop() {
             <p>Price</p>
           </div>
 
-          <div className={style.filters_inputs}>
+          <div className="filters_inputs">
             <div>
-              <label className={style.filter_price_label}>
-                <span className={style.filter_price_text}>from</span>
+              <label className="filter_price_label">
+                <span className="filter_price_text">from</span>
                 <input
                   type="number"
                   value={inputMin}
@@ -79,15 +79,15 @@ export default function Shop() {
                   min="0"
                   max="99999"
                   placeholder="0"
-                  className={style.filter_price}
+                  className="filter_price"
                 />
-                <span className={style.filter_price_text}>$</span>
+                <span className="filter_price_text">$</span>
               </label>
             </div>
 
             <div>
-              <label className={style.filter_price_label}>
-                <span className={style.filter_price_text}>to</span>
+              <label className="filter_price_label">
+                <span className="filter_price_text">to</span>
                 <input
                   type="number"
                   value={inputMax}
@@ -95,15 +95,15 @@ export default function Shop() {
                   min="0"
                   max="99999"
                   placeholder="99999"
-                  className={style.filter_price}
+                  className="filter_price"
                 />
-                <span className={style.filter_price_text}>$</span>
+                <span className="filter_price_text">$</span>
               </label>
             </div>
           </div>
         </div>
       </div>
-      <ul className={style.ulProducts}>
+      <ul className="ulProducts">
         {products.length === 0 ? (
           <h1>Sorry, we can't find what you looking for</h1>
         ) : (

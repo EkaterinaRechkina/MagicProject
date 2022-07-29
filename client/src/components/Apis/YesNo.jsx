@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Button } from "@mui/material";
-import "./api.css";
+import "./Api.css";
 
 function YesNo() {
   const [answer, setAnswer] = useState("");

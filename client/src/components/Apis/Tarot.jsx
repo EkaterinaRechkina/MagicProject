@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Button } from "@mui/material";
-import "./api.css";
+import "./Api.css";
 
 function Tarot() {
   const [cardDesc, setcardDesc] = useState("");
