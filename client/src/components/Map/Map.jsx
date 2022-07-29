@@ -12,7 +12,21 @@ export default function Map() {
   const [longitude, setLongitude] = useState(-0.112869);
   const [latitude, setLatitude] = useState(51.504);
 
+  const convertToPoints = (lngLat) => {
+    return {
+      point: {
+        latitude: lngLat.lat,
+        longitude: lngLat.lng,
+      },
+    };
+  };
+
   useEffect(() => {
+    const origin = {
+      lng: longitude,
+      lat: latitude,
+    };
+    const destinations = [];
     let map = tt.map({
       key: process.env.REACT_APP_API_KEY_MAP,
       container: mapElement.current,
@@ -24,6 +38,20 @@ export default function Map() {
     });
 
     setMap(map);
+
+    const options = {
+      idleTimePress: 100,
+      minNumberOfCharacters: 0,
+      searchOptions: {
+        key: process.env.REACT_APP_API_KEY_MAP,
+        language: "en-GB",
+      },
+      autocompleteOptions: {
+        key: process.env.REACT_APP_API_KEY_MAP,
+        language: "en-GB",
+      },
+      noResultsMessage: "No results found.",
+    };
 
     const customPopup =
       '<p style="display:inline">' +
@@ -207,7 +235,7 @@ export default function Map() {
     createPopup(altayPopup, markerAltay);
 
     return () => map.remove();
-  }, [latitude, longitude]);
+  }, []);
 
   return (
     <div className="container">
