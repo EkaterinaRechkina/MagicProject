@@ -14,6 +14,7 @@ function Main() {
     <div className="container">
       <div className="faceimg">
         <img
+          className="img"
           src={change ? zelda : main}
           alt="img"
           onClick={() => setChange((prevMode) => !prevMode)}

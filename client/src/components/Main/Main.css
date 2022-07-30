@@ -9,7 +9,7 @@
   width: 500px;
   height: 600px;
 }
-.faceimg img {
+.img {
   width: 100%;
 }
 .api {
@@ -29,13 +29,19 @@
   gap: 5%;
 }
 
+@media only screen and (max-width: 1700px) {
+  .img {
+    width: 84%;
+  }
+
+  .container {
+    align-items: flex-start;
+  }
+}
+
 @media only screen and (max-width: 1350px) {
   .tarot {
     margin: 0 auto;
-  }
-  .faceimg {
-    width: 400px;
-    height: 500px;
   }
 }
 
@@ -57,7 +63,6 @@
 
 @media only screen and (max-width: 400px) {
   .faceimg {
-    width: 250px;
-    height: 400px;
+    width: 50%;
   }
 }
