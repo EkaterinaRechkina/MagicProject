@@ -1,64 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap");
 
 .form-registration {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-family: 'Cormorant SC', serif;
-    margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: "Cormorant SC", serif;
+  margin-top: 3%;
 }
 
 .red_alert_reg {
-    background-color: #ffbcbc;
+  background-color: #ffbcbc;
 }
 
 .witchReg {
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
 }
 
 .witchImgReg {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    animation: levelFlightRegR 5s forwards;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  animation: levelFlightRegR 5s forwards;
 }
 
 .witchRImgReg {
-    width: 150px;
-    height: 150px;
-    position: relative;
-    animation: levelFlightRegL 7s forwards;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  animation: levelFlightRegL 7s forwards;
 }
 
 @keyframes levelFlightRegR {
-    from { right: -800px; top: -600px}
-    to { right: 3000px; top: -100px}
+  from {
+    right: -800px;
+    top: -600px;
+  }
+  to {
+    right: 3000px;
+    top: -100px;
+  }
 }
 
 @keyframes levelFlightRegL {
-    from { left: -4500px; top: 0}
-    to { left: -1400px; top: -700px}
+  from {
+    left: -4500px;
+    top: 0;
+  }
+  to {
+    left: -1400px;
+    top: -700px;
+  }
 }
 
 .info {
-    font-size: 24px;
-    max-width: 400px;
-    margin: 3% auto;
-    font-family: 'Cormorant SC', serif;
+  font-size: 24px;
+  max-width: 400px;
+  margin: 3% auto;
+  font-family: "Cormorant SC", serif;
 }
 
 @media only screen and (max-width: 1920px) {
-    @keyframes levelFlightRegR {
-        from { right: -400px; top: -300px}
-        to { right: 3000px; top: -50px}
+  @keyframes levelFlightRegR {
+    from {
+      right: -400px;
+      top: -300px;
     }
+    to {
+      right: 3000px;
+      top: -50px;
+    }
+  }
 
-    @keyframes levelFlightRegL {
-        from { left: -4500px; top: 0}
-        to { left: -1100px; top: -648px}
+  @keyframes levelFlightRegL {
+    from {
+      left: -4500px;
+      top: 0;
     }
+    to {
+      left: -1100px;
+      top: -648px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1700px) {
+  .witchImg,
+  .witchRImg {
+    width: 150px;
+    height: 150px;
+  }
+
+  @keyframes levelFlightL {
+    from {
+      left: -4500px;
+      top: 0;
+    }
+    to {
+      left: -1050px;
+      top: -460px;
+    }
+  }
 }

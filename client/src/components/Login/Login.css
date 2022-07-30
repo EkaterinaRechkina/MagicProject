@@ -65,3 +65,18 @@
         to { left: -1100px; top: -550px}
     }
 }
+
+@media only screen and (max-width: 1700px) {
+
+
+.witchImg, .witchRImg  {
+    width: 150px;
+    height:150px;
+    
+}
+
+    @keyframes levelFlightL {
+        from { left: -4500px; top: 0}
+        to { left: -1050px; top: -540px}
+    }
+}

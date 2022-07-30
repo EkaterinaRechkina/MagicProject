@@ -1,110 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
-.container{
-    font-family: 'Cormorant SC', serif;
-    display: flex;
-    flex-direction: row;
-    margin: 8% auto 0;
-    align-items: center;
-    max-width: 1400px;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap");
+.container {
+  font-family: "Cormorant SC", serif;
+  display: flex;
+  flex-direction: row;
+  margin: 8% auto 0;
+  align-items: center;
+  max-width: 1400px;
 }
 
-.map{
-    height: 400px;
-    width: 70%;
+.map {
+  height: 400px;
+  width: 800px;
 }
-.map-text{
-    width: 30%;
-    margin-right: 15%;
+.map-text {
+  width: 30%;
+  margin-right: 15%;
 }
-.marker{
-    background-image: url('https://img.icons8.com/material-outlined/344/place-marker--v1.png');
-    background-size: cover;
-    width: 22px;
-    height: 22px;
-    background-color: yellow;
-    border-radius: 11px;
-    border: solid 3px darkblue;
+.marker {
+  background-image: url("https://img.icons8.com/material-outlined/344/place-marker--v1.png");
+  background-size: cover;
+  width: 22px;
+  height: 22px;
+  background-color: yellow;
+  border-radius: 11px;
+  border: solid 3px darkblue;
 }
 
-.marker-delivery{
-    width: 10px;
-    height: 10px;
-    background-color: red;
+.marker-delivery {
+  width: 10px;
+  height: 10px;
+  background-color: red;
 }
 
 .title {
-    font-size: 36px;
-    font-weight: 600;
-    margin-bottom: 2%;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 2%;
 }
 
-
-.description-map{
-    margin-top: 5%;
-    line-height: 1.5;
-    font-size: 14px;
-    font-weight: 400;
+.description-map {
+  margin-top: 5%;
+  line-height: 1.5;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .cat {
-    position: absolute;
-    bottom: 70px;
-    left: 10px;
+  position: absolute;
+  bottom: 70px;
+  left: 10px;
 }
 
 .catGif {
-    position: relative;
-    width: 100%;
-    animation: levelFlight 5s forwards;
+  position: relative;
+  width: 100%;
+  animation: levelFlight 5s forwards;
 }
 
 .catGifSitting {
-    width: 6%;
-    height: 150px;
-    position: absolute;
-  
-    bottom: 70px;
+  width: 6%;
+  height: 150px;
+  position: absolute;
+
+  bottom: 70px;
 }
 
 .cloudForText {
-    width: 12%;
-    position: absolute;
-    left: 220px;
-    bottom: 240px;
+  width: 12%;
+  position: absolute;
+  left: 220px;
+  bottom: 240px;
 }
 
 .textInCloud {
-    position: absolute;
-    left: 255px;
-    bottom: 310px;
-    font-size: 26px;
+  position: absolute;
+  left: 255px;
+  bottom: 310px;
+  font-size: 26px;
 }
 
 @keyframes levelFlight {
-    from { right: -2500px; top: 60px}
-    to { right: 400px; top: 60px}
+  from {
+    right: -2500px;
+    top: 60px;
+  }
+  to {
+    right: 400px;
+    top: 60px;
+  }
 }
 
 @media only screen and (max-width: 1920px) {
-    .catGifSitting {
-        width: 10%;
-        position: absolute;
-        left: 150px;
-        bottom: 70px;
-    }
+  .catGifSitting {
+    width: 10%;
+    position: absolute;
+    left: 150px;
+    bottom: 70px;
+  }
 
-    .cloudForText {
-        width: 14%;
-        position: absolute;
-        left: 180px;
-        bottom: 210px;
-    }
+  .cloudForText {
+    width: 14%;
+    position: absolute;
+    left: 180px;
+    bottom: 210px;
+  }
 
-    .textInCloud {
-        position: absolute;
-        left: 211px;
-        bottom: 297px;
-        font-size: 31px;
-    }
+  .textInCloud {
+    position: absolute;
+    left: 211px;
+    bottom: 297px;
+    font-size: 31px;
+  }
 }
 
+@media only screen and (max-width: 1700px) {
+  .container {
+    margin: 4% auto 0;
+  }
+  .map-text {
+    width: 90%;
+    margin-right: 0;
+  }
+  .title {
+    font-size: 24px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cloudForText {
+    width: 15%;
+  }
+  .map {
+  margin-top: 5%;
+  }
+}
