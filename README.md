@@ -1,13 +1,10 @@
 # Web-приложение для квеста MagicProject
 
-
 ## Animation, Login amd Map
 
-
+![animation](./readme%20gif/animation.gif)
 
 # Стек технологий:
-
-
 
 DB: PostgreSQL, Sequelize ORM
 
@@ -18,9 +15,11 @@ Front: React + Redux, Redux Thunk, JavaScript, HTML5, CSS, MUI
 # Планы развития:
 
 # Установка:
+
 В директории 2 папки:
 
 ### server/ Отвечает за back-end.
+
 - cd server
 - npm i
 - npx sequelize db:create
@@ -28,6 +27,7 @@ Front: React + Redux, Redux Thunk, JavaScript, HTML5, CSS, MUI
 - npm run dev
 
 ### client/ - front-end.
+
 - cd client
 - npm i
 - npm start
