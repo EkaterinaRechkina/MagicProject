@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.ulProducts {
+.ulProducts-user {
     display: grid;
     row-gap: 5%;
     column-gap: 2%;
@@ -14,3 +14,18 @@
 .oneProduct {
     width: 205px;
 }
+
+
+@media only screen and (max-width: 1700px) {
+    .body{
+        display: flex;
+        flex-direction: row;
+    }
+    .ulProducts-user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        margin: 0 auto;
+    }
+  }

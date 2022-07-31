@@ -1,6 +1,6 @@
 # Web-приложение для квеста MagicProject
 
-## Animation, Login amd Map
+## Animation, Login and Map
 
 ![animation](./readme%20gif/animation.gif)
 

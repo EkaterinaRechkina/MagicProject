@@ -16,7 +16,7 @@ export default function UserProducts({ useStyles }) {
 
   return (
     <div className="body">
-      <ul className="ulProducts">
+      <ul className="ulProducts-user">
         {!allGoods.length ? (
           <h1>You have not added any products yet!</h1>
         ) : (
