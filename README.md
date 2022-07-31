@@ -2,7 +2,7 @@
 
 ## Animation, Login amd Map
 
-![animation](./readme%20gif/animation.gif)
+
 
 # Стек технологий:
 
