@@ -24,6 +24,7 @@ import {
 } from "@geoapify/react-geocoder-autocomplete";
 import "@geoapify/geocoder-autocomplete/styles/minimal.css";
 import "../Story/Story.css";
+import "./Event.css";
 
 const style = {
   position: "absolute",
@@ -126,7 +127,7 @@ export default function Event({
                   </Button>
                 ) : null}
 
-                <div className="title">{title}</div>
+                <div className="title-event">{title}</div>
                 <div className="description-popup">
                   <strong>Place: </strong> {place}
                 </div>

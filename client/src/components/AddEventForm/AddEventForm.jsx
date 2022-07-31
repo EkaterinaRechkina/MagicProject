@@ -207,7 +207,7 @@ function AddEventForm({ useStyles }) {
                   variant="raised"
                   component="span"
                   sx={{
-                    margin: "10px 0",
+                    margin: "10px  auto",
                     color: "#711d6f",
                     ":hover": {
                       border: "none",
@@ -226,6 +226,8 @@ function AddEventForm({ useStyles }) {
                   root: classes.root,
                 }}
                 sx={{
+                  margin: "10px  auto",
+                  width: "300px",
                   "& label": { color: "#711d6f" },
                   "& label.Mui-focused": {
                     color: "#711d6f",

@@ -5,12 +5,11 @@
   flex-direction: column;
   align-items: flex-start;
   margin-left: 15%;
-    width: 250px;
-    height: 150px;
+  width: 250px;
+  height: 150px;
 }
 
 .react-calendar {
-
   max-width: 100%;
   background-color: #fff;
   color: #222;
@@ -106,11 +105,17 @@ abbr[title] {
   line-height: 6px;
 }
 
-@media only screen and (max-width: 450px) {
-.calendar {
-  align-items: center;
-  margin: 0 0 25% 10%;
-  width: 210px;
-  height: 150px;
+@media only screen and (max-width: 1700px) {
+  .calendar {
+    margin-left: 0;
+  }
 }
+
+@media only screen and (max-width: 450px) {
+  .calendar {
+    align-items: center;
+    margin: 0 0 25% 10%;
+    width: 210px;
+    height: 150px;
+  }
 }
