@@ -2,7 +2,7 @@
 
 ## Animation, Login and Map
 
-![animation](./readme%20gif/animation.gif)
+![animation](./readme_gif/animation.gif)
 
 # Стек технологий:
 
