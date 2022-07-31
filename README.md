@@ -14,6 +14,10 @@
 
 ![animation](./readme_gif/shop.gif)
 
+## Team, Final
+
+![animation](./readme_gif/final.gif)
+
 # Стек технологий:
 
 DB: PostgreSQL, Sequelize ORM
