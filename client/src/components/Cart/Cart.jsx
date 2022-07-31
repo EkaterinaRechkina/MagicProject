@@ -26,7 +26,7 @@ function Cart() {
         </ul>
         {cart.length ? (
           <>
-            <strong> Total: ${sum}</strong>
+            <strong className="total"> Total: ${sum}</strong>
             <Button
               sx={{
                 margin: "10px auto",

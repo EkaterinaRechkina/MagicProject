@@ -4,6 +4,10 @@
 
 ![animation](./readme_gif/animation.gif)
 
+## Shop, Cart, Favourites, My goods
+
+![animation](./readme_gif/shop.gif)
+
 # Стек технологий:
 
 DB: PostgreSQL, Sequelize ORM
