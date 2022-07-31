@@ -35,7 +35,7 @@ Front: React + Redux, Redux Thunk, JavaScript, HTML5, CSS, MUI
 
 В директории 2 папки:
 
-### server/ Отвечает за back-end.
+### server/ - back-end.
 
 - cd server
 - npm i
