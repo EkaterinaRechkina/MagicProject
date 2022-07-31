@@ -1,53 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap");
 
 .wrap {
-    font-family: 'Cormorant SC', serif;
-    max-width: 900px;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    margin: 1% auto;
-    justify-items: center;
-    justify-content: center;
+  font-family: "Cormorant SC", serif;
+  max-width: 900px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 1% auto;
+  justify-items: center;
+  justify-content: center;
 }
 
 .ulFav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .liFav {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 0.5px solid rgb(163, 136, 175);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 0.5px solid rgb(163, 136, 175);
 }
 
 .itemLiImg {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 .imageFav {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
 }
 
 .itemLiTitle {
-    font-size: 20px;
-    width: 150px;
+  font-size: 20px;
+  width: 150px;
 }
 
 .itemLiPrice {
-    font-size: 20px;
-    width: 100px;
+  font-size: 20px;
+  width: 100px;
 }
 
 .itemLiButton {
-    width: 50px;
+  width: 50px;
+}
+
+@media only screen and (max-width: 1700px) {
+  .imageFav {
+    margin-right: 20px;
+  }
 }

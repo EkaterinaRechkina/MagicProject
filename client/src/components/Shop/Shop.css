@@ -88,6 +88,9 @@
     grid-template-columns: repeat(4, auto);
     row-gap: 2%;
   }
+  .filter {
+    min-width: 400px;
+  }
 }
 
 @media only screen and (max-width: 1560px) {
