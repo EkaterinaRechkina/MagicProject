@@ -19,6 +19,7 @@ import {
 } from "../../redux/actions/product.action";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import "../Story/Story";
+import "./OneUserProduct";
 
 const style = {
   position: "absolute",
@@ -101,7 +102,7 @@ function OneUserProduct({
                 >
                   <EditIcon onClick={handleOpen} />
                 </Button>
-                <div className="title">{title}</div>
+                <div className="title-product">{title}</div>
                 <div>Price $: {price}</div>
                 <div>Seller: {author}</div>
               </CardContent>
