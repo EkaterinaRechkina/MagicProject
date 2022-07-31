@@ -2,13 +2,13 @@
 
 # Стек технологий:
 
-JavaScript
+
 
 DB: PostgreSQL, Sequelize ORM
 
 Back: Node.js, Express, Sessions, Bcrypt, Cors
 
-Front: React + Redux, Redux Thunk, HTML5, CSS, MUI
+Front: React + Redux, Redux Thunk, JavaScript, HTML5, CSS, MUI
 
 # Планы развития:
 
