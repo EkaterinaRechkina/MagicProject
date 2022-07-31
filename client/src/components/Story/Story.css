@@ -34,9 +34,3 @@
     width: 305px;
     margin: 2% 0;
 }
-.event {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-}

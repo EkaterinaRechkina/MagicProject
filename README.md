@@ -14,6 +14,10 @@
 
 ![animation](./readme_gif/shop.gif)
 
+## Add Event
+
+![animation](./readme_gif/eventadd.gif)
+
 ## Team, Final
 
 ![animation](./readme_gif/final.gif)
